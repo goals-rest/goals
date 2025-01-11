@@ -298,6 +298,7 @@ GEM
       rubocop-minitest
       rubocop-performance
       rubocop-rails
+    ruby-next-core (1.0.3)
     ruby-progressbar (1.13.0)
     rubyzip (2.4.1)
     securerandom (0.4.1)
@@ -361,6 +362,9 @@ GEM
       activesupport (>= 5.2.0, < 8.1)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
+    view_component-contrib (0.2.4)
+      ruby-next-core (>= 0.15.0)
+      view_component
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -412,6 +416,7 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   view_component (= 3.21.0)
+  view_component-contrib (= 0.2.4)
   web-console
 
 BUNDLED WITH
