@@ -1,4 +1,6 @@
-# README
+# Goals
+
+[![CI](https://github.com/goals-rest/goals/actions/workflows/ci.yml/badge.svg)](https://github.com/goals-rest/goals/actions/workflows/ci.yml)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
