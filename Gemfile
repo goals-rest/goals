@@ -66,3 +66,6 @@ end
 
 # Rails UI component library [https://github.com/getrailsui/railsui]
 gem "railsui", github: "getrailsui/railsui", branch: "main"
+
+# A framework for building reusable, testable & encapsulated view components in Ruby on Rails. [https://github.com/ViewComponent/view_component]
+gem "view_component", "3.21.0"
