@@ -73,7 +73,7 @@ end
 # Rails UI component library [https://github.com/getrailsui/railsui]
 gem "railsui", github: "getrailsui/railsui", branch: "main"
 
-# A framework for building reusable, testable & encapsulated view components in Ruby on Rails. [https://github.com/ViewComponent/view_component]
+# A framework for building reusable, testable & encapsulated view components in Ruby on Rails [https://github.com/ViewComponent/view_component]
 gem "view_component", "3.21.0"
 
 # A collection of view components helpers [https://github.com/palkan/view_component-contrib]
@@ -84,3 +84,6 @@ gem "lookbook", "2.3.4"
 
 # Utility function to efficiently merge Tailwind CSS classes without style conflicts [https://github.com/gjtorikian/tailwind_merge]
 gem "tailwind_merge", "0.14.0"
+
+# Centralization of locale data collection for Ruby on Rails [https://github.com/svenfuchs/rails-i18n]
+gem 'rails-i18n', '~> 8.0.0'
