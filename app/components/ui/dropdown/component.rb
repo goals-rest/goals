@@ -8,14 +8,14 @@ module UI
       }
 
       style do
-        base { 
+        base {
           %w[
-            hidden transition transform bg-white rounded-xl shadow-xl 
-            shadow-zinc-900/10 border border-zinc-200 md:w-[200px] w-full z-50 
-            py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50 
-            dark:border-zinc-600/80 md:text-[15px] text-base text-zinc-600 
+            hidden transition transform bg-white rounded-xl shadow-xl
+            shadow-zinc-900/10 border border-zinc-200 md:w-[200px] w-full z-50
+            py-2 dark:bg-zinc-900 dark:shadow-zinc-900/50
+            dark:border-zinc-600/80 md:text-[15px] text-base text-zinc-600
             dark:text-zinc-200 font-heading
-          ] 
+          ]
         }
 
         variants {

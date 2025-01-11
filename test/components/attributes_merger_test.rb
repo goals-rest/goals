@@ -11,12 +11,12 @@ class AttributeMergerTest < ActiveSupport::TestCase
   end
 
   test "merges arrays" do
-    default_attrs = { value: [1] }
-    user_attrs = { value: [2] }
+    default_attrs = { value: [ 1 ] }
+    user_attrs = { value: [ 2 ] }
 
     attribute_merger = AttributeMerger.new(default_attrs, user_attrs)
 
-    assert_equal ({ value: [1, 2] }), attribute_merger.merge
+    assert_equal ({ value: [ 1, 2 ] }), attribute_merger.merge
   end
 
   test "merges hashes" do

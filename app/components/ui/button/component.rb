@@ -2,7 +2,6 @@ module UI
   module Button
     class Component < ApplicationComponent
       style do base { %w[btn gap-2] }
-
         variants {
           color {
             primary { %w[btn-primary] }

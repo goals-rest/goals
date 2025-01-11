@@ -27,7 +27,7 @@ module Goals
     config.view_component.preview_paths << "#{Rails.root}/app/components"
     config.lookbook.preview_layout = "component_preview"
     config.lookbook.preview_display_options = {
-      theme: ["light", "dark"]
+      theme: [ "light", "dark" ]
     }
   end
 end

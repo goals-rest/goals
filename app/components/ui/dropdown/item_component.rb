@@ -6,7 +6,7 @@ module UI
       style do
         base do
           %w[
-            px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white 
+            px-4 py-1.5 hover:text-zinc-950 block dark:hover:text-white
             cursor-pointer
           ]
         end
@@ -26,7 +26,7 @@ module UI
       private
 
       def default_attrs
-        { 
+        {
           class: style,
           href: href
         }.compact
