@@ -23,5 +23,11 @@ module Goals
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.view_component.preview_paths << "#{Rails.root}/app/components"
+    config.lookbook.preview_layout = "component_preview"
+    config.lookbook.preview_display_options = {
+      theme: ["light", "dark"]
+    }
   end
 end

@@ -78,3 +78,6 @@ gem "view_component", "3.21.0"
 
 # A collection of view components helpers [https://github.com/palkan/view_component-contrib]
 gem "view_component-contrib", "0.2.4"
+
+# A UI development environment for Ruby on Rails applications [https://github.com/lookbook-hq/lookbook]
+gem "lookbook", "2.3.4"

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Component Preview</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+    <%= railsui_head %>
+  </head>
+
+  <body style="padding: 20px" class="<%= params.dig(:lookbook, :display, :theme) %>">
+    <div style="
+      margin-left: auto;
+      margin-right: auto;
+      max-width: <%= params.dig(:lookbook, :display, :max_width) || "100%" %>
+    ">
+      <%= yield %>
+    </div>
+  </body>
+</html>
