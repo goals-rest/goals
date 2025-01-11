@@ -1,0 +1,18 @@
+<div data-controller="railsui-dropdown" class="relative inline-block">
+  <div data-action="click->railsui-dropdown#toggle click@window->railsui-dropdown#hide">
+    <%= trigger %>
+  </div>
+
+  <div
+    class="<%= attrs[:class] %>"
+    data-railsui-dropdown-target="menu"
+    data-transition-enter-from="opacity-0 scale-95"
+    data-transition-enter-to="opacity-100 scale-100"
+    data-transition-leave-from="opacity-100 scale-100"
+    data-transition-leave-to="opacity-0 scale-95"
+  >
+    <% items.each do |item| %>
+      <%= item %>
+    <% end %>
+  </div>
+</div>
