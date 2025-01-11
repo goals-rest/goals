@@ -81,3 +81,6 @@ gem "view_component-contrib", "0.2.4"
 
 # A UI development environment for Ruby on Rails applications [https://github.com/lookbook-hq/lookbook]
 gem "lookbook", "2.3.4"
+
+# Utility function to efficiently merge Tailwind CSS classes without style conflicts [https://github.com/gjtorikian/tailwind_merge]
+gem "tailwind_merge", "0.14.0"
