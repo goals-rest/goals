@@ -3,7 +3,7 @@ module ApplicationHelper
     render "rui/shared/email_spacer", amount: amount
   end
 
-  def email_action(action, url, options={})
+  def email_action(action, url, options = {})
     align = options[:align] ||= "left"
     theme = options[:theme] ||= "primary"
     fullwidth = options[:fullwidth] ||= false
