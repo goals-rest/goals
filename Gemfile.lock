@@ -1,4 +1,15 @@
 GIT
+  remote: https://github.com/getrailsui/railsui.git
+  revision: 956d4c37c3acc16228eca43ef371f4372c7d3fcf
+  branch: main
+  specs:
+    railsui (3.0.0)
+      meta-tags
+      psych
+      rails (>= 7.0)
+      railsui_icon
+
+GIT
   remote: https://github.com/rails/rails.git
   revision: fa9cf269191c5077de1abdd1e3f934fbeaf2a5d0
   branch: main
@@ -177,6 +188,8 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
+    meta-tags (2.22.1)
+      actionpack (>= 6.0.0, < 8.1)
     mini_mime (1.1.5)
     minitest (5.25.4)
     msgpack (1.7.5)
@@ -239,6 +252,8 @@ GEM
     rails-html-sanitizer (1.6.2)
       loofah (~> 2.21)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
+    railsui_icon (1.1.1)
+      rails (>= 5.2)
     rainbow (3.1.1)
     rake (13.2.1)
     rdoc (6.10.0)
@@ -366,6 +381,7 @@ DEPENDENCIES
   propshaft
   puma (>= 5.0)
   rails!
+  railsui!
   rubocop-rails-omakase
   selenium-webdriver
   solid_cable

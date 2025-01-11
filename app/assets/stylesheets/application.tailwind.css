@@ -1,3 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+@import "railsui/actiontext";
+@import "railsui/base";
+@import "railsui/flatpickr";
+@import "railsui/forms";
+@import "railsui/navigation";
+@import "railsui/properties";
+@import "tailwindcss/utilities";

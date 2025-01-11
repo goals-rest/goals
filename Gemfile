@@ -63,3 +63,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# Rails UI component library [https://github.com/getrailsui/railsui]
+gem "railsui", github: "getrailsui/railsui", branch: "main"

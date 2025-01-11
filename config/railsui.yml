@@ -1,0 +1,54 @@
+--- !ruby/object:Railsui::Configuration
+application_name: Goals
+support_email: support@example.com
+theme: shepherd
+colors:
+  primary:
+    '50': "#fff1f2"
+    '100': "#ffe4e6"
+    '200': "#fecdd3"
+    '300': "#fda4af"
+    '400': "#fb7185"
+    '500': "#f43f5e"
+    '600': "#e11d48"
+    '700': "#be123c"
+    '800': "#9f1239"
+    '900': "#881337"
+    '950': "#4c0519"
+  secondary:
+    '50': "#eaf6fc"
+    '100': "#c1e3f7"
+    '200': "#98d1f2"
+    '300': "#6FBFED"
+    '400': "#46ACE7"
+    '500': "#1D9AE2"
+    '600': "#187eb9"
+    '700': "#126290"
+    '800': "#0D4667"
+    '900': "#082a3e"
+    '950': "#030E15"
+pages:
+- about
+- pricing
+- dashboard
+- properties
+- inbox
+- calendar
+- insights
+- bookings
+- new_booking
+- booking
+- edit_booking
+- help_center
+- changelog
+- api
+- privacy_policy
+- terms
+- contact
+- account_payment_methods
+- account_payouts
+- account_notifications
+- account_preferences
+body_classes: h-full antialiased text-zinc-800 leading-normal selection:bg-primary-100
+  selection:text-primary-700 dark:bg-zinc-900 bg-white dark:text-zinc-50 dark:selection:bg-zinc-500/40
+  dark:selection:text-zinc-200
