@@ -1,0 +1,5 @@
+<%= tag.div(**attrs) do %>
+  <% if src.present? %>
+    <%= image_tag src, alt:, class: "rounded-full w-full h-full select-none pointer-events-none shrink-0 object-cover" %>
+  <% end %>
+<% end %>
