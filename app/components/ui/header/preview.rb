@@ -9,10 +9,15 @@ module UI
           header.with_link.with_content("Desafios")
 
           header.with_item do
-            header.render UI::Button::Component.new(size: :sm) do |button|
-              button.with_leading_icon("plus-circle")
-
-              "Criar objetivo"
+            header.render UI::Button::Component.new(
+              variant: :rounded_outlined, 
+              color: :dark,
+              class: "md:size-10"
+            ) do |button|
+              header.render UI::Avatar::Component.new(
+                src: "https://i.pravatar.cc/300",
+              class: "md:size-10"
+              )
             end
           end
         end

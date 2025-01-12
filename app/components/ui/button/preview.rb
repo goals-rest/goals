@@ -3,10 +3,11 @@ module UI
     class Preview < ViewComponent::Preview
       # @param text
       # @param builder select { choices: [ button, a ] }
+      # @param variant select { choices: [ default, rounded] }
       # @param color select { choices: [ primary, secondary, dark, light, white, transparent, link ] }
       # @param size select { choices: [ sm, base, lg ] }
-      def playground(builder: :button, text: "Default Button", color: :primary, size: :base)
-        render(UI::Button::Component.new(builder:, color:, size:)) do
+      def playground(builder: :button, variant: :default, text: "Default Button", color: :primary, size: :base)
+        render(UI::Button::Component.new(builder:, variant:, color:, size:)) do
           text
         end
       end
@@ -24,6 +25,28 @@ module UI
           button.with_trailing_icon("plus-circle")
 
           "Button"
+        end
+      end
+
+      # @param text
+      # @param builder select { choices: [ button, a ] }
+      # @param variant select { choices: [ default, rounded] }
+      # @param color select { choices: [ primary, secondary, dark, light, white, transparent, link ] }
+      # @param size select { choices: [ sm, base, lg ] }
+      def rounded(builder: :button, variant: :rounded, text: nil, color: :primary, size: :base)
+        render(UI::Button::Component.new(builder:, variant:, color:, size:)) do |button|
+          button.with_trailing_icon("trash", class: "size-6")
+        end
+      end
+
+      # @param text
+      # @param builder select { choices: [ button, a ] }
+      # @param variant select { choices: [ default, rounded, rounded_outlined] }
+      # @param color select { choices: [ primary, secondary, dark, light, white, transparent, link ] }
+      # @param size select { choices: [ sm, base, lg ] }
+      def rounded_outlined(builder: :button, variant: :rounded_outlined, text: nil, color: :primary, size: :base)
+        render(UI::Button::Component.new(builder:, variant:, color:, size:)) do |button|
+          button.with_trailing_icon("trash", class: "size-6")
         end
       end
 
