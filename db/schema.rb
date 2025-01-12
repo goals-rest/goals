@@ -41,12 +41,11 @@ ActiveRecord::Schema[8.1].define(version: 2025_01_12_234158) do
 
   create_table "goals", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.decimal "current", precision: 10, scale: 2, default: "0.0", null: false
+    t.string "description"
     t.datetime "end_date", null: false
-    t.integer "progress", default: 0
     t.datetime "start_date", null: false
-    t.string "subtitle"
-    t.integer "target", null: false
-    t.string "target_type", null: false
+    t.decimal "target", precision: 10, scale: 2, default: "0.0", null: false
     t.string "title", null: false
     t.datetime "updated_at", null: false
   end

@@ -2,11 +2,11 @@ class Goal < ApplicationRecord
   validates :title, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
+  validates :current, presence: true
   validates :target, presence: true
-  validates :target_type, presence: true
 
   validates :title, length: { maximum: 60 }
-  validates :subtitle, length: { maximum: 100 }
+  validates :description, length: { maximum: 100 }
 
   validate :end_date_after_start_date
 
