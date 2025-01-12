@@ -39,6 +39,18 @@ ActiveRecord::Schema[8.1].define(version: 2025_01_12_234158) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "goals", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "end_date", null: false
+    t.integer "progress", default: 0
+    t.datetime "start_date", null: false
+    t.string "subtitle"
+    t.integer "target", null: false
+    t.string "target_type", null: false
+    t.string "title", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "ip_address"
