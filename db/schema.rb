@@ -45,6 +45,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_01_12_234158) do
     t.string "description"
     t.datetime "end_date", null: false
     t.datetime "start_date", null: false
+    t.integer "status", default: 0, null: false
     t.decimal "target", precision: 10, scale: 2, default: "0.0", null: false
     t.string "title", null: false
     t.datetime "updated_at", null: false

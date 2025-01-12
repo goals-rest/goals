@@ -7,6 +7,7 @@ class CreateGoals < ActiveRecord::Migration[8.1]
       t.datetime :end_date, null: false
       t.decimal :current, precision: 10, scale: 2, null: false, default: 0
       t.decimal :target, precision: 10, scale: 2, null: false, default: 0
+      t.integer :status, null: false, default: 0
 
       t.timestamps
     end
