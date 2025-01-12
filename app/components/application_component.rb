@@ -9,6 +9,10 @@ class ApplicationComponent < ViewComponent::Base
     merge_tailwind_classes(attrs)
   end
 
+  def call
+    content
+  end
+
   def default_attrs
     {}
   end
