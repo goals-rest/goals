@@ -9,13 +9,29 @@ module.exports = {
   presets: [presets.shepherd],
   content: [
     "./config/initializers/railsui_icon.rb",
-    './app/assets/stylesheets/**/*.css',
-    './app/components/**/*.html.erb',
-    './app/components/**/*.rb',
-    './app/helpers/**/*.rb',
-    './app/javascript/**/*.js',
-    './app/views/**/*.html.erb',
+    "./app/assets/stylesheets/**/*.css",
+    "./app/components/**/*.html.erb",
+    "./app/components/**/*.rb",
+    "./app/helpers/**/*.rb",
+    "./app/javascript/**/*.js",
+    "./app/views/**/*.html.erb",
     rails_ui_path,
-    rails_ui_template_path
-  ]
-}
+    rails_ui_template_path,
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: [
+          "Inter",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
+          "Apple Color Emoji",
+          "Segoe UI Emoji",
+          "Segoe UI Symbol",
+          "Noto Color Emoji",
+        ],
+      },
+    },
+  },
+};
