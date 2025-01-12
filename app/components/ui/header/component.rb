@@ -1,5 +1,5 @@
 module UI
-  module Header 
+  module Header
     class Component < ApplicationComponent
       renders_one :logo
       renders_many :links, Header::LinkComponent
