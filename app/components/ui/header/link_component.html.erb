@@ -1,0 +1,7 @@
+<%= link_to(
+  href || "", 
+  class: classes,
+  **attrs.except(:class)
+) do %>
+  <%= content %>
+<% end %>
