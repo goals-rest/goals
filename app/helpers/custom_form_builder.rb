@@ -8,6 +8,6 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def add_classes(options, classes)
-    options[:class] = [classes.flatten, options[:class]].compact.join(" ")
+    options[:class] = [ classes.flatten, options[:class] ].compact.join(" ")
   end
 end

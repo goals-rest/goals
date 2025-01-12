@@ -89,4 +89,4 @@ gem "view_component-contrib", "0.2.4"
 gem "tailwind_merge", "0.14.0"
 
 # Centralization of locale data collection for Ruby on Rails [https://github.com/svenfuchs/rails-i18n]
-gem 'rails-i18n', '~> 8.0.0'
+gem "rails-i18n", "~> 8.0.0"

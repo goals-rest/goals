@@ -23,18 +23,18 @@ module UI
         defaults { { color: :primary, size: :base } }
       end
 
-      style :rounded do 
-        base { 
+      style :rounded do
+        base {
           %w[
-            rounded-full transition-colors ease-in-out duration-300 
-            disabled:opacity-50 disabled:pointer-events-none 
+            rounded-full transition-colors ease-in-out duration-300
+            disabled:opacity-50 disabled:pointer-events-none
             disabled:cursor-not-allowed inline-flex items-center justify-center gap-2
-          ] 
+          ]
         }
 
         variants {
           color {
-            primary { 
+            primary {
               %w[btn-primary]
             }
             secondary { %w[btn-secondary] }
@@ -55,38 +55,38 @@ module UI
         defaults { { color: :primary, size: :base } }
       end
 
-      style :rounded_outlined do 
-        base { 
+      style :rounded_outlined do
+        base {
           %w[
-            rounded-full transition-colors ease-in-out duration-300 
-            disabled:opacity-50 disabled:pointer-events-none 
+            rounded-full transition-colors ease-in-out duration-300
+            disabled:opacity-50 disabled:pointer-events-none
             disabled:cursor-not-allowed inline-flex items-center justify-center gap-2
           ]
         }
 
         variants {
           color {
-            primary { 
+            primary {
               %w[
-                border-primary-300 border flex items-center justify-center 
-                focus:border-primary-400 focus:ring-4 focus:ring-primary-200/80 
-                hover:border-primary-300/90 dark:border-primary-600 
+                border-primary-300 border flex items-center justify-center
+                focus:border-primary-400 focus:ring-4 focus:ring-primary-200/80
+                hover:border-primary-300/90 dark:border-primary-600
                 dark:focus:ring-primary-700 dark:focus:border-primary-300/90
               ]
             }
             secondary {
               %w[
-                border-secondary-300 border flex items-center justify-center 
-                focus:border-secondary-400 focus:ring-4 focus:ring-secondary-200/80 
-                hover:border-secondary-300/90 dark:border-secondary-600 
+                border-secondary-300 border flex items-center justify-center
+                focus:border-secondary-400 focus:ring-4 focus:ring-secondary-200/80
+                hover:border-secondary-300/90 dark:border-secondary-600
                 dark:focus:ring-secondary-700 dark:focus:border-secondary-300/90
               ]
             }
             dark {
               %w[
-                border-zinc-300 border flex items-center justify-center 
-                focus:border-zinc-400 focus:ring-4 focus:ring-zinc-200/80 
-                hover:border-zinc-300/90 dark:border-zinc-600 
+                border-zinc-300 border flex items-center justify-center
+                focus:border-zinc-400 focus:ring-4 focus:ring-zinc-200/80
+                hover:border-zinc-300/90 dark:border-zinc-600
                 dark:focus:ring-zinc-700 dark:focus:border-zinc-300/90
               ]
             }

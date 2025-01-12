@@ -4,7 +4,7 @@ module UI
       style do
         base do
           %w[
-            relative rounded-full md:w-10 md:h-10 size-12 flex items-center 
+            relative rounded-full md:w-10 md:h-10 size-12 flex items-center
             justify-center
           ]
 
@@ -17,7 +17,7 @@ module UI
             }
           }
 
-          defaults { { size: :base } } 
+          defaults { { size: :base } }
         end
       end
 

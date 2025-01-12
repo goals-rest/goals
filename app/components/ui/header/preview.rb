@@ -10,7 +10,7 @@ module UI
 
           header.with_item do
             header.render UI::Button::Component.new(
-              variant: :rounded_outlined, 
+              variant: :rounded_outlined,
               color: :dark,
               class: "md:size-10"
             ) do |button|
