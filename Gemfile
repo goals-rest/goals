@@ -54,6 +54,12 @@ group :development, :test do
 
   # To help fixture creation [https://github.com/thoughtbot/factory_bot_rails]
   gem "factory_bot_rails", "6.4.4"
+
+  # A UI development environment for Ruby on Rails applications [https://github.com/lookbook-hq/lookbook]
+  gem "lookbook", "2.3.4"
+
+  # The Listen gem listens to file modifications and notifies you about the changes [https://github.com/guard/listen]
+  gem "listen", "3.9.0"
 end
 
 group :development do
@@ -78,9 +84,6 @@ gem "view_component", "3.21.0"
 
 # A collection of view components helpers [https://github.com/palkan/view_component-contrib]
 gem "view_component-contrib", "0.2.4"
-
-# A UI development environment for Ruby on Rails applications [https://github.com/lookbook-hq/lookbook]
-gem "lookbook", "2.3.4"
 
 # Utility function to efficiently merge Tailwind CSS classes without style conflicts [https://github.com/gjtorikian/tailwind_merge]
 gem "tailwind_merge", "0.14.0"
