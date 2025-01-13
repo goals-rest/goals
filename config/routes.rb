@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
   root to: "rails/welcome#index"
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
