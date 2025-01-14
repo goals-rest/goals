@@ -16,6 +16,6 @@ class Goal < ApplicationRecord
   def end_date_after_start_date
     return if end_date&.after?(start_date)
 
-    errors.add(:end_date, "não pode ser menor do que a data de início")
+    errors.add(:end_date, :before_start_date)
   end
 end

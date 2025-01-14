@@ -22,7 +22,7 @@ class GoalTest < ActiveSupport::TestCase
         goal = Goal.new(start_date: Time.zone.today, end_date: Time.zone.yesterday)
 
         assert_not goal.valid?
-        assert_includes goal.errors[:end_date], "não pode ser menor do que a data de início"
+        assert_includes goal.errors[:end_date], I18n.t("activerecord.errors.models.goal.before_start_date")
       end
     end
   end
