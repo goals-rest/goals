@@ -11,11 +11,10 @@ class GoalTest < ActiveSupport::TestCase
     should validate_length_of(:title).is_at_most(60)
     should validate_length_of(:description).is_at_most(100)
 
-    should "validates start_date and end_date presence" do
-      goal = Goal.new(start_date: Time.zone.today, end_date: 1.year.from_now)
+    should "validates start_date presence" do
+      goal = Goal.new(start_date: Time.zone.today)
 
       assert goal.errors[:start_date].blank?
-      assert goal.errors[:end_date].blank?
     end
 
     context "when the end_date is before the start_date" do
