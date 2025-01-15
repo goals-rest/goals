@@ -1,0 +1,12 @@
+pt-BR:
+  sessions:
+    form:
+      submit: Entrar
+      email_address: E-mail
+      password: Senha
+    new:
+      title: Goals | Entrar
+      heading: Entrar
+    create:
+      error: Email ou senha incorretos.
+    try_again: Tente novamente mais tarde.

@@ -1,0 +1,23 @@
+<%= custom_form_with url: session_path do |form| %>
+  <%= form.form_group :email_address do %>
+    <%= form.label :email_address, t(".email_address") %>
+    <%= form.email_field(
+      :email_address,
+      autofocus: true,
+      autocomplete: :email_address,
+      placeholder: "john.doe@example.com",
+      required: true
+    ) %>
+  <% end %>
+
+  <%= form.form_group :password do %>
+    <%= form.label :password, t(".password") %>
+    <%= form.password_field :password, autocomplete: "password", placeholder: "••••••••••••" %>
+  <% end %>
+
+  <%= form.submit value: t(".submit"), class: "w-full", data: { disable_with: t(".submit") } %>
+
+  <div class="prose prose-sm text-center prose-zinc mt-6 dark:prose-invert">
+    <p><%= t("layouts.auth.new_account") %> <%= link_to t("layouts.auth.sign_up"), new_registration_path %></p>
+  </div>
+<% end %>
