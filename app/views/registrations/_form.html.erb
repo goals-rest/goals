@@ -52,6 +52,6 @@
   <%= form.submit value: t(".submit"), class: "w-full", data: { disable_with: t(".submit") } %>
 
   <div class="prose prose-sm text-center prose-zinc mt-6 dark:prose-invert">
-    <p><%= t("layouts.auth.existing_account") %> <%= link_to t("layouts.auth.sign_in"), "#" %></p>
+    <p><%= t("layouts.auth.existing_account") %> <%= link_to t("layouts.auth.sign_in"), new_session_path %></p>
   </div>
 <% end %>
