@@ -72,8 +72,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 
-  # Provides RSpec-compatible one-liners to test common Rails functionality [https://github.com/thoughtbot/shoulda-matchers]
-  gem "shoulda-matchers", "6.4.0"
+  # Makes tests easy on the fingers and the eyes [https://github.com/thoughtbot/shoulda]
+  gem "shoulda", "4.0.0"
 end
 
 # Rails UI component library [https://github.com/getrailsui/railsui]

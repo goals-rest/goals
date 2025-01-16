@@ -39,6 +39,18 @@ ActiveRecord::Schema[8.1].define(version: 2025_01_12_234158) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "goals", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.decimal "current", precision: 10, scale: 2, default: "0.0", null: false
+    t.string "description"
+    t.datetime "end_date"
+    t.datetime "start_date", null: false
+    t.integer "status", default: 0, null: false
+    t.decimal "target", precision: 10, scale: 2, default: "0.0", null: false
+    t.string "title", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "ip_address"
@@ -56,7 +68,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_01_12_234158) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
-  add_foreign_key "sessions", "users"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "sessions", "users"
 end
