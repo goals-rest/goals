@@ -1,7 +1,0 @@
-pt-BR:
-  registrations:
-    form:
-      submit: Cadastre-se
-      password_minimum: Deve ter pelo menos 6 caracteres
-    new:
-      title: Goals | Cadastre-se

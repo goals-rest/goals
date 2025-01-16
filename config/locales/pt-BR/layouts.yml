@@ -2,5 +2,6 @@ pt-BR:
   layouts:
     auth:
       existing_account: Já faz parte do Goals?
+      new_account: Ainda não faz parte do Goals?
       sign_up: Cadastre-se
       sign_in: Entrar
