@@ -1,0 +1,13 @@
+<%= provide(:content) do %>
+  <%= render "layouts/header" %>
+
+  <% if content_for?(:main) %>
+    <% yield :main %>
+  <% else %>
+    <main class="container mx-auto px-4 md:py-16 py-6">
+      <%= yield %>
+    </main>
+  <% end %>
+<% end %>
+
+<%= render template: "layouts/application" %>
