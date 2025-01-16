@@ -1,0 +1,12 @@
+pt-BR:
+  dashboard:
+    goals:
+      new:
+        goals: Metas
+        title: Nova meta
+        submit: Criar meta
+      form:
+        go_back: Voltar
+        submit: Criar meta
+      create:
+        success: Meta criada com sucesso
