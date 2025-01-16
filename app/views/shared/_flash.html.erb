@@ -1,0 +1,7 @@
+<% if notice %>
+  <%= render UI::Flash::Component.new(type: :notice, class: "mb-3", auto_hide: true).with_content(notice) %>
+<% end %>
+
+<% if alert %>
+  <%= render UI::Flash::Component.new(type: :alert, class: "mb-3", auto_hide: true).with_content(alert) %>
+<% end %>

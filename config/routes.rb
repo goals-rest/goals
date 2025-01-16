@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "rails/welcome#index"
+  root to: "sessions#new"
 
   resource :session
   resources :passwords, param: :token
