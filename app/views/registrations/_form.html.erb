@@ -1,0 +1,57 @@
+<%= custom_form_with model: @user, url: registrations_path do |form| %>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <%= form.form_group :first_name do %>
+      <%= form.label :first_name %>
+      <%= form.text_field(
+        :first_name,
+        autocomplete: :first_name,
+        placeholder: "John",
+        required: true
+      ) %>
+    <% end %>
+
+    <%= form.form_group :last_name do %>
+      <%= form.label :last_name %>
+      <%= form.text_field(
+        :last_name,
+        autocomplete: :last_name,
+        placeholder: "Doe",
+        required: true
+      ) %>
+    <% end %>
+  </div>
+
+  <%= form.form_group :email do %>
+    <%= form.label :email %>
+    <%= form.email_field(
+      :email,
+      autofocus: true,
+      autocomplete: :email,
+      placeholder: "john.doe@example.com",
+      required: true
+    ) %>
+  <% end %>
+
+  <%= form.form_group :password do %>
+    <div class="flex items-center justify-between mb-2">
+      <%= form.label :password, class: "mb-0" %>
+
+      <div class="inline prose prose-sm prose-zinc dark:prose-invert">
+        <p>(<%= t(".password_minimum") %>)</p>
+      </div>
+    </div>
+
+    <%= form.password_field :password, autocomplete: "new-password", placeholder: "••••••••••••" %>
+  <% end %>
+
+  <%= form.form_group :password_confirmation do %>
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, autocomplete: "new-password", placeholder: "••••••••••••" %>
+  <% end %>
+
+  <%= form.submit value: t(".submit"), class: "w-full", data: { disable_with: t(".submit") } %>
+
+  <div class="prose prose-sm text-center prose-zinc mt-6 dark:prose-invert">
+    <p><%= t("layouts.auth.existing_account") %> <%= link_to t("layouts.auth.sign_in"), "#" %></p>
+  </div>
+<% end %>

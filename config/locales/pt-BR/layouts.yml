@@ -1,0 +1,6 @@
+pt-BR:
+  layouts:
+    auth:
+      existing_account: Já faz parte do Goals?
+      sign_up: Cadastre-se
+      sign_in: Entrar

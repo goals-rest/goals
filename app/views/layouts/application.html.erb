@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="dark">
   <head>
     <title><%= content_for(:title) || "Goals" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -21,11 +21,10 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  
-    <%= railsui_head %>
-</head>
 
-  <body>
+    <%= railsui_head %>
+  </head>
+  <body class="h-full antialiased text-zinc-900 leading-normal selection:bg-primary-100 selection:text-primary-700 dark:bg-zinc-900 bg-white dark:text-zinc-50 dark:selection:bg-zinc-500/40 dark:selection:text-zinc-200">
     <%= yield %>
-</body>
+  </body>
 </html>
