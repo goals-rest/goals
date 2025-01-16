@@ -1,0 +1,21 @@
+<%= render UI::Header::Component.new do |header| %>
+  <% header.with_logo do %>
+    <%= render "shared/logo_color" %>
+  <% end %>
+
+  <% header.with_link(href: root_path).with_content("Painel") %>
+
+  <% header.with_item do %>
+    <%= render UI::Dropdown::Component.new(alignment: :right) do |dropdown| %>
+      <% dropdown.with_trigger do %>
+        <%= render UI::Button::Component.new(variant: :rounded_outline) do %>
+          <%= render UI::Avatar::Component.new(src: "https://i.pravatar.cc/150?u=a042581f4e29026704d") %>
+        <% end %>
+      <% end %>
+
+      <%= dropdown.with_item(href: session_path, data: { turbo_method: :delete }) do %>
+        Sair
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
