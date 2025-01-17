@@ -7,21 +7,21 @@ export default class extends Controller {
     this.#updateTheme();
   }
 
-  get theme() {
-    return localStorage.theme;
-  }
-
-  set theme(theme) {
-    localStorage.theme = theme;
-  }
-
   toggle() {
-    this.theme = this.#isLightTheme() ? "dark" : "light";
+    this.#theme = this.#isLightTheme() ? "dark" : "light";
     this.#onThemeChange();
   }
 
+  get #theme() {
+    return localStorage.theme;
+  }
+
+  set #theme(theme) {
+    localStorage.theme = theme;
+  }
+
   #isLightTheme() {
-    return !this.theme || this.theme == "light";
+    return !this.#theme || this.#theme == "light";
   }
 
   #onThemeChange() {
