@@ -4,12 +4,12 @@ pt-BR:
       goal: Meta
     attributes:
       goal:
-        name: Nome
+        title: Título
         description: Descrição
         start_date: Data de Início
         end_date: Data de Término
         current: Atual
-        target: Alvo
+        target: Objetivo
         status: Status
     errors:
       models:
