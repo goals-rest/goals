@@ -6,16 +6,45 @@
   <% header.with_link(href: root_path).with_content("Painel") %>
 
   <% header.with_item do %>
-    <%= render UI::Dropdown::Component.new(alignment: :right) do |dropdown| %>
-      <% dropdown.with_trigger do %>
-        <%= render UI::Button::Component.new(variant: :rounded_outline) do %>
-          <%= render UI::Avatar::Component.new(src: "https://i.pravatar.cc/150?u=a042581f4e29026704d") %>
+    <div class="md:mr-4 mr-3">
+      <%= render Common::DarkModeToggle::Component.new(
+        variant: :rounded_outlined, 
+        color: :dark,
+        size: nil,
+        class: "md:w-10 md:h-10 size-12"
+      ) do |button| %>
+        <% button.with_light_mode_icon("sun", class: "md:w-5 md:h-5 w-6 h-6") %>
+        <% button.with_dark_mode_icon("moon", class: "md:w-5 md:h-5 w-6 h-6") %>
+      <% end %>
+    <div>
+  <% end %>
+
+  <% header.with_item do %>
+    <div class="flex items-center justify-center">
+      <%= render UI::Dropdown::Component.new(alignment: :right) do |dropdown| %>
+        <% dropdown.with_trigger do %>
+          <div class="flex items-center justify-center">
+            <%= render UI::Button::Component.new(
+              variant: :rounded_outlined, 
+              color: :dark,
+              size: nil,
+              class: "md:w-10 md:h-10 size-12"
+            ) do %>
+              <%= render UI::Avatar::Component.new(
+                src: nil,
+                size: nil,
+                class: "md:w-10 md:h-10 size-12"
+              ) do |avatar| %>
+                <% avatar.with_placeholder %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <%= dropdown.with_item(href: session_path, data: { turbo_method: :delete }) do %>
+          Sair
         <% end %>
       <% end %>
-
-      <%= dropdown.with_item(href: session_path, data: { turbo_method: :delete }) do %>
-        Sair
-      <% end %>
-    <% end %>
+    </div>
   <% end %>
 <% end %>
