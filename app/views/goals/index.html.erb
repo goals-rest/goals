@@ -6,7 +6,7 @@
     </h2>
   </div>
   <div class="flex lg:flex-row flex-row-reverse flex-wrap items-center lg:space-x-6 lg:w-auto w-full justify-between">
-    <%= form_tag dashboard_goals_path,
+    <%= form_tag goals_path,
       method: :get,
       data: { turbo_frame: "search-result", turbo_action: "advance" },
       class: "lg:block lg:order-1 order-4 lg:pt-0 pt-4 w-full lg:w-auto" do %>
@@ -14,7 +14,7 @@
     <% end %>
 
     <div class="lg:pb-0 pb-6 pt-4 lg:pt-0 lg:w-auto w-full lg:order-3 order-1">
-      <%= render(UI::Button::Component.new(builder: :a, href: new_dashboard_goal_path)) do |button| %>
+      <%= render(UI::Button::Component.new(builder: :a, href: new_goal_path)) do |button| %>
         <% button.with_leading_icon("plus-circle") %>
         <% t(".new_goal") %>
       <% end %>

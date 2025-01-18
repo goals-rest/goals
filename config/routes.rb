@@ -1,21 +1,16 @@
 Rails.application.routes.draw do
-  root to: "dashboard/homes#show"
+  root to: "homes#show"
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  namespace :dashboard do
-    resources :goals, only: %i[index new create ]
-  end
-
   resource :session
   resources :passwords, param: :token
   resources :registrations, only: %i[new create]
 
-  namespace :dashboard do
-    resource :home, only: %i[show]
-  end
+  resource :home, only: %i[show]
+  resources :goals, only: %i[index new create ]
 
   if Rails.env.development?
     mount Railsui::Engine, at: "/railsui"
