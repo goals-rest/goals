@@ -1,0 +1,44 @@
+<%= render UI::Card::Component.new(class: "max-w-sm") do %>
+  <%= render UI::Card::MediaComponent.new(src: "https://picsum.photos/600/600") %>
+
+  <%= render UI::Card::HeaderComponent.new do |header| %>
+    <% header.with_title.with_content("Read 10 books in 2025") %>
+    <% header.with_subtitle.with_content("Expanding My World, One Book at a Time") %>
+  <% end %>
+
+  <%= render UI::Card::ActionsComponent.new do %>
+    <div class="flex items-center">
+      <div class="flex-1 flex items-center gap-4">
+        <div class="flex items-center gap-2">
+          <%= render UI::Icon::Component.new("home-modern", class: "size-5 text-zinc-600 stroke-current dark:text-zinc-300") %>
+          <span class="text-sm text-zinc-600 dark:text-zinc-300">3 Listings</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <%= render UI::Icon::Component.new("arrow-path", class: "size-4 text-zinc-600 stroke-current dark:text-zinc-300") %>
+          <span class="text-sm text-zinc-600 dark:text-zinc-300">Syncing</span>
+        </div>
+      </div>
+
+      <%= render UI::Dropdown::Component.new do |dropdown| %>
+        <% dropdown.with_trigger do %>
+          <%= render UI::Button::Component.new(
+            class: "bg-transparent hover:bg-zinc-50 rounded-lg px-2 py-1 inline-flex 
+                    items-center justify-center border border-transparent 
+                    focus:border-zinc-300/80 focus:bg-white focus:ring-4 
+                    focus:ring-zinc-300/20 transition ease-in-out duration-200 
+                    group dark:hover:bg-zinc-700 dark:focus:bg-zinc-700 
+                    dark:focus:border-zinc-500 dark:focus:ring-zinc-600/70
+                    text-zinc-500 dark:text-zinc-400"
+          ) do |button| %>
+            <% button.with_leading_icon("ellipsis-horizontal") %>
+          <% end %>
+        <% end %>
+
+        <% dropdown.with_item.with_content("Edit goal") %>
+        <% dropdown.with_item.with_content("Update progress") %>
+        <% dropdown.with_divider %>
+        <% dropdown.with_item.with_content("Delete goal") %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

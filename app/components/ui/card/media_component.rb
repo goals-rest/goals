@@ -12,7 +12,7 @@ module UI
       style do
         base do
           %w[
-            rounded h-[174px] w-full object-cover object-center dark:border 
+            rounded h-[174px] w-full object-cover object-center dark:border
             dark:border-zinc-600/80 border-transparent
           ]
         end
