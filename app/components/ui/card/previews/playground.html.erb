@@ -6,6 +6,10 @@
     <% header.with_subtitle.with_content("Expanding My World, One Book at a Time") %>
   <% end %>
 
+  <%= render UI::Card::BodyComponent.new do |header| %>
+    The body goes here
+  <% end %>
+
   <%= render UI::Card::ActionsComponent.new do %>
     <div class="flex items-center">
       <div class="flex-1 flex items-center gap-4">
