@@ -7,13 +7,14 @@
 
   <% header.with_item do %>
     <div class="md:mr-4 mr-3">
-      <%= render UI::Button::Component.new(
+      <%= render Common::DarkModeToggle::Component.new(
         variant: :rounded_outlined, 
         color: :dark,
         size: nil,
         class: "md:w-10 md:h-10 size-12"
       ) do |button| %>
-        <% button.with_leading_icon("sun") %>
+        <% button.with_light_mode_icon("sun", class: "md:w-5 md:h-5 w-6 h-6") %>
+        <% button.with_dark_mode_icon("moon", class: "md:w-5 md:h-5 w-6 h-6") %>
       <% end %>
     <div>
   <% end %>
@@ -24,16 +25,18 @@
         <% dropdown.with_trigger do %>
           <div class="flex items-center justify-center">
             <%= render UI::Button::Component.new(
-              variant: :rounded, 
+              variant: :rounded_outlined, 
               color: :dark,
               size: nil,
               class: "md:w-10 md:h-10 size-12"
             ) do %>
               <%= render UI::Avatar::Component.new(
-                src: "https://i.pravatar.cc/150?u=a042581f4e29026704d",
+                src: nil,
                 size: nil,
                 class: "md:w-10 md:h-10 size-12"
-              ) %>
+              ) do |avatar| %>
+                <% avatar.with_placeholder %>
+              <% end %>
             <% end %>
           </div>
         <% end %>
