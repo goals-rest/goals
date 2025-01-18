@@ -1,0 +1,21 @@
+<div class="flex md:justify-between justify-center items-center flex-wrap">
+  <div class="flex items-center space-x-3 flex-1 md:mb-0 mb-3">
+    <%= form_tag dashboard_goals_path,
+      method: :get,
+      data: { turbo_frame: "search-result", turbo_action: "advance" },
+      class: "lg:block hidden peer-focus:block lg:order-1 order-4 lg:pt-0 pt-4 w-full lg:w-auto" do %>
+      <%= text_field_tag "search", nil, placeholder: t(".search"), class: "form-input lg:w-auto w-full" %>
+    <% end %>
+  </div>
+
+  <%= render(UI::Button::Component.new(builder: :a, href: new_dashboard_goal_path)) do |button| %>
+    <% button.with_leading_icon("plus-circle") %>
+    <% t(".new_goal") %>
+  <% end %>
+</div>
+
+<%= turbo_frame_tag "search-result" do %>
+  <div class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-8">
+    <%= render @goals %>
+  </div>
+<% end %>

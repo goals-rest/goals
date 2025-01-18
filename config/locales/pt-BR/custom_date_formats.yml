@@ -1,0 +1,4 @@
+pt-BR:
+  date:
+    formats:
+      short_month: "%d %b"

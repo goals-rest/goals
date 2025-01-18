@@ -26,4 +26,43 @@ class GoalTest < ActiveSupport::TestCase
       end
     end
   end
+
+  context "scopes" do
+    context ".search" do
+      context "when the goal with the given title is found" do
+        should "returns the founded goal" do
+          goal_a = create(:goal, title: "Goal A")
+          goal_b = create(:goal, title: "Goal B")
+
+          result = Goal.search("B")
+
+
+          assert_includes result, goal_b
+        end
+      end
+
+      context "when the goal with the given title is not found" do
+        should "returns an empty array" do
+          goal_a = create(:goal, title: "Goal A")
+          goal_b = create(:goal, title: "Goal B")
+
+          result = Goal.search("C")
+
+          assert_empty result
+        end
+      end
+    end
+  end
+
+  context "instance methods" do
+    context ".progress" do
+      should "returns the progress of the goal" do
+        goal = create(:goal, current: 50, target: 100)
+
+        result = goal.progress
+
+        assert_equal result, 0.5
+      end
+    end
+  end
 end
