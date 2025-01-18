@@ -1,1 +1,20 @@
-teste
+<div data-controller="railsui-modal">
+  <div data-action="click->railsui-modal#open:prevent" class="inline-flex">
+    <%= trigger %>
+  </div>
+
+  <div
+    aria-labelledby="dual-action-modal-title"
+    aria-modal="true"
+    data-railsui-modal-target="container"
+    data-action="keyup@window->railsui-modal#closeWithEsc"
+    class="hidden fixed inset-0 z-50 overflow-y-auto"
+    role="dialog"
+    >
+    <div class="h-screen w-full relative flex items-center justify-center">
+      <%= tag.div(**attrs) do %>
+        <%= content %>
+      <% end %>
+    </div>
+  </div>
+</div>
