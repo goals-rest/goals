@@ -1,0 +1,23 @@
+<%= render UI::Modal::Component.new(open: true, class: "w-full max-w-lg") do |modal| %>
+  <% modal.with_trigger do %>
+    <% modal.render UI::Button::Component.new.with_content("Open Modal") %>
+  <% end %>
+
+  <% modal.with_close_button %>
+
+  <%= render UI::Modal::HeaderComponent.new do |header| %>
+    <%= render UI::Modal::HeaderTitleComponent.new.with_content("Update update") %>
+  <% end %>
+
+  <%= render UI::Modal::BodyComponent.new.with_content("The body goes here") %>
+
+  <%= render UI::Modal::FooterComponent.new(class: "flex gap-3") do %>
+    <%= render UI::Button::Component.new.with_content("Update") %>
+    <%= render UI::Button::Component.new(
+      color: :transparent,
+      data: {
+        action: "click->modal#close"
+      }
+    ).with_content("Cancel") %>
+  <% end %>
+<% end %>
