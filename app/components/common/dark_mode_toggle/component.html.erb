@@ -1,0 +1,9 @@
+<%= render UI::Button::Component.new(variant: :rounded_outlined, color: :dark, **attrs) do %>
+  <span class="hidden" data-dark-mode-toggle-target="lightModeIcon">
+    <%= dark_mode_icon %>
+  </span>
+
+  <span class="hidden" data-dark-mode-toggle-target="darkModeIcon">
+    <%= light_mode_icon %>
+  </span>
+<% end %>
