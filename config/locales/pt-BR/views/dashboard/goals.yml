@@ -1,0 +1,19 @@
+pt-BR:
+  dashboard:
+    goals:
+      index:
+        search: Buscar
+        new_goal: Adicionar meta
+      new:
+        goals: Metas
+        title: Nova meta
+        submit: Criar meta
+      form:
+        go_back: Voltar
+        submit: Criar meta
+      goal:
+        edit_goal: Editar meta
+        update_progress: Atualizar progresso
+        destroy_goal: Excluir meta
+      create:
+        success: Meta criada com sucesso
