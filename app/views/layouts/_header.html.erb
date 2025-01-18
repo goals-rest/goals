@@ -3,7 +3,8 @@
     <%= render "shared/logo_color" %>
   <% end %>
 
-  <% header.with_link(href: root_path).with_content("Painel") %>
+  <% header.with_link(href: root_path).with_content(t(".panel")) %>
+  <% header.with_link(href: goals_path).with_content(t(".goals")) %>
 
   <% header.with_item do %>
     <div class="md:mr-4 mr-3">
