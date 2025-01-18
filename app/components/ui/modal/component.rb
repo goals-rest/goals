@@ -2,12 +2,13 @@ module UI
   module Modal
     class Component < ApplicationComponent
       renders_one :trigger, ApplicationComponent
+      renders_one :close_button
 
       style do
         base do
           %w[
-            hidden rounded-xl mx-auto shadow-xl bg-white m-1 origin-bottom
-            text-center dark:bg-zinc-700 dark:text-zinc-200
+            relative hidden rounded-xl mx-auto shadow-xl bg-white m-1
+            origin-bottom text-center dark:bg-zinc-700 dark:text-zinc-200
           ]
         end
       end

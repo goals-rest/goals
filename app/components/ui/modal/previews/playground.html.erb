@@ -3,6 +3,8 @@
     <% modal.render UI::Button::Component.new.with_content("Open Modal") %>
   <% end %>
 
+  <% modal.with_close_button %>
+
   <%= render UI::Modal::HeaderComponent.new do |header| %>
     <%= render UI::Modal::HeaderTitleComponent.new.with_content("Update update") %>
   <% end %>

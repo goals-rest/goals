@@ -13,6 +13,15 @@
     >
     <div class="h-screen w-full relative flex items-center justify-center">
       <%= tag.div(**attrs) do %>
+        <% if close_button? %>
+          <button type="button" class="absolute top-2 right-2 size-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50" data-action="click->railsui-modal#close">
+            <%= render UI::Icon::Component.new(
+              "x-mark", 
+              class: "text-zinc-400 size-6 group-hover:text-zinc-500 pointer-events-none dark:group-hover:text-zinc-800 dark:text-zinc-400"
+            ) %>
+          </button>
+        <% end %>
+
         <%= content %>
       <% end %>
     </div>
