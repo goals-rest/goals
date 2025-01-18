@@ -1,6 +1,10 @@
-<%= render UI::Modal::Component.new do |modal| %>
+<%= render UI::Modal::Component.new(class: "w-full max-w-lg") do |modal| %>
   <% modal.with_trigger do %>
     <% modal.render UI::Button::Component.new.with_content("Open Modal") %>
+  <% end %>
+
+  <%= render UI::Modal::HeaderComponent.new do |header| %>
+    Header
   <% end %>
 
   The modal content goes here

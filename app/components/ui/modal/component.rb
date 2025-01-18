@@ -6,7 +6,7 @@ module UI
       style do
         base do
           %w[
-            hidden rounded-xl mx-auto shadow-xl bg-white m-1 origin-bottom 
+            hidden rounded-xl mx-auto shadow-xl bg-white m-1 origin-bottom
             text-center dark:bg-zinc-700 dark:text-zinc-200
           ]
         end
