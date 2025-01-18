@@ -4,8 +4,18 @@
   <% end %>
 
   <%= render UI::Modal::HeaderComponent.new do |header| %>
-    Header
+    <%= render UI::Modal::HeaderTitleComponent.new.with_content("Update update") %>
   <% end %>
 
-  The modal content goes here
+  <%= render UI::Modal::BodyComponent.new.with_content("The body goes here") %>
+
+  <%= render UI::Modal::FooterComponent.new(class: "flex gap-3") do %>
+    <%= render UI::Button::Component.new.with_content("Update") %>
+    <%= render UI::Button::Component.new(
+      color: :transparent,
+      data: {
+        action: "click->railsui-modal#close"
+      }
+    ).with_content("Cancel") %>
+  <% end %>
 <% end %>
