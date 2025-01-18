@@ -1,5 +1,9 @@
 <%= tag.div(**attrs) do %>
-  <% if src.present? %>
+  <% if src? %>
     <%= image_tag src, alt:, class: "rounded-full w-full h-full select-none pointer-events-none shrink-0 object-cover" %>
+  <% elsif placeholder? %>
+    <div class="rounded-full w-full h-full bg-zinc-100 inline-flex items-center justify-center">
+      <%= render UI::Icon::Component.new("user", **icon_attrs) %>
+    </div>
   <% end %>
 <% end %>
