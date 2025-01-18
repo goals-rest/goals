@@ -1,20 +1,26 @@
-<div data-controller="railsui-modal">
-  <div data-action="click->railsui-modal#open:prevent" class="inline-flex">
+<%= tag.div(
+  data: {
+    controller: "modal",
+    modal_open_value: open,
+    modal_static_value: static,
+  }
+) do %>
+  <div data-action="click->modal#open:prevent" class="inline-flex">
     <%= trigger %>
   </div>
 
   <div
     aria-labelledby="dual-action-modal-title"
     aria-modal="true"
-    data-railsui-modal-target="container"
-    data-action="keyup@window->railsui-modal#closeWithEsc"
+    data-modal-target="container"
+    data-action="<%= static? ? "" : "keyup@window->modal#closeWithEsc" %>"
     class="hidden fixed inset-0 z-50 overflow-y-auto"
     role="dialog"
     >
     <div class="h-screen w-full relative flex items-center justify-center">
       <%= tag.div(**attrs) do %>
         <% if close_button? %>
-          <button type="button" class="absolute top-2 right-2 size-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50" data-action="click->railsui-modal#close">
+          <button type="button" class="absolute top-2 right-2 size-8 bg-transparent hover:bg-zinc-50 flex items-center justify-center rounded-full group dark:hover:bg-zinc-50/50" data-action="click->modal#close">
             <%= render UI::Icon::Component.new(
               "x-mark", 
               class: "text-zinc-400 size-6 group-hover:text-zinc-500 pointer-events-none dark:group-hover:text-zinc-800 dark:text-zinc-400"
@@ -26,4 +32,4 @@
       <% end %>
     </div>
   </div>
-</div>
+<% end %>

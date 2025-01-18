@@ -1,8 +1,4 @@
-<%= render UI::Modal::Component.new(
-  open: params[:open], 
-  static: params[:static], 
-  class: "w-full max-w-lg"
-) do |modal| %>
+<%= render UI::Modal::Component.new(static: true, class: "w-full max-w-lg") do |modal| %>
   <% modal.with_trigger do %>
     <% modal.render UI::Button::Component.new.with_content("Open Modal") %>
   <% end %>

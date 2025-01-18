@@ -13,15 +13,24 @@ module UI
         end
       end
 
-      def initialize(**user_attrs)
+      attr_reader :open, :static
+
+      def initialize(open: false, static: false, **user_attrs)
+        @open = open
+        @static = static
+
         super(**user_attrs)
+      end
+
+      def static?
+        static
       end
 
       def default_attrs
         {
           class: style,
           data: {
-            railsui_modal_target: "content",
+            modal_target: "content",
             transition_enter_active: "transition ease-out duration-300",
             transition_enter_from: "transform opacity-0 scale-95",
             transition_enter_to: "transform opacity-100 scale-100",

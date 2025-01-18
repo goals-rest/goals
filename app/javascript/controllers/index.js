@@ -7,7 +7,9 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 import FlashController from "./flash_controller"
 import DarkModeToggleController from "./dark_mode_toggle_controller"
+import ModalController from "./modal_controller"
 application.register("hello", HelloController)
 application.register("flash", FlashController)
 application.register("dark-mode-toggle", DarkModeToggleController)
+application.register("modal", ModalController)
 import "./railsui"
