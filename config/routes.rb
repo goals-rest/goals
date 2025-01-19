@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   namespace :dashboard do
-    resources :goals, only: [ :new, :create ]
+    resources :goals, only: %i[index new create ]
   end
 
   resource :session

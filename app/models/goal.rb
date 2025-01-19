@@ -11,6 +11,12 @@ class Goal < ApplicationRecord
 
   validate :end_date_after_start_date
 
+  scope :search, ->(title) { where("LOWER(title) LIKE ?", "%#{title.downcase}%") if title.present? }
+
+  def progress
+    current / target
+  end
+
   private
 
   def end_date_after_start_date

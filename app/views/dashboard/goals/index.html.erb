@@ -1,0 +1,29 @@
+<div class="flex flex-wrap items-end justify-between">
+  <div class="lg:flex-1">
+    <h1 class="text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight"><%= t(".title") %></h1>
+    <h2 class="font-light text-base text-zinc-700 tracking-normal mt-3 lg:mb-0 mb-3 dark:text-zinc-300 font-heading">
+      <%= t(".description") %>
+    </h2>
+  </div>
+  <div class="flex lg:flex-row flex-row-reverse flex-wrap items-center lg:space-x-6 lg:w-auto w-full justify-between">
+    <%= form_tag dashboard_goals_path,
+      method: :get,
+      data: { turbo_frame: "search-result", turbo_action: "advance" },
+      class: "lg:block lg:order-1 order-4 lg:pt-0 pt-4 w-full lg:w-auto" do %>
+      <%= text_field_tag "search", nil, placeholder: t(".search"), class: "form-input lg:w-auto w-full" %>
+    <% end %>
+
+    <div class="lg:pb-0 pb-6 pt-4 lg:pt-0 lg:w-auto w-full lg:order-3 order-1">
+      <%= render(UI::Button::Component.new(builder: :a, href: new_dashboard_goal_path)) do |button| %>
+        <% button.with_leading_icon("plus-circle") %>
+        <% t(".new_goal") %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= turbo_frame_tag "search-result" do %>
+  <div class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-8">
+    <%= render @goals %>
+  </div>
+<% end %>
