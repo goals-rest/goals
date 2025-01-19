@@ -11,6 +11,8 @@ pt-BR:
         current: Atual
         target: Objetivo
         status: Status
+        status:
+          completed: Finalizado
     errors:
       models:
         goal:

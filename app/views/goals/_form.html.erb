@@ -1,46 +1,46 @@
 <%= custom_form_with model: goal do |form| %>
-    <%= form.form_group :title do %>
-      <%= form.label :title, nil, class: "form-label-required" %>
-      <%= form.text_field :title %>
-      <%= form.error_message :title %>
-    <% end %>
-
-    <%= form.form_group :description do %>
-      <%= form.label :description %>
-      <%= form.text_field :description %>
-      <%= form.error_message :description %>
-    <% end %>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-      <%= form.form_group :start_date do %>
-        <%= form.label :start_date, nil, class: "form-label-required" %>
-        <%= form.date_field :start_date %>
-        <%= form.error_message :start_date %>
-      <% end %>
-
-      <%= form.form_group :end_date do %>
-        <%= form.label :end_date %>
-        <%= form.date_field :end_date %>
-        <%= form.error_message :end_date %>
-      <% end %>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 form-group">
-      <%= form.form_group :current do %>
-        <%= form.label :current, nil, class: "form-label-required" %>
-        <%= form.text_field :current %>
-        <%= form.error_message :current %>
-      <% end %>
-
-      <%= form.form_group :target do %>
-        <%= form.label :target, nil, class: "form-label-required" %>
-        <%= form.text_field :target %>
-        <%= form.error_message :target %>
-      <% end %>
-    </div>
-
-    <div class="grid grid-cols-2 gap-6 pt-10">
-      <%= link_to t(".go_back"), goals_path, class: "btn btn-white text-center" %>
-      <%= form.submit value: submit_text, class: "w-full", data: { disable_with: submit_text } %>
-    </div>
+  <%= form.form_group :title do %>
+    <%= form.label :title, nil, class: "form-label-required" %>
+    <%= form.text_field :title %>
+    <%= form.error_message :title %>
   <% end %>
+
+  <%= form.form_group :description do %>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+    <%= form.error_message :description %>
+  <% end %>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <%= form.form_group :start_date do %>
+      <%= form.label :start_date, nil, class: "form-label-required" %>
+      <%= form.date_field :start_date %>
+      <%= form.error_message :start_date %>
+    <% end %>
+
+    <%= form.form_group :end_date do %>
+      <%= form.label :end_date %>
+      <%= form.date_field :end_date %>
+      <%= form.error_message :end_date %>
+    <% end %>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 form-group">
+    <%= form.form_group :current do %>
+      <%= form.label :current, nil, class: "form-label-required" %>
+      <%= form.text_field :current, value: strip_zeros(goal.current) %>
+      <%= form.error_message :current %>
+    <% end %>
+
+    <%= form.form_group :target do %>
+      <%= form.label :target, nil, class: "form-label-required" %>
+      <%= form.text_field :target, value: strip_zeros(goal.target) %>
+      <%= form.error_message :target %>
+    <% end %>
+  </div>
+
+  <div class="grid grid-cols-2 gap-6 pt-10">
+    <%= link_to t(".go_back"), goals_path, class: "btn btn-white text-center" %>
+    <%= form.submit value: submit_text, class: "w-full", data: { disable_with: submit_text } %>
+  </div>
+<% end %>

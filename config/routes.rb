@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   resources :registrations, only: %i[new create]
 
   resource :home, only: %i[show]
-  resources :goals, only: %i[index new create edit update]
+  resources :goals, only: %i[index new create edit update] do
+    scope module: :goals do
+      resource :update_progress, only: %i[edit update]
+    end
+  end
 
   if Rails.env.development?
     mount Railsui::Engine, at: "/railsui"

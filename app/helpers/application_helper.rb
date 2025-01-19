@@ -13,4 +13,12 @@ module ApplicationHelper
   def email_callout(&block)
     render "rui/shared/email_callout", block: block
   end
+
+  def number_with_precision(number, options = {})
+    delegate_number_helper_method(:number_to_rounded, number, options)
+  end
+
+  def strip_zeros(number)
+    number_with_precision(number, strip_insignificant_zeros: true)
+  end
 end

@@ -1,5 +1,5 @@
 class Goal < ApplicationRecord
-  enum :status, [ :pending, :completed ]
+  enum :status, [ :pending, :completed ], with_model_name: true
 
   validates :title, presence: true
   validates :start_date, presence: true
@@ -13,15 +13,24 @@ class Goal < ApplicationRecord
 
   scope :search, ->(title) { where("LOWER(title) LIKE ?", "%#{title.downcase}%") if title.present? }
 
+  before_save :set_status
+
   def progress
     current / target
   end
 
-  private
+  def translated_status
+    I18n.t("activerecord.attributes.goal.status.#{status}")
+  end
 
+  private
   def end_date_after_start_date
     return if end_date.blank? || end_date.after?(start_date)
 
     errors.add(:end_date, :before_start_date)
+  end
+
+  def set_status
+    self.status = current >= target ? :completed : :pending
   end
 end

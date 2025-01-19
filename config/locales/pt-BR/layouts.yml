@@ -5,3 +5,6 @@ pt-BR:
       new_account: Ainda não faz parte do Goals?
       sign_up: Cadastre-se
       sign_in: Entrar
+    header:
+      panel: Painel
+      goals: Metas

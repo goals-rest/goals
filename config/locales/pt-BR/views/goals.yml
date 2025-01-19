@@ -1,17 +1,20 @@
 pt-BR:
   goals:
     index:
-      title: Metas
+      title: Goals | Metas
+      page_title: Metas
       description: Pesquise, edite ou crie novas metas.
       search: Buscar
       new_goal: Adicionar meta
     new:
       goals: Metas
-      title: Nova meta
+      title: Goals | Nova meta
+      page_title: Nova meta
       submit: Criar meta
     edit:
       goals: Metas
-      title: Editar meta
+      title: Goals | Editar meta
+      page_title: Editar meta
       submit: Atualizar meta
     form:
       go_back: Voltar
@@ -25,3 +28,10 @@ pt-BR:
       success: Meta criada com sucesso
     update:
       success: Meta atualizada com sucesso
+    update_progresses:
+      edit:
+        cancel: Cancelar
+        submit: Confirmar
+      update:
+        success: Meta atualizada com sucesso
+        error: Não foi possível atualizar a meta
