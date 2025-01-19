@@ -6,13 +6,10 @@
     </h2>
   </div>
   <div class="flex lg:flex-row flex-row-reverse flex-wrap items-center lg:space-x-6 lg:w-auto w-full justify-between">
-    <button class="btn btn-white lg:order-1 order-2 py-2 lg:hidden block peer group">
-      <%= render UI::Icon::Component.new("magnifying-glass", variant: :outline, class: "stroke-current dark:text-zinc-400 dark:group-focus:text-primary-500/90") %>
-    </button>
     <%= form_tag dashboard_goals_path,
       method: :get,
       data: { turbo_frame: "search-result", turbo_action: "advance" },
-      class: "lg:block hidden peer-focus:block lg:order-1 order-4 lg:pt-0 pt-4 w-full lg:w-auto" do %>
+      class: "lg:block lg:order-1 order-4 lg:pt-0 pt-4 w-full lg:w-auto" do %>
       <%= text_field_tag "search", nil, placeholder: t(".search"), class: "form-input lg:w-auto w-full" %>
     <% end %>
 
