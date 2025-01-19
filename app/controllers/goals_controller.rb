@@ -1,4 +1,6 @@
 class GoalsController < DashboardController
+  before_action :set_goal, only: %i[ edit update ]
+
   def index
     @goals = Goal.search(params[:search]).order(created_at: :desc)
   end
@@ -15,6 +17,22 @@ class GoalsController < DashboardController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+  end
+
+  def update
+    if @goal.update(goal_params)
+      redirect_to dashboard_goals_path, notice: t(".success")
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  private
+  def set_goal
+    @goal = Goal.find(params[:id])
   end
 
   def goal_params

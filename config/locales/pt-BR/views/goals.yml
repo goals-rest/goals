@@ -9,6 +9,10 @@ pt-BR:
       goals: Metas
       title: Nova meta
       submit: Criar meta
+    edit:
+      goals: Metas
+      title: Editar meta
+      submit: Atualizar meta
     form:
       go_back: Voltar
       submit: Criar meta
@@ -16,5 +20,8 @@ pt-BR:
       edit_goal: Editar meta
       update_progress: Atualizar progresso
       destroy_goal: Excluir meta
+
     create:
       success: Meta criada com sucesso
+    update:
+      success: Meta atualizada com sucesso

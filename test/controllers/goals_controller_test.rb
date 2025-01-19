@@ -26,4 +26,28 @@ class GoalsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :unprocessable_entity
   end
+
+  test "edit" do
+    goal = create(:goal)
+    get edit_dashboard_goal_url(goal)
+    assert_response :success
+  end
+
+  test "when params are valid it updates the goal" do
+    goal = create(:goal, title: "Old title")
+
+    patch dashboard_goal_url(goal), params: { goal: { title: "New title" } }
+
+    assert_redirected_to dashboard_goals_path
+    assert_equal goal.reload.title, "New title"
+  end
+
+  test "when params are invalid it doesn't update the goal" do
+    goal = create(:goal, title: "Old title")
+
+    patch dashboard_goal_url(goal), params: { goal: { title: nil } }
+
+    assert_response :unprocessable_entity
+    assert_equal goal.reload.title, "Old title"
+  end
 end
