@@ -11,11 +11,17 @@ pt-BR:
       title: Goals | Nova meta
       page_title: Nova meta
       submit: Criar meta
+    create:
+      success: Meta criada com sucesso
     edit:
       goals: Metas
       title: Goals | Editar meta
       page_title: Editar meta
       submit: Atualizar meta
+    update:
+      success: Meta atualizada com sucesso
+    destroy:
+      success: Meta excluída com sucesso
     form:
       go_back: Voltar
       submit: Criar meta
@@ -24,10 +30,6 @@ pt-BR:
       update_progress: Atualizar progresso
       destroy_goal: Excluir meta
 
-    create:
-      success: Meta criada com sucesso
-    update:
-      success: Meta atualizada com sucesso
     update_progresses:
       edit:
         cancel: Cancelar

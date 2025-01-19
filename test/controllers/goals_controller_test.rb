@@ -50,4 +50,14 @@ class GoalsControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
     assert_equal goal.reload.title, "Old title"
   end
+
+  test "destroy" do
+    goal = create(:goal)
+
+    assert_difference("Goal.count", -1) do
+      delete goal_url(goal)
+    end
+
+    assert_redirected_to goals_path
+  end
 end

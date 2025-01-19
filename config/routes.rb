@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :registrations, only: %i[new create]
 
   resource :home, only: %i[show]
-  resources :goals, only: %i[index new create edit update] do
+  resources :goals, only: %i[index new create edit update destroy] do
     scope module: :goals do
       resource :update_progress, only: %i[edit update]
     end
