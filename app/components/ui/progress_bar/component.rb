@@ -58,7 +58,7 @@ module UI
 
 
       def progress_in_percentage
-        progress * 100
+        [ progress * 100, 100 ].min
       end
 
       def default_attrs
