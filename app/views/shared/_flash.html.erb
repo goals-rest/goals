@@ -1,7 +1,39 @@
-<% if notice %>
-  <%= render UI::Flash::Component.new(type: :notice, class: "mb-3", auto_hide: true).with_content(notice) %>
-<% end %>
+<%= turbo_frame_tag :flash do %>
+  <% if notice %>
+    <%= render UI::Toast::Component.new(
+      placement: :bottom_left, 
+      class: "max-w-xs",
+      wrapper_attrs: {
+        data: {
+          controller: "flash"
+        }
+      }
+    ) do |toast| %>
+      <% toast.with_title.with_content(notice) %>
+      <% toast.with_icon(
+        "check-circle", 
+        variant: :solid,
+        class: "size-6 text-green-500 dark:text-green:400"
+      ) %>
+    <% end %>
+  <% end %>
 
-<% if alert %>
-  <%= render UI::Flash::Component.new(type: :alert, class: "mb-3", auto_hide: true).with_content(alert) %>
+  <% if alert %>
+    <%= render UI::Toast::Component.new(
+      placement: :bottom_left, 
+      class: "max-w-xs",
+      wrapper_attrs: {
+        data: {
+          controller: "flash"
+        }
+      }
+    ) do |toast| %>
+      <% toast.with_title.with_content(alert) %>
+      <% toast.with_icon(
+        "x-circle", 
+        variant: :solid,
+        class: "size-6 text-primary-500 dark:text-primary:400"
+      ) %>
+    <% end %>
+  <% end %>
 <% end %>
