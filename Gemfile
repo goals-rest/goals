@@ -73,7 +73,7 @@ group :test do
   gem "selenium-webdriver"
 
   # Makes tests easy on the fingers and the eyes [https://github.com/thoughtbot/shoulda]
-  gem "shoulda", "4.0.0"
+  gem "shoulda", "5.0.0.rc1"
 end
 
 # Rails UI component library [https://github.com/getrailsui/railsui]
