@@ -1,5 +1,5 @@
-<%= tag.div(**attrs) do %>
-  <div class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-zinc-950 dark:border dark:border-zinc-700/80">
+<%= tag.div(**wrapper_attrs) do %>
+  <%= tag.div(**attrs) do %>
     <div class="p-4">
       <div class="flex items-start">
         <% if icon? %>
@@ -30,5 +30,5 @@
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
