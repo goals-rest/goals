@@ -9,5 +9,7 @@
 #   end
 
 User.find_or_create_by!(email_address: "test@example.com") do |user|
+  user.first_name = "Test"
+  user.last_name = "Test"
   user.password = "123456"
 end
