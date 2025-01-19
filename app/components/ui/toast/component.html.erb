@@ -1,0 +1,34 @@
+<%= tag.div(**attrs) do %>
+  <div class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-zinc-950 dark:border dark:border-zinc-700/80">
+    <div class="p-4">
+      <div class="flex items-start">
+        <% if icon? %>
+          <div class="flex-shrink-0">
+            <%= icon %>
+          </div>
+        <% end %>
+
+        <div class="ml-3 w-0 flex-1 pt-0.5">
+          <p class="text-sm font-medium text-zinc-900 dark:text-white"><%= title %></p>
+          <p class="mt-1 text-sm text-zinc-500 dark:text-zinc-300"><%= description %></p>
+        </div>
+
+        <div class="ml-4 flex flex-shrink-0">
+          <%= button_tag(
+            type: :button,
+            class: "inline-flex rounded-sm bg-white text-zinc-400 
+                    hover:text-zinc-500 focus:outline-none focus:ring-2 
+                    focus:ring-zinc-50 dark:bg-transparent dark:focus:ring-zinc-500 
+                    dark:hover:text-zinc-100",
+            data: {
+              action: "click->railsui-toast#hide"
+            }
+          ) do %>
+            <span class="sr-only">Close</span>
+            <%= render UI::Icon::Component.new("x-mark", class: "size-5") %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
