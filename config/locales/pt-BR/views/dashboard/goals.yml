@@ -2,6 +2,8 @@ pt-BR:
   dashboard:
     goals:
       index:
+        title: Metas
+        description: Pesquise, edite ou crie novas metas.
         search: Buscar
         new_goal: Adicionar meta
       new:

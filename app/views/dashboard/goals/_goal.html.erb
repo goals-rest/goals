@@ -1,14 +1,21 @@
 <%= render UI::Card::Component.new(class: "max-w-sm") do %>
   <%= render UI::Card::HeaderComponent.new do |header| %>
-    <% header.with_title { goal.title.titleize } %>
+    <% header.with_title(class: "flex justify-between") do %>
+      <%= goal.title.titleize %>
+      <span class="text-sm"><%= goal.current %> / <%= goal.target %></span>
+    <% end %>
+
     <% header.with_subtitle { goal.description } %>
   <% end %>
 
   <%= render UI::Card::ActionsComponent.new(class: "pt-3 pb-0") do %>
     <div class="flex justify-between items-center">
-      <span class="text-sm text-zinc-600 dark:text-zinc-300">
-        <%= localize(goal.start_date.to_date, format: :short_month).titleize %>
-      </span>
+      <div class="flex items-center gap-2">
+        <%= render UI::Icon::Component.new("clock", variant: :outline, class: "text-zinc-600 dark:text-zinc-400") %>
+        <span class="text-sm text-zinc-600 dark:text-zinc-400">
+          <%= localize(goal.start_date.to_date, format: :short_month).titleize %>
+        </span>
+      </div>
 
       <%= render UI::Dropdown::Component.new do |dropdown| %>
         <% dropdown.with_trigger do %>
