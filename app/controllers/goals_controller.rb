@@ -24,7 +24,7 @@ class GoalsController < DashboardController
 
   def update
     if @goal.update(goal_params)
-      redirect_to dashboard_goals_path, notice: t(".success")
+      redirect_to goals_path, notice: t(".success")
     else
       render :edit, status: :unprocessable_entity
     end

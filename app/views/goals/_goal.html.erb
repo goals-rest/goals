@@ -32,7 +32,7 @@
           <% end %>
         <% end %>
 
-        <% dropdown.with_item { link_to t(".edit_goal"), edit_dashboard_goal_path(goal.id), data: { turbo: false } } %>
+        <% dropdown.with_item { link_to t(".edit_goal"), edit_goal_path(goal.id), data: { turbo_frame: :_top } } %>
         <% dropdown.with_item { t(".update_progress") } %>
         <% dropdown.with_divider %>
         <% dropdown.with_item { t(".destroy_goal") } %>
