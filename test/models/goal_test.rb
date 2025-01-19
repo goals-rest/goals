@@ -64,5 +64,27 @@ class GoalTest < ActiveSupport::TestCase
         assert_equal result, 0.5
       end
     end
+
+    context ".translated_status" do
+      should "returns the translated status name" do
+        goal = build(:goal, status: :completed)
+
+        assert_equal I18n.t("activerecord.attributes.goal.status.completed"), goal.translated_status
+      end
+    end
+  end
+
+  test "changes status to completed when current is bigger than or equal to target" do
+    goal = create(:goal, current: 1, target: 5)
+    goal.update(current: 5)
+
+    assert goal.completed?
+  end
+
+  test "changes status to pending when current is less than to target" do
+    goal = create(:goal, current: 5, target: 5, status: :completed)
+    goal.update(current: 1)
+
+    assert goal.pending?
   end
 end

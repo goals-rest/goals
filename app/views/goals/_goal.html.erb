@@ -2,7 +2,7 @@
   <%= render UI::Card::HeaderComponent.new do |header| %>
     <% header.with_title(class: "flex justify-between") do %>
       <%= goal.title.titleize %>
-      <span class="text-sm"><%= goal.current %> / <%= goal.target %></span>
+      <span class="text-sm"><%= strip_zeros(goal.current) %> / <%= strip_zeros(goal.target) %></span>
     <% end %>
 
     <% header.with_subtitle { goal.description } %>
@@ -33,7 +33,12 @@
         <% end %>
 
         <% dropdown.with_item { link_to t(".edit_goal"), edit_goal_path(goal.id), data: { turbo_frame: :_top } } %>
-        <% dropdown.with_item { t(".update_progress") } %>
+        <% dropdown.with_item(
+          href: edit_goal_update_progress_path(goal), 
+          data: { 
+            turbo_frame: :modal 
+          }
+        ) { t(".update_progress") } %>
         <% dropdown.with_divider %>
         <% dropdown.with_item { t(".destroy_goal") } %>
       <% end %>
@@ -42,7 +47,11 @@
 
   <div class="pb-3">
     <%= render UI::Card::BodyComponent.new do |header| %>
-      <%= render UI::ProgressBar::Component.new(progress: goal.progress, size: :sm) %>
+      <% if goal.completed? %>
+        <%= render UI::Badge::Component.new(color: :green).with_content(goal.translated_status) %>
+      <% else %>
+        <%= render UI::ProgressBar::Component.new(progress: goal.progress, size: :sm) %>
+      <% end %>
     <% end %>
   </div>
 <% end %>
