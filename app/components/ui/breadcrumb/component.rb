@@ -5,11 +5,14 @@ module UI
         base { %w[my-6 font-medium flex text-zinc-500 text-sm] }
       end
 
-      style :ol do
+      style :div do
         base { %w[flex flex-wrap items-center space-x-3 list-none m-0 p-0] }
       end
 
-      renders_many :items, UI::Breadcrumb::ItemComponent
+      renders_many :items, types: {
+        link: { renders: UI::Breadcrumb::LinkComponent, as: :link },
+        separator: { renders: UI::Breadcrumb::SeparatorComponent, as: :separator }
+      }
 
       def initialize(**user_attrs)
         super(**user_attrs)

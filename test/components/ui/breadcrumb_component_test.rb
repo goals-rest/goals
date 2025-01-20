@@ -5,14 +5,9 @@ module UI
     class ComponentTest < ViewComponent::TestCase
       test "renders the component" do
         render_inline(UI::Breadcrumb::Component.new) do |breadcrumb|
-          breadcrumb.with_item(first: true) do |item|
-            item.with_link(href: "#").with_content("Goals")
-          end
-
-          breadcrumb.with_item do |item|
-            item.with_separator
-            item.with_link(href: "#").with_content("New goal")
-          end
+          breadcrumb.with_link(href: "#").with_content("Goals")
+          breadcrumb.with_separator
+          breadcrumb.with_link(href: "#").with_content("New goal")
         end
 
         assert_selector "a[href='#']", text: "Goals"
