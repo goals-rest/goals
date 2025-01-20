@@ -5,6 +5,8 @@ module Goals
     test "new" do
       goal = create(:goal, current: 1, target: 5)
 
+      sign_in goal.user
+
       get edit_goal_update_progress_url(goal), headers: { "Turbo-Frame" => "frame" }
 
       assert_response :success
@@ -12,6 +14,8 @@ module Goals
 
     test "when the request is not a turbo frame request redirects to root_url" do
       goal = create(:goal, current: 1, target: 5)
+
+      sign_in goal.user
 
       get edit_goal_update_progress_url(goal, format: :html)
 
@@ -27,6 +31,8 @@ module Goals
         }
       }
 
+      sign_in goal.user
+
       patch goal_update_progress_url(goal), params: params
 
       goal.reload
@@ -41,6 +47,8 @@ module Goals
           current: 2
         }
       }
+
+      sign_in goal.user
 
       patch goal_update_progress_url(goal), params: params
 

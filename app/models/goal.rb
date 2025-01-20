@@ -1,6 +1,8 @@
 class Goal < ApplicationRecord
   enum :status, [ :pending, :completed ], with_model_name: true
 
+  belongs_to :user
+
   validates :title, presence: true
   validates :start_date, presence: true
   validates :current, presence: true
