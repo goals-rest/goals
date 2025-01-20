@@ -1,0 +1,7 @@
+<%= render UI::Breadcrumb::Component.new do |breadcrumb| %>
+  <% breadcrumb.with_link(href: "#").with_content("Home") %>
+  <% breadcrumb.with_separator %>
+  <% breadcrumb.with_link(href: "#").with_content("Library") %>
+  <% breadcrumb.with_separator %>
+  <% breadcrumb.with_link(href: "#", active: true).with_content("Data") %>
+<% end %>

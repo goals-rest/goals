@@ -1,0 +1,7 @@
+<%= tag.nav(**attrs) do %>
+  <%= tag.div(class: style(:div)) do %>
+    <% items.each do |item| %>
+      <%= item %>
+    <% end %>
+  <% end %>
+<% end %>
