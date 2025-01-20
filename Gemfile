@@ -42,6 +42,9 @@ gem "thruster", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "1.13.0"
 
+# A UI development environment for Ruby on Rails applications [https://github.com/lookbook-hq/lookbook]
+gem "lookbook", "2.3.4"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
@@ -54,9 +57,6 @@ group :development, :test do
 
   # To help fixture creation [https://github.com/thoughtbot/factory_bot_rails]
   gem "factory_bot_rails", "6.4.4"
-
-  # A UI development environment for Ruby on Rails applications [https://github.com/lookbook-hq/lookbook]
-  gem "lookbook", "2.3.4"
 
   # The Listen gem listens to file modifications and notifies you about the changes [https://github.com/guard/listen]
   gem "listen", "3.9.0"
