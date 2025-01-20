@@ -1,0 +1,10 @@
+<%= tag.div(**attrs) do %>
+  <div class="border-zinc-200 border-b text-zinc-600 dark:text-zinc-200 dark:border-zinc-600 text-[15px]">
+    <nav role="navigation" class="-mb-px flex items-center flex-wrap font-heading">
+      <% tabs.each do |tab| %>
+        <%= tab %>
+      <% end %>
+      </a>
+    </nav>
+  </div>
+<% end %>
