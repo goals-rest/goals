@@ -1,57 +1,59 @@
-<%= render UI::Card::Component.new(class: "max-w-sm") do %>
+<%= render UI::Card::Component.new(class: "flex flex-col max-w-sm") do %>
   <%= render UI::Card::HeaderComponent.new do |header| %>
     <% header.with_title(class: "flex justify-between") do %>
       <%= goal.title.titleize %>
-      <span class="text-sm"><%= strip_zeros(goal.current) %> / <%= strip_zeros(goal.target) %></span>
+      <span class="text-sm font-sans"><%= strip_zeros(goal.current) %> / <%= strip_zeros(goal.target) %></span>
     <% end %>
 
-    <% header.with_subtitle { goal.description } %>
+    <% header.with_subtitle { goal.description.presence || "" } %>
   <% end %>
 
-  <%= render UI::Card::ActionsComponent.new(class: "pt-3 pb-0") do %>
-    <div class="flex justify-between items-center">
-      <div class="flex items-center gap-2">
-        <%= render UI::Icon::Component.new("clock", variant: :outline, class: "text-zinc-600 dark:text-zinc-400") %>
-        <span class="text-sm text-zinc-600 dark:text-zinc-400">
-          <%= localize(goal.start_date.to_date, format: :short_month).titleize %>
-        </span>
-      </div>
+  <div class="flex-1 flex flex-col justify-end">
+    <div class="px-3 pt-3">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <%= render UI::Icon::Component.new("clock", variant: :outline, class: "text-zinc-600 dark:text-zinc-400") %>
+          <span class="text-sm text-zinc-600 dark:text-zinc-400">
+            <%= localize(goal.start_date.to_date, format: :short_month) %>
+          </span>
+        </div>
 
-      <%= render UI::Dropdown::Component.new do |dropdown| %>
-        <% dropdown.with_trigger do %>
-          <%= render UI::Button::Component.new(
-            class: "bg-transparent hover:bg-zinc-50 rounded-lg px-2 py-1 inline-flex
-                    items-center justify-center border border-transparent
-                    focus:border-zinc-300/80 focus:bg-white focus:ring-4
-                    focus:ring-zinc-300/20 transition ease-in-out duration-200
-                    group dark:hover:bg-zinc-700 dark:focus:bg-zinc-700
-                    dark:focus:border-zinc-500 dark:focus:ring-zinc-600/70
-                    text-zinc-500 dark:text-zinc-400"
-          ) do |button| %>
-            <% button.with_leading_icon("ellipsis-horizontal") %>
+        <%= render UI::Dropdown::Component.new do |dropdown| %>
+          <% dropdown.with_trigger do %>
+            <%= render UI::Button::Component.new(
+              class: "bg-transparent hover:bg-zinc-50 rounded-lg px-2 py-1 inline-flex
+                      items-center justify-center border border-transparent
+                      focus:border-zinc-300/80 focus:bg-white focus:ring-4
+                      focus:ring-zinc-300/20 transition ease-in-out duration-200
+                      group dark:hover:bg-zinc-700 dark:focus:bg-zinc-700
+                      dark:focus:border-zinc-500 dark:focus:ring-zinc-600/70
+                      text-zinc-500 dark:text-zinc-400"
+            ) do |button| %>
+              <% button.with_leading_icon("ellipsis-horizontal") %>
+            <% end %>
           <% end %>
-        <% end %>
 
-        <% dropdown.with_item { link_to t(".edit_goal"), edit_goal_path(goal.id), data: { turbo_frame: :_top } } %>
-        <% dropdown.with_item(
-          href: edit_goal_update_progress_path(goal), 
-          data: { 
-            turbo_frame: :modal 
-          }
-        ) { t(".update_progress") } %>
-        <% dropdown.with_divider %>
-        <% dropdown.with_item { button_to t(".destroy_goal"), goal, method: :delete, data: { turbo_frame: :_top } } %>
+          <% dropdown.with_item { link_to t(".edit_goal"), edit_goal_path(goal.id), data: { turbo_frame: :_top } } %>
+          <% dropdown.with_item(
+            href: edit_goal_update_progress_path(goal), 
+            data: { 
+              turbo_frame: :modal 
+            }
+          ) { t(".update_progress") } %>
+          <% dropdown.with_divider %>
+          <% dropdown.with_item { button_to t(".destroy_goal"), goal, method: :delete, data: { turbo_frame: :_top } } %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="pb-3">
+      <%= render UI::Card::BodyComponent.new do |header| %>
+        <% if goal.completed? %>
+          <%= render UI::Badge::Component.new(color: :green).with_content(goal.translated_status) %>
+        <% else %>
+          <%= render UI::ProgressBar::Component.new(progress: goal.progress, size: :sm) %>
+        <% end %>
       <% end %>
     </div>
-  <% end %>
-
-  <div class="pb-3">
-    <%= render UI::Card::BodyComponent.new do |header| %>
-      <% if goal.completed? %>
-        <%= render UI::Badge::Component.new(color: :green).with_content(goal.translated_status) %>
-      <% else %>
-        <%= render UI::ProgressBar::Component.new(progress: goal.progress, size: :sm) %>
-      <% end %>
-    <% end %>
   </div>
 <% end %>
