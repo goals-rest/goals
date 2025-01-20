@@ -1,0 +1,7 @@
+<%= tag.nav(**attrs) do %>
+  <%= tag.ol(class: style(:ol)) do %>
+    <% items.each do |item| %>
+      <%= item %>
+    <% end %>
+  <% end %>
+<% end %>
