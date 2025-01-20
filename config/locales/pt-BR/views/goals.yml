@@ -37,3 +37,9 @@ pt-BR:
       update:
         success: Meta atualizada com sucesso
         error: Não foi possível atualizar a meta
+    no_goals_found:
+      title: Nenhuma meta encontrada
+      description: Ops! Não encontramos nenhum resultado para a sua busca. Tente ajustar os filtros ou buscar por outro termo.
+    no_goals:
+      title: Sem metas ainda? Comece agora!
+      description: Todo grande objetivo começa com um primeiro passo. Crie sua primeira meta e dê o primeiro passo rumo ao seu sucesso!

@@ -25,7 +25,15 @@
 </div>
 
 <%= turbo_frame_tag "search-result" do %>
-  <div class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-8">
-    <%= render @goals %>
-  </div>
+  <% if @goals.any? %>
+    <div class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-8">
+      <%= render @goals, cached: true %>
+    </div>
+  <% elsif Goal.any? %>
+    <%= render "no_goals_found" %>
+  <% end %>
+<% end %>
+
+<% if Goal.none? %>
+  <%= render "no_goals" %>
 <% end %>
