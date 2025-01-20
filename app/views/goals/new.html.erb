@@ -1,16 +1,11 @@
 <%= provide(:title, t(".title")) %>
 
 <div class="max-w-2xl mx-auto">
-  <nav class="font-heading text-sm mb-6 text-zinc-700 dark:text-zinc-200">
-    <ul class="flex items-center gap-3">
-      <li class="after:content-['/'] after:relative after:text-zinc-300 after:left-1 dark:after:text-zinc-500">
-        <%= link_to t(".goals"), "#", class: "text-primary-600 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-600" %>
-      </li>
-      <li>
-        <p><%= t(".page_title") %></p>
-      </li>
-    </ul>
-  </nav>
+  <%= render UI::Breadcrumb::Component.new do |breadcrumb| %>
+    <% breadcrumb.with_item(href: goals_path, active: true) { t(".goals") } %>
+    <% breadcrumb.with_separator %>
+    <% breadcrumb.with_item { t(".page_title") } %>
+  <% end %>
 
   <h1 class="mb-6 text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight"><%= t(".page_title") %></h1>
 

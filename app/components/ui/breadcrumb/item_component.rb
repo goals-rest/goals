@@ -1,11 +1,11 @@
 module UI
   module Breadcrumb
-    class LinkComponent < ApplicationComponent
+    class ItemComponent < ApplicationComponent
       style do
         variants {
           active {
-            yes { %w[text-primary-500 dark:text-primary-500] }
-            no { %w[hover:underline hover:text-zinc-600 dark:hover:text-zinc-400] }
+            yes { %w[text-zinc-700 dark:text-zinc-200] }
+            no { %w[text-primary-500 dark:text-primary-500] }
           }
         }
       end
@@ -19,7 +19,11 @@ module UI
       end
 
       def call
-        link_to(content, href, **attrs)
+        if active
+          tag.div(content, **attrs)
+        else
+          link_to(content, href, **attrs)
+        end
       end
 
       def default_attrs
