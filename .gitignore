@@ -41,5 +41,3 @@
 .tool-versions
 
 /config/credentials/production.key
-
-deploy.yml
