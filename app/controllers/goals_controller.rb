@@ -2,15 +2,15 @@ class GoalsController < DashboardController
   before_action :set_goal, only: %i[ edit update destroy]
 
   def index
-    @goals = Goal.search(params[:search]).order(created_at: :desc)
+    @goals = Current.goals.search(params[:search]).order(created_at: :desc)
   end
 
   def new
-    @goal = Goal.new(start_date: Time.zone.today)
+    @goal = Current.goals.build(start_date: Time.zone.today)
   end
 
   def create
-    @goal = Goal.new(goal_params)
+    @goal = Current.goals.build(goal_params)
 
     if @goal.save
       redirect_to goals_path, notice: t(".success")
@@ -38,7 +38,7 @@ class GoalsController < DashboardController
 
   private
   def set_goal
-    @goal = Goal.find(params[:id])
+    @goal = Current.goals.find(params[:id])
   end
 
   def goal_params

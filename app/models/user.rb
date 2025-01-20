@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :sessions, dependent: :destroy
+  has_many :goals, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true
