@@ -40,7 +40,7 @@
           }
         ) { t(".update_progress") } %>
         <% dropdown.with_divider %>
-        <% dropdown.with_item { t(".destroy_goal") } %>
+        <% dropdown.with_item { button_to t(".destroy_goal"), goal, method: :delete, data: { turbo_frame: :_top } } %>
       <% end %>
     </div>
   <% end %>

@@ -1,5 +1,5 @@
 class GoalsController < DashboardController
-  before_action :set_goal, only: %i[ edit update ]
+  before_action :set_goal, only: %i[ edit update destroy]
 
   def index
     @goals = Goal.search(params[:search]).order(created_at: :desc)
@@ -28,6 +28,12 @@ class GoalsController < DashboardController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @goal.destroy
+
+    redirect_to goals_path, notice: t(".success"), status: :see_other
   end
 
   private
