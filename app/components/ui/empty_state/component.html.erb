@@ -1,0 +1,17 @@
+<%= tag.div(**attrs) do %>
+  <%= icon %>
+
+  <div>
+    <h2 class="text-xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight mb-2">
+      <%= title %>
+    </h2>
+
+    <p class="text-zinc-500 dark:text-zinc-300">
+      <%= description %>
+    </p>
+  </div>
+
+  <div class="pt-4">
+    <%= actions %>
+  </div>
+<% end %>
