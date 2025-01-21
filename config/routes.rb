@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       resource :update_progress, only: %i[edit update]
     end
   end
+  resources :follows, only: %i[create destroy]
 
   get "/:username", to: "profiles#show", constraints: { username: /[a-zA-Z0-9\.]+/ }, as: :profile
 end

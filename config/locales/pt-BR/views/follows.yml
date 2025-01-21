@@ -1,0 +1,9 @@
+pt-BR:
+  follows:
+    create:
+      success: Usuário seguido com sucesso.
+      error: Não foi possível seguir o usuário.
+    destroy:
+      success: Parou de seguir o usuário com sucesso.
+      error: Não foi possível parar de seguir o usuário.
+    user_not_found: Usuário não encontrado.
