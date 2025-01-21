@@ -6,6 +6,10 @@ class UserTest < ActiveSupport::TestCase
   end
 
   should have_many(:sessions)
+  should have_many(:follows)
+  should have_many(:followees).through(:follows)
+  should have_many(:follows_as_followee)
+  should have_many(:followers).through(:follows_as_followee)
 
   should validate_presence_of(:first_name)
   should validate_presence_of(:last_name)
@@ -41,5 +45,35 @@ class UserTest < ActiveSupport::TestCase
     create(:user, first_name: "a" * 255, last_name: "a" * 255)
     user = create(:user, first_name: "a" * 255, last_name: "a" * 255)
     assert_match /a{248}\.[a-z0-9]+{6}/, user.username
+  end
+
+  test "follows? returns true" do
+    user1 = create(:user)
+    user2 = create(:user)
+    user1.follows.create(followee_id: user2.id)
+
+    assert user1.follows?(user2)
+  end
+
+  test "follows? returns false" do
+    user1 = create(:user)
+    user2 = create(:user)
+
+    assert_not user1.follows?(user2)
+  end
+
+  test "returns follow for user" do
+    user1 = create(:user)
+    user2 = create(:user)
+    follow = user1.follows.create(followee_id: user2.id)
+
+    assert_equal follow, user1.follow_for(user2)
+  end
+
+  test "returns nil when follow for user does not exist" do
+    user1 = create(:user)
+    user2 = create(:user)
+
+    assert_nil user1.follow_for(user2)
   end
 end

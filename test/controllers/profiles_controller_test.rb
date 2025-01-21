@@ -10,4 +10,12 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
   end
+
+  test "show without authentication" do
+    user = create(:user)
+
+    get profile_url(username: user.username)
+
+    assert_response :success
+  end
 end

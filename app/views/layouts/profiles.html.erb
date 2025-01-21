@@ -19,13 +19,18 @@
         </div>
 
         <div class="h-16 flex justify-end pt-2">
-          <div>
-            <%= render UI::Button::Component.new(
-              builder: :a, 
-              href: "#", 
-              class: "inline-flex"
-            ).with_content(t(".follow")) %>
-          </div>
+          <% if Current.user.present? && Current.user != @user %>
+            <% if Current.user.follows?(@user) %>
+              <%= custom_form_with(model: Current.user.follow_for(@user), method: :delete) do |form| %>
+                <%= form.submit value: t(".unfollow"), class: "cursor-pointer" %>
+              <% end %>
+            <% else %>
+              <%= custom_form_with(model: Follow.new(followee_id: @user.id), method: :post) do |form| %>
+                <%= form.hidden_field :followee_id, value: @user.id %>
+                <%= form.submit value: t(".follow"), class: "cursor-pointer" %>
+              <% end %>
+            <% end %>
+          <% end%>
         </div>
 
         <div class="mt-3 space-y-3">
@@ -50,11 +55,11 @@
 
           <div class="lg:hidden flex gap-2 text-sm text-zinc-600 dark:text-zinc-400">
             <div class="flex items-center gap-2">
-              <span class="text-zinc-900 dark:text-zinc-100">10</span> <span class="text-zinc-600 dark:text-zinc-400"><%= t(".following") %></span>
+              <span class="text-zinc-900 dark:text-zinc-100"><%= @user.follows.count %></span> <span class="text-zinc-600 dark:text-zinc-400"><%= t(".following") %></span>
             </div>
 
             <div class="flex items-center gap-2">
-              <span class="text-zinc-900 dark:text-zinc-100">10</span> <span class="text-zinc-600 dark:text-zinc-400"><%= t(".followers") %></span>
+              <span class="text-zinc-900 dark:text-zinc-100"><%= @user.followers.count %></span> <span class="text-zinc-600 dark:text-zinc-400"><%= t(".followers") %></span>
             </div>
           </div>
         </div>
