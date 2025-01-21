@@ -11,6 +11,18 @@
             </div>
           <% end %>
 
+          <% if notice || alert %>
+            <div class="mb-6">
+              <% if notice %>
+                <%= render UI::Flash::Component.new(type: :notice).with_content(notice) %>
+              <% end %>
+
+              <% if alert %>
+                <%= render UI::Flash::Component.new(type: :alert).with_content(alert) %>
+              <% end %>
+            </div>
+          <% end %>
+
           <h1 class="text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight mb-6"><%= t("layouts.auth.sign_up") %></h1>
 
           <%= render "form" %>

@@ -3,8 +3,10 @@
     <%= render "shared/logo_color" %>
   <% end %>
 
-  <% header.with_link(href: root_path).with_content(t(".panel")) %>
-  <% header.with_link(href: goals_path).with_content(t(".goals")) %>
+  <% if Current.user.present? %>
+    <% header.with_link(href: root_path).with_content(t(".panel")) %>
+    <% header.with_link(href: goals_path).with_content(t(".goals")) %>
+  <% end %>
 
   <% header.with_item do %>
     <div class="md:mr-4 mr-3">
@@ -20,38 +22,51 @@
     <div>
   <% end %>
 
-  <% header.with_item do %>
-    <div class="flex items-center justify-center">
-      <%= render UI::Dropdown::Component.new(alignment: :right) do |dropdown| %>
-        <% dropdown.with_trigger do %>
-          <div class="flex items-center justify-center">
-            <%= render UI::Button::Component.new(
-              variant: :rounded_outlined, 
-              color: :dark,
-              size: nil,
-              class: "md:w-10 md:h-10 size-12"
-            ) do %>
-              <%= render UI::Avatar::Component.new(
-                src: nil,
+  <% if Current.user.present? %>
+    <% header.with_item do %>
+      <div class="flex items-center justify-center">
+        <%= render UI::Dropdown::Component.new(alignment: :right) do |dropdown| %>
+          <% dropdown.with_trigger do %>
+            <div class="flex items-center justify-center">
+              <%= render UI::Button::Component.new(
+                variant: :rounded_outlined, 
+                color: :dark,
                 size: nil,
                 class: "md:w-10 md:h-10 size-12"
-              ) do |avatar| %>
-                <% avatar.with_placeholder %>
+              ) do %>
+                <%= render UI::Avatar::Component.new(
+                  src: nil,
+                  size: nil,
+                  class: "md:w-10 md:h-10 size-12"
+                ) do |avatar| %>
+                  <% avatar.with_placeholder %>
+                <% end %>
               <% end %>
-            <% end %>
-          </div>
-        <% end %>
+            </div>
+          <% end %>
 
-        <% dropdown.with_item(href: profile_path(Current.user)) do %>
-          <%= t(".my_profile") %>
-        <% end %>
+          <% dropdown.with_item(href: profile_path(Current.user.username)) do %>
+            <%= t(".my_profile") %>
+          <% end %>
 
-        <% dropdown.with_divider %>
+          <% dropdown.with_divider %>
 
-        <% dropdown.with_item(href: session_path, data: { turbo_method: :delete }) do %>
-          <%= t(".logout") %>
-        <% end %>
+          <% dropdown.with_item(href: session_path, data: { turbo_method: :delete }) do %>
+            <%= t(".logout") %>
+          <% end %>
+      </div>
       <% end %>
-    </div>
+    <% end %>
+  <% end %>
+
+  <% if Current.user.blank? %>
+    <% header.with_item do %>
+      <div class="md:mr-4 mr-3">
+        <%= render UI::Button::Component.new(
+          builder: :a,
+          href: new_session_path
+        ).with_content("Entrar") %>
+      <div>
+    <% end %>
   <% end %>
 <% end %>

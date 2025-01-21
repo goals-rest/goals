@@ -1,7 +1,5 @@
 <%= provide(:content) do %>
-  <% if Current.user.present? %>
-    <%= render "layouts/header" %>
-  <% end %>
+  <%= render "layouts/header" %>
 
   <% if content_for?(:main) %>
     <% yield :main %>
@@ -37,7 +35,7 @@
             </h2>
 
             <h3 class="font-light text-base text-zinc-700 tracking-normal dark:text-zinc-300 font-heading">
-              @test.test
+              <%= "@#{@user.username}" %>
             </h2>
           </div>
 

@@ -5,3 +5,5 @@ pt-BR:
       password_minimum: Deve ter pelo menos 6 caracteres
     new:
       title: Goals | Cadastre-se
+    create:
+      error: Verifique seus dados e tente novamente.
