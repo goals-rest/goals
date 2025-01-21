@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
+  if Rails.env.development?
+    mount Railsui::Engine, at: "/railsui"
+    mount Lookbook::Engine, at: "/lookbook"
+  end
+
   resource :session
   resources :passwords, param: :token
   resources :registrations, only: %i[new create]
@@ -16,8 +21,7 @@ Rails.application.routes.draw do
     end
   end
 
-  if Rails.env.development?
-    mount Railsui::Engine, at: "/railsui"
-    mount Lookbook::Engine, at: "/lookbook"
-  end
+  resources :profiles, only: %i[show]
+
+  get "/:id", to: "profiles#show"
 end

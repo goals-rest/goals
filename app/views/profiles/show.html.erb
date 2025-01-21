@@ -1,0 +1,7 @@
+<div class="max-w-xl mx-auto">
+  <%= render UI::EmptyState::Component.new do |empty_state| %>
+    <% empty_state.with_icon("wrench-screwdriver", class: "size-8 font-semibold font-heading text-zinc-900 dark:text-zinc-100") %>
+    <% empty_state.with_title.with_content("Em construção") %>
+    <% empty_state.with_description.with_content("Estamos trabalhando para trazer algo incrível! Em breve, nossa página estará no ar. Agradecemos pela sua paciência e compreensão.") %>
+  <% end %>
+</div>

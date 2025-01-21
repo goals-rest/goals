@@ -8,3 +8,12 @@ pt-BR:
     header:
       panel: Painel
       goals: Metas
+      my_profile: Meu Perfil
+      logout: Sair
+    profiles:
+      joined: Ingressou em %{date}
+      following: Seguindo
+      followers: Seguidores
+      follow: Seguir
+      sidebar:
+        social_stats: Estatísticas sociais
