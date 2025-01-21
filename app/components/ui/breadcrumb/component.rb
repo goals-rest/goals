@@ -10,7 +10,7 @@ module UI
       end
 
       renders_many :items, types: {
-        link: { renders: UI::Breadcrumb::LinkComponent, as: :link },
+        item: { renders: UI::Breadcrumb::ItemComponent, as: :item },
         separator: { renders: UI::Breadcrumb::SeparatorComponent, as: :separator }
       }
 
