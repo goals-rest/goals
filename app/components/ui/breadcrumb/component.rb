@@ -2,7 +2,7 @@ module UI
   module Breadcrumb
     class Component < ApplicationComponent
       style do
-        base { %w[my-6 font-medium flex text-zinc-500 text-sm] }
+        base { %w[mb-6 font-medium flex text-zinc-500 text-sm] }
       end
 
       style :div do
