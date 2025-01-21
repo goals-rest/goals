@@ -2,8 +2,10 @@ module Followable
   extend ActiveSupport::Concern
 
   included do
-    has_many :follows, dependent: :destroy, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
+    has_many :follows, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
     has_many :followees, through: :follows
+    has_many :follows_as_followee, class_name: "Follow", foreign_key: "followee_id", dependent: :destroy
+    has_many :followers, through: :follows_as_followee
   end
 
   def follows?(user)
@@ -11,6 +13,6 @@ module Followable
   end
 
   def follow_for(user)
-    follows.where(followee_id: user.id).first
+    follows.find_by(followee_id: user.id)
   end
 end

@@ -8,15 +8,15 @@ class FollowsController < ApplicationController
     if @follow.save
       redirect_back_to_profile @followee, notice: t(".success")
     else
-      redirect_back_to_profile @followee, alert: t(".error")
+      redirect_back_to_profile @followee, alert: t(".error"), status: :unprocessable_entity
     end
   end
 
   def destroy
     if @follow.destroy
-      redirect_back_to_profile @follow.followee, alert: t(".success")
+      redirect_back_to_profile @follow.followee, notice: t(".success")
     else
-      redirect_back_to_profile @follow.followee, alert: t(".error")
+      redirect_back_to_profile @follow.followee, alert: t(".error"), status: :unprocessable_entity
     end
   end
 

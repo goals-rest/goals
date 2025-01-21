@@ -3,12 +3,12 @@ class Follow < ApplicationRecord
   belongs_to :followee, class_name: "User", foreign_key: "followee_id"
 
   validates :follower, uniqueness: { scope: :followee }
-  validate :the_follower_is_not_following_themself
+  validate :the_follower_is_not_following_themselves
 
   private
-  def the_follower_is_not_following_themself
+  def the_follower_is_not_following_themselves
     return if follower_id != followee_id
 
-    errors.add(:base, "The follower cannot be equal to the followee")
+    errors.add(:base, :cannot_follow_themselves)
   end
 end
