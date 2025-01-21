@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
 
   private
   def set_user
-    @user = User.find_by(id: params[:id])
+    @user = User.find_by(username: params[:username])
 
     redirect_to root_path if @user.blank?
   end

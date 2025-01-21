@@ -6,7 +6,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
 
     sign_in user
 
-    get profile_url(user)
+    get profile_url(username: user.username)
 
     assert_response :success
   end

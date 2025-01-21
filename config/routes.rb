@@ -21,7 +21,5 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :profiles, only: %i[show]
-
-  get "/:id", to: "profiles#show"
+  get "/:username", to: "profiles#show", constraints: { username: /[a-zA-Z0-9\.]+/ }, as: :profile
 end

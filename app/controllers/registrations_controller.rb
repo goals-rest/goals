@@ -12,7 +12,7 @@ class RegistrationsController < ApplicationController
       start_new_session_for(@user)
       redirect_to root_path
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity, alert: t(".error")
     end
   end
 
