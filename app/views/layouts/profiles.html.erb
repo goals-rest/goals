@@ -11,7 +11,6 @@
         <div class="relative h-16">
           <%= render UI::Avatar::Component.new(
             size: nil,
-            src: "https://i.pravatar.cc/300",
             class: "absolute size-32 left-0 bottom-0 translate-y-1/2",
             icon_attrs: {
               class: "size-20"
@@ -27,7 +26,7 @@
               builder: :a, 
               href: "#", 
               class: "inline-flex"
-            ).with_content("Seguir") %>
+            ).with_content(t(".follow")) %>
           </div>
         </div>
 
@@ -46,22 +45,18 @@
             <div class="flex items-center gap-2 flex-1">
               <%= render UI::Icon::Component.new("clock", variant: :outline, class: "text-zinc-600 dark:text-zinc-400") %>
               <span class="text-sm text-zinc-600 dark:text-zinc-400">
-                Ingressou em <%= localize(@user.created_at.to_date, format: :long) %>
+                <%= t(".joined", date: localize(@user.created_at.to_date, format: :long)) %>
               </span>
             </div>
           </div>
 
           <div class="lg:hidden flex gap-2 text-sm text-zinc-600 dark:text-zinc-400">
             <div class="flex items-center gap-2">
-              <span class="text-sm text-zinc-600 dark:text-zinc-400">
-                10 seguindo
-              </span>
+              <span class="text-zinc-900 dark:text-zinc-100">10</span> <span class="text-zinc-600 dark:text-zinc-400"><%= t(".following") %></span>
             </div>
 
             <div class="flex items-center gap-2">
-              <span class="text-sm text-zinc-600 dark:text-zinc-400">
-                10 seguidores
-              </span>
+              <span class="text-zinc-900 dark:text-zinc-100">10</span> <span class="text-zinc-600 dark:text-zinc-400"><%= t(".followers") %></span>
             </div>
           </div>
         </div>
