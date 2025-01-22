@@ -55,6 +55,14 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
     super(method, choices, options, html_options, &block)
   end
 
+  def file_field(method, options = {})
+    field_classes = [ "form-file" ]
+
+    add_classes(options, field_classes)
+
+    super(method, options)
+  end
+
   def form_group(method, options = {}, &block)
     add_classes(options, [ "form-group" ])
 

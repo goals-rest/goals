@@ -6,8 +6,7 @@ module UI
       style do
         base do
           %w[
-            relative rounded-full flex items-center
-            justify-center
+            rounded-full select-none pointer-events-none shrink-0 object-cover
           ]
         end
 
@@ -17,36 +16,18 @@ module UI
             sm { "size-10" }
             base { "size-12" }
             lg { "size-14" }
+            xl { "size-16" }
           }
         }
 
         defaults { { size: :base } }
       end
 
-      style :icon do
-        base do
-          %w[
-            text-zinc-500
-          ]
-        end
+      attr_reader :src, :size
 
-        variants {
-          size {
-            xs { "w-4 h-4" }
-            sm { "w-6 h-6" }
-            base { "w-8 h-8" }
-            lg { "w-10 h-10" }
-          }
-        }
-      end
-
-      attr_reader :src, :alt, :size, :icon_attrs
-
-      def initialize(src: nil, alt: nil, size: nil, icon_attrs: {}, **user_attrs)
+      def initialize(src: nil, size: nil, **user_attrs)
         @src = src
-        @alt = alt
         @size = size
-        @icon_attrs = AttributeMerger.new(default_icon_attrs, icon_attrs).merge
 
         super(**user_attrs)
       end
@@ -58,15 +39,8 @@ module UI
       end
 
       private
-      def src?
-        src.present?
-      end
-
-      def default_icon_attrs
-        {
-          variant: :solid,
-          class: style(:icon, size:)
-        }
+      def placeholder_src
+        asset_url("avatar_placeholder.png")
       end
     end
   end

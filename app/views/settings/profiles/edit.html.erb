@@ -1,0 +1,11 @@
+<%= provide(:title, t(".title")) %>
+
+<div class="max-w-xl mx-auto">
+  <h2 class="mb-3 text-3xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight"><%= t(".page_title") %></h2>
+
+  <div class="prose prose-zinc mb-6 pb-3 dark:prose-invert">
+    <p><%= t(".page_subtitle") %></p>
+  </div>
+
+  <%= render "form", user: @user %>
+</div>

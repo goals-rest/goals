@@ -8,14 +8,9 @@
       <div>
         <div class="relative h-16">
           <%= render UI::Avatar::Component.new(
-            size: nil,
-            class: "absolute size-32 left-0 bottom-0 translate-y-1/2",
-            icon_attrs: {
-              class: "size-20"
-            }
-          ) do |avatar| %>
-            <% avatar.with_placeholder %>
-          <% end %>
+            src: @user.avatar.variant(:thumb),
+            class: "absolute size-32 left-0 bottom-0 translate-y-1/2"
+          ) %>
         </div>
 
         <div class="h-16 flex justify-end pt-2">

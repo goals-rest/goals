@@ -1,10 +1,17 @@
 pt-BR:
   activerecord:
-      attributes:
+    attributes:
+      user:
+        email: E-mail
+        email_address: E-mail
+        first_name: Nome
+        last_name: Sobrenome
+        username: Nome de usuário
+        password: Senha
+        password_confirmation: Confirmação de senha
+        new_password: Senha
+        current_password: Senha atual
+    errors:
+      models:
         user:
-          email: E-mail
-          first_name: Nome
-          last_name: Sobrenome
-          password: Senha
-          password_confirmation: Confirmação de senha
-
+          invalid_current_password: Senha inválida
