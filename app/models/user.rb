@@ -27,6 +27,10 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def handle
+    "@#{username}"
+  end
+
   private
   def set_username
     return if username.present?

@@ -25,5 +25,11 @@ Rails.application.routes.draw do
     resource :profile, only: %i[edit update]
   end
 
-  get "/:username", to: "profiles#show", constraints: { username: /[a-zA-Z0-9\.]+/ }, as: :profile
+  scope ":username", as: :profile, constraints: { username: /[a-zA-Z0-9\.]+/ } do
+    get "/" => "profiles#show"
+
+    scope module: :profiles do
+      resources :followers, only: %i[index destroy]
+    end
+  end
 end

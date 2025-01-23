@@ -94,4 +94,10 @@ class UserTest < ActiveSupport::TestCase
 
     assert_not user.update(current_password: "123")
   end
+
+  test "handle" do
+    user = User.new(username: "test.test")
+
+    assert_equal "@test.test", user.username
+  end
 end
