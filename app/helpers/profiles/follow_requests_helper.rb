@@ -1,0 +1,2 @@
+module Profiles::FollowRequestsHelper
+end

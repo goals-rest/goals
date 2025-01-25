@@ -17,6 +17,7 @@ pt-BR:
       followers: Seguidores
       follow: Seguir
       unfollow: Parar de seguir
+      request_follow: Solicitar para seguir
       sidebar:
         social_stats: Estatísticas sociais
       content:

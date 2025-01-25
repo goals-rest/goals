@@ -1,6 +1,7 @@
 class FollowsController < ApplicationController
   before_action :set_follow, only: %i[destroy]
   before_action :set_followee, only: %i[create]
+  before_action :ensure_followee_profile_is_public, only: %i[create]
 
   def create
     @follow = Current.user.follows.build(follow_params)
@@ -35,5 +36,11 @@ class FollowsController < ApplicationController
     return if @followee.present?
 
     redirect_back fallback_location: root_path, alert: t(".user_not_found")
+  end
+
+  def ensure_followee_profile_is_public
+    return if @followee.public_profile?
+
+    head :forbidden
   end
 end

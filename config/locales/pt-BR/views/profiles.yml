@@ -17,3 +17,10 @@ pt-BR:
         description: Aceite ou rejeite as solicitações que estão pendentes para escolher quem pode seguir você.
       follower:
         remove: Remover
+    follow_requests:
+      create:
+        success: Solicitação enviada.
+        error: Não foi possível enviar a solicitação para seguir.
+      destroy:
+        success: Solicitação cancelada.
+        error: Não foi possível cancelar a solicitação para seguir.
