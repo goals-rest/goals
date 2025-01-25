@@ -28,7 +28,7 @@
     </div>
   </div>
 
-  <% if Current.user == @user %>
+  <% if profile_owner? %>
     <div class="flex items-center justify-end md:w-1/12 w-full md:pt-0 pt-4">
       <%= render UI::Dropdown::Component.new(alignment: :right) do |dropdown| %>
         <% dropdown.with_trigger do %>
