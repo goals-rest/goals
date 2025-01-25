@@ -9,6 +9,8 @@ module Followable
   end
 
   def follows?(user)
+    return false if user.blank?
+
     followees.exists?(id: user.id)
   end
 

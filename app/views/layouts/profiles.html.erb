@@ -60,37 +60,11 @@
         </div>
       </div>
 
-      <div class="pt-4 lg:pt-6 grid grid-cols-3 gap-24">
-        <div class="col-span-3 lg:col-span-2">
-          <%= render UI::TabNav::Component.new(class: "pb-0") do |tab_nav| %>
-            <% tab_nav.with_tab(
-              href: profile_path(@user.username),
-              active: current_page?(profile_path(@user.username))
-            ) do |tab| %>
-              <% tab.with_title.with_content(t(".nav.activities")) %>
-            <% end %>
-
-            <% tab_nav.with_tab(
-              href: profile_followers_path(@user.username),
-              active: current_page?(profile_followers_path(@user.username))
-            ) do |tab| %>
-              <% tab.with_title.with_content(t(".nav.followers")) %>
-            <% end %>
-
-            <% tab_nav.with_tab do |tab| %>
-              <% tab.with_title.with_content(t(".nav.goals")) %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-3 lg:gap-24">
-        <div class="col-span-3 lg:col-span-2 py-4">
-          <%= yield %>
-        </div>
-
-        <%= render "layouts/profiles/sidebar" %>
-      </div>
+      <% if Current.user == @user || @user.public_profile? || Current.user&.follows?(@user) %>
+        <%= render "layouts/profiles/content" %>
+      <% else %>
+        <%= render "layouts/profiles/private" %>
+      <% end %>
     </main>
   <% end %>
 

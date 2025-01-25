@@ -66,6 +66,12 @@ class UserTest < ActiveSupport::TestCase
     assert_not user1.follows?(user2)
   end
 
+  test "follows? returns false if user is nil" do
+    user1 = create(:user)
+
+    assert_not user1.follows?(nil)
+  end
+
   test "returns follow for user" do
     user1 = create(:user)
     user2 = create(:user)

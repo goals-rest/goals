@@ -23,3 +23,6 @@ pt-BR:
         activities: Atividades
         followers: Seguidores
         goals: Metas
+      private:
+        title: Perfil privado
+        description: Este perfil é privado. Siga este usuário para visualizar o conteúdo.
