@@ -30,6 +30,28 @@ class Profiles::FollowersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "redirects to profile_url if the user profile is private" do
+    user1 = create(:user)
+    user2 = create(:user, profile_visibility: :private)
+
+    get profile_followers_url(user2.username)
+
+    assert_response :redirect
+    assert_redirected_to profile_url(user2.username)
+  end
+
+  test "list followers if the user profile is private but the current user follows them" do
+    user1 = create(:user)
+    user2 = create(:user, profile_visibility: :private)
+    create(:follow, follower_id: user1.id, followee_id: user2.id)
+
+    sign_in user1
+
+    get profile_followers_url(user2.username)
+
+    assert_response :success
+  end
+
   test "unfollows user if current user is the same as user" do
     user1 = create(:user)
     user2 = create(:user)
