@@ -5,6 +5,8 @@ class UserTest < ActiveSupport::TestCase
     create(:user)
   end
 
+  should define_enum_for(:profile_visibility)
+
   should have_many(:sessions)
   should have_many(:follows)
   should have_many(:followees).through(:follows)

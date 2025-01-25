@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  enum :profile_visibility, %i[public private], default: :public, suffix: :profile
+
   has_one_attached :avatar do |attachable|
     attachable.variant :thumb, resize_to_fit: [ 256, 256 ], preprocessed: true
   end
