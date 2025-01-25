@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     end
   end
   resources :follows, only: %i[create destroy]
+  resources :follow_requests, only: %i[index]
   namespace :settings do
     resource :profile, only: %i[edit update]
   end
