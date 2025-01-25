@@ -87,6 +87,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_01_30_133350) do
     t.string "first_name", default: "", null: false
     t.string "last_name", default: "", null: false
     t.string "password_digest", null: false
+    t.integer "profile_visibility", default: 0
     t.datetime "updated_at", null: false
     t.string "username", null: false
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
