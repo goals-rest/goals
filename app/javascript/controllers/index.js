@@ -9,9 +9,11 @@ import FlashController from "./flash_controller"
 import DarkModeToggleController from "./dark_mode_toggle_controller"
 import ModalController from "./modal_controller"
 import SumUpdaterController from "./sum_updater_controller"
+import ImagePreviewController from "./image_preview_controller"
 application.register("hello", HelloController)
 application.register("flash", FlashController)
 application.register("dark-mode-toggle", DarkModeToggleController)
 application.register("modal", ModalController)
 application.register("sum-updater", SumUpdaterController)
+application.register("image-preview", ImagePreviewController)
 import "./railsui"

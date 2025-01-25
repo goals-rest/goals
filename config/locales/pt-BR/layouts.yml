@@ -9,6 +9,7 @@ pt-BR:
       panel: Painel
       goals: Metas
       my_profile: Meu Perfil
+      settings: Configurações
       logout: Sair
     profiles:
       joined: Ingressou em %{date}

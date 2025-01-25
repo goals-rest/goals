@@ -76,4 +76,22 @@ class UserTest < ActiveSupport::TestCase
 
     assert_nil user1.follow_for(user2)
   end
+
+  test "when current password is correct the password is updated" do
+    user = create(:user, password: "123456")
+
+    assert user.update(current_password: "123456", new_password: "12345678910")
+  end
+
+  test "when current password is not correct the password is not updated" do
+    user = create(:user, password: "123456")
+
+    assert_not user.update(current_password: "123", new_password: "12345678910")
+  end
+
+  test "validates the new password is present when current password is present" do
+    user = create(:user, password: "123456")
+
+    assert_not user.update(current_password: "123")
+  end
 end

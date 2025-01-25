@@ -1,0 +1,94 @@
+<%= custom_form_with model: user, url: settings_profile_path do |form| %>
+  <%= form.form_group :avatar do %>
+    <%= form.label :avatar %>
+    <div class="flex items-center justify-start space-x-3" data-controller="image-preview">
+      <%= render UI::Avatar::Component.new(
+        src: user.avatar.variant(:thumb),
+        size: :xl,
+        class: "shrink-0",
+        data: {
+          image_preview_target: "image"
+        }
+      ) %>
+      <%= form.file_field(
+        :avatar, 
+        direct_upload: true,
+        data: { 
+          action: "change->image-preview#updatePreview" 
+        },
+        accept: ".jpg, .jpeg, .png, .webp"
+      ) %>
+      <%= form.error_message :avatar %>
+    </div>
+  <% end %>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <%= form.form_group :first_name do %>
+      <%= form.label :first_name, nil, class: "form-label-required" %>
+      <%= form.text_field(
+        :first_name,
+        autocomplete: :first_name,
+        placeholder: "John",
+        required: true
+      ) %>
+      <%= form.error_message :first_name %>
+    <% end %>
+
+    <%= form.form_group :last_name do %>
+      <%= form.label :last_name, nil, class: "form-label-required" %>
+      <%= form.text_field(
+        :last_name,
+        autocomplete: :last_name,
+        placeholder: "Doe",
+        required: true
+      ) %>
+      <%= form.error_message :last_name %>
+    <% end %>
+  </div>
+
+  <%= form.form_group :email_address do %>
+    <%= form.label :email_address, nil, class: "form-label-required" %>
+    <%= form.email_field(
+      :email_address,
+      autocomplete: :email,
+      placeholder: "john.doe@example.com",
+      required: true
+    ) %>
+    <%= form.error_message :email_address %>
+  <% end %>
+
+  <%= form.form_group :username do %>
+    <%= form.label :username, nil, class: "form-label-required" %>
+    <%= form.text_field(
+      :username,
+      placeholder: "john.doe",
+      required: true
+    ) %>
+    <%= form.error_message :username %>
+  <% end %>
+
+  <%= form.form_group :new_password do %>
+    <%= form.label :new_password %>
+    <%= form.password_field(
+      :new_password,
+      placeholder: "••••••••••••"
+    ) %>
+    <p class="prose prose-sm text-xs prose-zinc dark:prose-invert prose-p:m-0 my-2 max-w-full">
+      <%= t(".password_change_warning") %>
+    </p>
+    <%= form.error_message :new_password %>
+  <% end %>
+
+  <%= form.form_group :current_password do %>
+    <%= form.label :current_password %>
+    <%= form.password_field(
+      :current_password,
+      placeholder: "••••••••••••"
+    ) %>
+    <%= form.error_message :current_password %>
+  <% end %>
+
+  <div class="pt-6">
+    <%= form.submit value: t(".submit") %>
+  </div>
+<% end %>

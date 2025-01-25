@@ -1,7 +1,11 @@
 class User < ApplicationRecord
-  include Followable
+  include Followable, CurrentPassword
 
   has_secure_password
+
+  has_one_attached :avatar do |attachable|
+    attachable.variant :thumb, resize_to_fit: [ 256, 256 ], preprocessed: true
+  end
 
   has_many :sessions, dependent: :destroy
   has_many :goals, dependent: :destroy

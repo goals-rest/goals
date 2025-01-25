@@ -21,6 +21,9 @@ Rails.application.routes.draw do
     end
   end
   resources :follows, only: %i[create destroy]
+  namespace :settings do
+    resource :profile, only: %i[edit update]
+  end
 
   get "/:username", to: "profiles#show", constraints: { username: /[a-zA-Z0-9\.]+/ }, as: :profile
 end

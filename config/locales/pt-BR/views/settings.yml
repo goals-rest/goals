@@ -1,0 +1,13 @@
+pt-BR:
+  settings:
+    profiles:
+      edit:
+        title: Goals | Configurações da conta
+        page_title: Configurações da conta
+        page_subtitle: Atualize as informações do seu perfil.
+      update:
+        success: "Perfil atualizado com sucesso."
+        error: "Não possível possível salvar as alterações de perfil."
+      form:
+        submit: Salvar alterações
+        password_change_warning: Para atribuir uma nova senha à sua conta, insira sua senha atual abaixo.
