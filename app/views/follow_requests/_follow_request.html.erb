@@ -45,8 +45,8 @@
       <% dropdown.with_item do 
         link_to(
           t(".accept"), 
-          "#",
-          data: { turbo_method: :delete }
+          follow_request_accept_follow_requests_path(follow_request),
+          data: { turbo_method: :post }
         ) %>
       <% end %>
 

@@ -13,3 +13,6 @@ pt-BR:
     follow_request:
       accept: Aceitar
       reject: Rejeitar
+    accept_follow_requests:
+      success: Solicitação aceita.
+      error: Não foi possível aceitar a solicitação para seguir.
