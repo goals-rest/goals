@@ -39,6 +39,12 @@ class User < ApplicationRecord
     user == self || public_profile? || user&.follows?(self)
   end
 
+  def pending_follow_request_for?(user)
+    return false if user.blank?
+
+    follow_requests.exists?(requester_id: user.id)
+  end
+
   private
   def set_username
     return if username.present?

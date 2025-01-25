@@ -138,4 +138,25 @@ class UserTest < ActiveSupport::TestCase
 
     assert user1.allowed_to_view_profile?(user2)
   end
+
+  test "pending_follow_request_for? returns false if user is nil" do
+    user = create(:user)
+
+    assert_not user.pending_follow_request_for?(nil)
+  end
+
+  test "pending_follow_request_for? returns false if there is no pending follow request" do
+    user1 = create(:user, profile_visibility: :private)
+    user2 = create(:user)
+
+    assert_not user1.pending_follow_request_for?(user2)
+  end
+
+  test "pending_follow_request_for? returns true if there is a pending follow request" do
+    user1 = create(:user, profile_visibility: :private)
+    user2 = create(:user)
+    create(:follow_request, requester: user2, followee: user1)
+
+    assert user1.pending_follow_request_for?(user2)
+  end
 end

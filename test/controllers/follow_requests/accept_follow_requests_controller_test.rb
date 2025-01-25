@@ -24,4 +24,17 @@ class FollowRequests::AcceptFollowRequestsControllerTest < ActionDispatch::Integ
 
     assert_response :not_found
   end
+
+  test "returns a not found response if current user does not own the follow request" do
+    user1 = create(:user)
+    user2 = create(:user)
+    user3 = create(:user)
+    follow_request = create(:follow_request, requester: user1, followee: user2)
+
+    sign_in user3
+
+    post follow_request_accept_follow_requests_path(follow_request)
+
+    assert_response :not_found
+  end
 end

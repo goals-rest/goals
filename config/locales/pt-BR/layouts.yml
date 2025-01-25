@@ -18,6 +18,7 @@ pt-BR:
       follow: Seguir
       unfollow: Parar de seguir
       request_follow: Solicitar para seguir
+      cancel_follow_request: Cancelar solicitação
       sidebar:
         social_stats: Estatísticas sociais
       content:

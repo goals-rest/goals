@@ -65,7 +65,20 @@ class FollowsControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
-  test "returns an not found response when the user tries to destroy a follow that does not exist" do
+  test "returns a not found response if the user tries to destroy a follow that does not exist" do
+    user1 = create(:user)
+    user2 = create(:user)
+    user3 = create(:user)
+    follow = create(:follow, follower_id: user1.id, followee_id: user2.id)
+
+    sign_in user3
+
+    delete follows_url(follow)
+
+    assert_response :not_found
+  end
+
+  test "returns a not found response if the current user does not own the follow" do
     user1 = create(:user)
 
     sign_in user1
