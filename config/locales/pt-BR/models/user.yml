@@ -11,6 +11,11 @@ pt-BR:
         password_confirmation: Confirmação de senha
         new_password: Senha
         current_password: Senha atual
+        profile_visibility: Visibilidade do perfil
+        profile_visibility:
+          one: Visiblidade do perfil
+          public: Público
+          private: Privado
     errors:
       models:
         user:

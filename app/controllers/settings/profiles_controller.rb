@@ -19,7 +19,7 @@ module Settings
 
     def user_params
       params.require(:user)
-            .permit(:avatar, :first_name, :last_name, :username, :email_address, :new_password, :current_password)
+            .permit(:avatar, :first_name, :last_name, :username, :email_address, :new_password, :current_password, :profile_visibility)
     end
   end
 end
