@@ -5,7 +5,7 @@
 <% end %>
 
 <% if @followers.none? %>
-  <% if Current.user == @user %>
+  <% if profile_owner? %>
     <div class="max-w-xl mx-auto">
       <%= render UI::EmptyState::Component.new do |empty_state| %>
         <% empty_state.with_icon("users", class: "size-8 font-semibold font-heading text-zinc-900 dark:text-zinc-100") %>

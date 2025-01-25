@@ -98,6 +98,6 @@ class UserTest < ActiveSupport::TestCase
   test "handle" do
     user = User.new(username: "test.test")
 
-    assert_equal "@test.test", user.username
+    assert_equal "@test.test", user.handle
   end
 end

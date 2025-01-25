@@ -12,4 +12,14 @@ class ProfilesController < ApplicationController
 
     redirect_to root_path if @user.blank?
   end
+
+  def profile_visitor?
+    Current.user != @user
+  end
+  helper_method :profile_visitor?
+
+  def profile_owner?
+    Current.user == @user
+  end
+  helper_method :profile_owner?
 end

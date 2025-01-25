@@ -41,14 +41,14 @@ class FollowsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to profile_url(username: user2.username)
   end
 
-  test "returns an error response with the user tries to follow themselves" do
+  test "does not allow a user to follow themselves" do
     user1 = create(:user)
 
     sign_in user1
 
-    post follows_url, params: { follow: { followee_id: user1.id } }
-
-    assert_response :unprocessable_entity
+    assert_no_difference "Follow.count" do
+      post follows_url, params: { follow: { followee_id: user1.id } }
+    end
   end
 
   test "unfollows user" do
