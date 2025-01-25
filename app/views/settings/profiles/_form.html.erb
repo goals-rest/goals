@@ -12,6 +12,7 @@
       ) %>
       <%= form.file_field(
         :avatar, 
+        direct_upload: true,
         data: { 
           action: "change->image-preview#updatePreview" 
         },

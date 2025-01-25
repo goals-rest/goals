@@ -14,7 +14,7 @@ module Settings
 
     private
     def set_user
-      @user = Current.user
+      @user = User.find(Current.user.id)
     end
 
     def user_params
