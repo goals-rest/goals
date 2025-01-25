@@ -12,6 +12,7 @@ module UserScoped
   end
 
   def require_follow
+    return if Current.user == @user
     return if @user.public_profile?
     return if Current.user&.follows?(@user)
 
