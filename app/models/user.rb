@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   has_many :sessions, dependent: :destroy
   has_many :goals, dependent: :destroy
+  has_many :follow_requests, dependent: :destroy, foreign_key: "followee_id"
 
   validates :first_name, presence: true
   validates :last_name, presence: true
