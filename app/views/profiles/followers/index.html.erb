@@ -6,6 +6,10 @@
 
 <% if @followers.none? %>
   <% if profile_owner? %>
+    <% if @user.follow_requests.count.positive? %>
+      <%= render "pending_follow_requests" %>
+    <% end %>
+
     <div class="max-w-xl mx-auto">
       <%= render UI::EmptyState::Component.new do |empty_state| %>
         <% empty_state.with_icon("users", class: "size-8 font-semibold font-heading text-zinc-900 dark:text-zinc-100") %>

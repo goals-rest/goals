@@ -1,0 +1,12 @@
+pt-BR:
+  follow_requests:
+    index:
+      title: Goals | Solicitações para seguir
+      page_title: Solicitações para seguir
+      followers: Seguidores
+    no_follow_requests:
+      title: Você ainda não tem solicitações para seguir
+      description: Você ainda não possui solicitações. Assim que receber alguma, elas serão exibidas nesta área.
+    follow_request:
+      accept: Aceitar
+      reject: Rejeitar

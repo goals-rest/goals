@@ -12,5 +12,8 @@ pt-BR:
         visitor:
           empty_state_title: Este perfil ainda não tem seguidores
           empty_state_description: Seja o primeiro a seguir e acompanhar as atividades!
+      pending_follow_requests:
+        title: Você tem uma ou mais solicitações para seguir pendentes
+        description: Aceite ou rejeite as solicitações que estão pendentes para escolher quem pode seguir você.
       follower:
         remove: Remover
