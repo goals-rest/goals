@@ -39,6 +39,16 @@ ActiveRecord::Schema[8.1].define(version: 2025_01_30_133350) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "follow_requests", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "followee_id", null: false
+    t.integer "requester_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followee_id"], name: "index_follow_requests_on_followee_id"
+    t.index ["requester_id", "followee_id"], name: "index_follow_requests_on_requester_id_and_followee_id", unique: true
+    t.index ["requester_id"], name: "index_follow_requests_on_requester_id"
+  end
+
   create_table "follows", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "followee_id", null: false
@@ -96,6 +106,8 @@ ActiveRecord::Schema[8.1].define(version: 2025_01_30_133350) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "follow_requests", "users", column: "followee_id"
+  add_foreign_key "follow_requests", "users", column: "requester_id"
   add_foreign_key "follows", "users", column: "followee_id"
   add_foreign_key "follows", "users", column: "follower_id"
   add_foreign_key "goals", "users"
