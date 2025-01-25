@@ -14,6 +14,7 @@ class UserTest < ActiveSupport::TestCase
   should have_many(:followees).through(:follows)
   should have_many(:follows_as_followee)
   should have_many(:followers).through(:follows_as_followee)
+  should have_many(:follow_requests)
 
   should validate_presence_of(:first_name)
   should validate_presence_of(:last_name)
