@@ -6,17 +6,17 @@ class FollowsController < ApplicationController
     @follow = Current.user.follows.build(follow_params)
 
     if @follow.save
-      redirect_back_to_profile @followee, notice: t(".success")
+      redirect_back_to_profile @followee
     else
-      redirect_back_to_profile @followee, alert: t(".error"), status: :unprocessable_entity
+      redirect_back_to_profile @followee, alert: t(".error")
     end
   end
 
   def destroy
     if @follow.destroy
-      redirect_back_to_profile @follow.followee, notice: t(".success")
+      redirect_back_to_profile @follow.followee
     else
-      redirect_back_to_profile @follow.followee, alert: t(".error"), status: :unprocessable_entity
+      redirect_back_to_profile @follow.followee, alert: t(".error")
     end
   end
 
@@ -35,9 +35,5 @@ class FollowsController < ApplicationController
     return if @followee.present?
 
     redirect_back fallback_location: root_path, alert: t(".user_not_found")
-  end
-
-  def redirect_back_to_profile(user, **options)
-    redirect_back fallback_location: profile_path(username: user.username), **options
   end
 end

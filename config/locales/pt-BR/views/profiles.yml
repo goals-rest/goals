@@ -1,0 +1,16 @@
+pt-BR:
+  profiles:
+    followers:
+      destroy:
+        success: Seguidor removido com sucesso.
+        error: Não foi possível remover o seguidor.
+        not_found: Seguidor não encontrado.
+      index:
+        user:
+          empty_state_title: Você ainda não tem seguidores
+          empty_state_description: Compartilhe seu perfil e conecte-se com outras pessoas!
+        visitor:
+          empty_state_title: Este perfil ainda não tem seguidores
+          empty_state_description: Seja o primeiro a seguir e acompanhar as atividades!
+      follower:
+        remove: Remover

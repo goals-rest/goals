@@ -1,0 +1,25 @@
+<% if @followers.any? %>
+  <ul class="divide-y divide-zinc-200/80 dark:divide-zinc-700">
+    <%= render partial: "follower", collection: @followers, cached: true %>
+  </ul>
+<% end %>
+
+<% if @followers.none? %>
+  <% if profile_owner? %>
+    <div class="max-w-xl mx-auto">
+      <%= render UI::EmptyState::Component.new do |empty_state| %>
+        <% empty_state.with_icon("users", class: "size-8 font-semibold font-heading text-zinc-900 dark:text-zinc-100") %>
+        <% empty_state.with_title.with_content(t(".user.empty_state_title")) %>
+        <% empty_state.with_description.with_content(t(".user.empty_state_description")) %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="max-w-xl mx-auto">
+      <%= render UI::EmptyState::Component.new do |empty_state| %>
+        <% empty_state.with_icon("users", class: "size-8 font-semibold font-heading text-zinc-900 dark:text-zinc-100") %>
+        <% empty_state.with_title.with_content(t(".visitor.empty_state_title")) %>
+        <% empty_state.with_description.with_content(t(".visitor.empty_state_description")) %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

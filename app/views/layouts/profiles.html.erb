@@ -35,7 +35,7 @@
             </h2>
 
             <h3 class="font-light text-base text-zinc-700 tracking-normal dark:text-zinc-300 font-heading">
-              <%= "@#{@user.username}" %>
+              <%= @user.handle %>
             </h2>
           </div>
 
@@ -63,16 +63,22 @@
       <div class="pt-4 lg:pt-6 grid grid-cols-3 gap-24">
         <div class="col-span-3 lg:col-span-2">
           <%= render UI::TabNav::Component.new(class: "pb-0") do |tab_nav| %>
-            <% tab_nav.with_tab(active: true) do |tab| %>
-              <% tab.with_title.with_content("Atividades") %>
+            <% tab_nav.with_tab(
+              href: profile_path(@user.username),
+              active: current_page?(profile_path(@user.username))
+            ) do |tab| %>
+              <% tab.with_title.with_content(t(".nav.activities")) %>
+            <% end %>
+
+            <% tab_nav.with_tab(
+              href: profile_followers_path(@user.username),
+              active: current_page?(profile_followers_path(@user.username))
+            ) do |tab| %>
+              <% tab.with_title.with_content(t(".nav.followers")) %>
             <% end %>
 
             <% tab_nav.with_tab do |tab| %>
-              <% tab.with_title.with_content("Seguidores") %>
-            <% end %>
-
-            <% tab_nav.with_tab do |tab| %>
-              <% tab.with_title.with_content("Metas") %>
+              <% tab.with_title.with_content(t(".nav.goals")) %>
             <% end %>
           <% end %>
         </div>

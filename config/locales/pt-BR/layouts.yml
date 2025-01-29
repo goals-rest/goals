@@ -19,3 +19,7 @@ pt-BR:
       unfollow: Parar de seguir
       sidebar:
         social_stats: Estatísticas sociais
+      nav:
+        activities: Atividades
+        followers: Seguidores
+        goals: Metas
