@@ -6,9 +6,5 @@ FactoryBot.define do
     password { "password" }
     first_name { "Test" }
     last_name { "Test" }
-
-    trait(:with_post) do
-      post
-    end
   end
 end
