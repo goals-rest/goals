@@ -124,6 +124,12 @@ class UserTest < ActiveSupport::TestCase
     assert user.allowed_to_view_profile?(user2)
   end
 
+  test "allowed to view profile if the profile is public and user is nil" do
+    user = create(:user, profile_visibility: :public)
+
+    assert user.allowed_to_view_profile?(nil)
+  end
+
   test "allowed to view profile if the user follows the profile" do
     user1 = create(:user, profile_visibility: :private)
     user2 = create(:user)
