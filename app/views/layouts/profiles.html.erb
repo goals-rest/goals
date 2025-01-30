@@ -60,7 +60,7 @@
         </div>
       </div>
 
-      <% if Current.user == @user || @user.public_profile? || Current.user&.follows?(@user) %>
+      <% if @user.allowed_to_view_profile?(Current.user) %>
         <%= render "layouts/profiles/content" %>
       <% else %>
         <%= render "layouts/profiles/private" %>
