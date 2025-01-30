@@ -6,6 +6,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   should have_many(:sessions)
+  should have_many(:goals)
+  should have_many(:posts)
   should have_many(:follows)
   should have_many(:followees).through(:follows)
   should have_many(:follows_as_followee)
