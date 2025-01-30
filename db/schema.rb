@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_01_21_173433) do
+ActiveRecord::Schema[8.1].define(version: 2025_01_30_133350) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -63,6 +63,15 @@ ActiveRecord::Schema[8.1].define(version: 2025_01_21_173433) do
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.integer "owner_id", null: false
+    t.string "title"
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_posts_on_owner_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "ip_address"
@@ -89,5 +98,6 @@ ActiveRecord::Schema[8.1].define(version: 2025_01_21_173433) do
   add_foreign_key "follows", "users", column: "followee_id"
   add_foreign_key "follows", "users", column: "follower_id"
   add_foreign_key "goals", "users"
+  add_foreign_key "posts", "users", column: "owner_id"
   add_foreign_key "sessions", "users"
 end

@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_many :sessions, dependent: :destroy
   has_many :goals, dependent: :destroy
+  has_many :posts, class_name: "Post", foreign_key: "owner_id", dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true
