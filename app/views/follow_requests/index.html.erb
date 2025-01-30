@@ -1,0 +1,19 @@
+<%= provide(:title, t(".title")) %>
+
+<div class="max-w-2xl mx-auto">
+  <%= render UI::Breadcrumb::Component.new do |breadcrumb| %>
+    <% breadcrumb.with_item(href: profile_followers_path(Current.user.username)) { t(".followers") } %>
+    <% breadcrumb.with_separator %>
+    <% breadcrumb.with_item(active: true) { t(".page_title") } %>
+  <% end %>
+
+  <h1 class="mb-6 text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight"><%= t(".page_title") %></h1>
+
+  <% if @follow_requests.any? %>
+    <ul class="divide-y divide-zinc-200/80 dark:divide-zinc-700">
+      <%= render partial: "follow_request", collection: @follow_requests, cached: true %>
+    </ul>
+  <% else %>
+    <%= render "no_follow_requests" %>
+  <% end %>
+</div>
