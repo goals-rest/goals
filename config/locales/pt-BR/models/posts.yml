@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      post: Publicação
+    attributes:
+      post:
+        title: Título
+        body: Conteúdo
+        owner: Autor
