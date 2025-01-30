@@ -1,0 +1,11 @@
+pt-BR:
+  posts:
+    new:
+      posts: Publicações
+      title: Goals | Nova publicação
+      page_title: Nova publicação
+      submit: Criar publicação
+    create:
+      success: Publicação criada com sucesso
+    form:
+      go_back: Voltar

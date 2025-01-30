@@ -1,0 +1,18 @@
+<%= custom_form_with model: post do |form| %>
+  <%= form.form_group :title do %>
+    <%= form.label :title, nil, class: "form-label-required" %>
+    <%= form.text_field :title %>
+    <%= form.error_message :title %>
+  <% end %>
+
+  <%= form.form_group :body do %>
+    <%= form.label :body, nil, class: "form-label-required" %>
+    <%= form.textarea :body %>
+    <%= form.error_message :body %>
+  <% end %>
+
+  <div class="grid grid-cols-2 gap-6 pt-10">
+    <%= link_to t(".go_back"), home_path, class: "btn btn-white text-center" %>
+    <%= form.submit value: submit_text, class: "w-full", data: { disable_with: submit_text } %>
+  </div>
+<% end %>
