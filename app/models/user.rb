@@ -34,6 +34,10 @@ class User < ApplicationRecord
     "@#{username}"
   end
 
+  def allowed_to_view_profile?(user)
+    user == self || public_profile? || user&.follows?(self)
+  end
+
   private
   def set_username
     return if username.present?
