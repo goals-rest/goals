@@ -1,7 +1,7 @@
 require "test_helper"
 
 class FollowRequestsControllerTest < ActionDispatch::IntegrationTest
-  test "the truth" do
+  test "new" do
     user = create(:user)
 
     sign_in user
