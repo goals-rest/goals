@@ -5,6 +5,8 @@ class UserTest < ActiveSupport::TestCase
     create(:user)
   end
 
+  should define_enum_for(:profile_visibility)
+
   should have_many(:sessions)
   should have_many(:goals)
   should have_many(:posts)
@@ -64,6 +66,12 @@ class UserTest < ActiveSupport::TestCase
     assert_not user1.follows?(user2)
   end
 
+  test "follows? returns false if user is nil" do
+    user1 = create(:user)
+
+    assert_not user1.follows?(nil)
+  end
+
   test "returns follow for user" do
     user1 = create(:user)
     user2 = create(:user)
@@ -101,5 +109,32 @@ class UserTest < ActiveSupport::TestCase
     user = User.new(username: "test.test")
 
     assert_equal "@test.test", user.handle
+  end
+
+  test "allowed to view profile if user is themselves" do
+    user = create(:user, profile_visibility: :private)
+
+    assert user.allowed_to_view_profile?(user)
+  end
+
+  test "allowed to view profile if the profile is public" do
+    user = create(:user, profile_visibility: :public)
+    user2 = create(:user)
+
+    assert user.allowed_to_view_profile?(user2)
+  end
+
+  test "allowed to view profile if the profile is public and user is nil" do
+    user = create(:user, profile_visibility: :public)
+
+    assert user.allowed_to_view_profile?(nil)
+  end
+
+  test "allowed to view profile if the user follows the profile" do
+    user1 = create(:user, profile_visibility: :private)
+    user2 = create(:user)
+    user2.follows.create(followee_id: user1.id)
+
+    assert user1.allowed_to_view_profile?(user2)
   end
 end

@@ -1,0 +1,17 @@
+<div class="pt-4 lg:pt-6 grid grid-cols-3 gap-24">
+  <div class="col-span-3 lg:col-span-2 border-b border-zinc-200 dark:border-zinc-600"></div>
+</div>
+
+<div class="grid grid-cols-3 lg:gap-24">
+  <div class="col-span-3 lg:col-span-2 py-4">
+    <div class="max-w-xl mx-auto">
+      <%= render UI::EmptyState::Component.new do |empty_state| %>
+        <% empty_state.with_icon("lock-closed", class: "size-8 font-semibold font-heading text-zinc-900 dark:text-zinc-100") %>
+        <% empty_state.with_title.with_content(t(".title")) %>
+        <% empty_state.with_description.with_content(t(".description")) %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= render "layouts/profiles/sidebar" %>
+</div>

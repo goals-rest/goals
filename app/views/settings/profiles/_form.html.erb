@@ -67,6 +67,19 @@
     <%= form.error_message :username %>
   <% end %>
 
+  <%= form.form_group :profile_visibility do %>
+    <%= form.label :profile_visibility, nil, class: "form-label-required" %>
+    <%= form.select(
+      :profile_visibility,
+      [
+        [ t("activerecord.attributes.user.profile_visibility.public"), :public ],
+        [ t("activerecord.attributes.user.profile_visibility.private"), :private ]
+      ],
+      required: true
+    ) %>
+    <%= form.error_message :profile_visibility %>
+  <% end %>
+
   <%= form.form_group :new_password do %>
     <%= form.label :new_password %>
     <%= form.password_field(
