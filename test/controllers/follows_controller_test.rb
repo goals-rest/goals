@@ -74,4 +74,15 @@ class FollowsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :not_found
   end
+
+  test "returns a forbidden response if the followee profile is not public" do
+    user1 = create(:user)
+    user2 = create(:user, profile_visibility: :private)
+
+    sign_in user1
+
+    post follows_url, params: { follow: { followee_id: user2.id } }
+
+    assert_response :forbidden
+  end
 end

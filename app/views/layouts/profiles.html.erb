@@ -14,15 +14,22 @@
         </div>
 
         <div class="h-16 flex justify-end pt-2">
-          <% if Current.user.present? && Current.user != @user %>
+          <% if Current.user.present? && profile_visitor? %>
             <% if Current.user.follows?(@user) %>
               <%= custom_form_with(model: Current.user.follow_for(@user), method: :delete) do |form| %>
                 <%= form.submit value: t(".unfollow"), class: "cursor-pointer" %>
               <% end %>
-            <% else %>
+            <% end %>
+
+            <% if @user.public_profile? %>
               <%= custom_form_with(model: Follow.new(followee_id: @user.id), method: :post) do |form| %>
                 <%= form.hidden_field :followee_id, value: @user.id %>
                 <%= form.submit value: t(".follow"), class: "cursor-pointer" %>
+              <% end %>
+            <% else %>
+              <%= custom_form_with(model: Follow.new(followee_id: @user.id), method: :post) do |form| %>
+                <%= form.hidden_field :followee_id, value: @user.id %>
+                <%= form.submit value: t(".request_follow"), class: "cursor-pointer" %>
               <% end %>
             <% end %>
           <% end%>
