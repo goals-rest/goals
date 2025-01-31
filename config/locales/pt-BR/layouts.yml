@@ -15,12 +15,14 @@ pt-BR:
       joined: Ingressou em %{date}
       following: Seguindo
       followers: Seguidores
-      follow: Seguir
       unfollow: Parar de seguir
-      request_follow: Solicitar para seguir
-      cancel_follow_request: Cancelar solicitação
       sidebar:
         social_stats: Estatísticas sociais
+      public_profile_actions:
+        follow: Seguir
+      private_profile_actions:
+        request_follow: Solicitar para seguir
+        cancel_follow_request: Cancelar solicitação
       content:
         nav:
           activities: Atividades

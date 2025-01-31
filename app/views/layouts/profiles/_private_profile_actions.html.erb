@@ -1,0 +1,9 @@
+<% if @user.pending_follow_request_for?(Current.user) %>
+  <%= custom_form_with(url: profile_follow_request_path(@user.username), method: :delete) do |form| %>
+    <%= form.submit value: t(".cancel_follow_request"), class: "cursor-pointer" %>
+  <% end %>
+<% else %>
+  <%= custom_form_with(url: profile_follow_request_path(@user.username), method: :post) do |form| %>
+    <%= form.submit value: t(".request_follow"), class: "cursor-pointer" %>
+  <% end %>
+<% end %>
