@@ -4,6 +4,9 @@ pt-BR:
       title: Goals | Solicitações para seguir
       page_title: Solicitações para seguir
       followers: Seguidores
+    destroy:
+      success: Solicitação para seguir rejeitada.
+      error: Não foi possível rejeitar a solicitação para seguir.
     no_follow_requests:
       title: Você ainda não tem solicitações para seguir
       description: Você ainda não possui solicitações. Assim que receber alguma, elas serão exibidas nesta área.

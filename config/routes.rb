@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
   resources :posts, only: %i[new create]
   resources :follows, only: %i[create destroy]
-  resources :follow_requests, only: %i[index]
+  resources :follow_requests, only: %i[index destroy]
   namespace :settings do
     resource :profile, only: %i[edit update]
   end

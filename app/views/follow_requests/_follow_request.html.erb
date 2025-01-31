@@ -53,7 +53,7 @@
       <% dropdown.with_item do 
         link_to(
           t(".reject"), 
-          "#",
+          follow_request_path(follow_request),
           data: { turbo_method: :delete }
         ) %>
       <% end %>
