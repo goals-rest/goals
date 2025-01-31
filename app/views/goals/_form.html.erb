@@ -25,7 +25,7 @@
     <% end %>
   </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 form-group">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
     <%= form.form_group :current do %>
       <%= form.label :current, nil, class: "form-label-required" %>
       <%= form.text_field :current, value: strip_zeros(goal.current) %>
@@ -40,7 +40,7 @@
   </div>
 
   <div class="grid grid-cols-2 gap-6 pt-10">
-    <%= link_to t(".go_back"), goals_path, class: "btn btn-white text-center" %>
+    <%= render(UI::Button::Component.new(builder: :a, color: :white, href: goals_path, class: "cursor-pointer")) { t(".go_back") } %>
     <%= form.submit value: submit_text, class: "w-full", data: { disable_with: submit_text } %>
   </div>
 <% end %>
