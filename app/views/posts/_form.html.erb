@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="grid grid-cols-2 gap-6 pt-10">
-    <%= link_to t(".go_back"), home_path, class: "btn btn-white text-center" %>
+    <%= render(UI::Button::Component.new(builder: :a, color: :white, href: home_path, class: "cursor-pointer")) { t(".go_back") } %>
     <%= form.submit value: submit_text, class: "w-full", data: { disable_with: submit_text } %>
   </div>
 <% end %>
