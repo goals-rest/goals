@@ -1,7 +1,7 @@
 <%= provide(:title, "Goals | Painel") %>
 
-<div class="grid grid-cols-4 gap-8">
-  <div class="hidden lg:block">
+<div class="flex gap-8">
+  <div class="hidden lg:block shrink-0 basis-1/4">
     <%= tag.div(
       class: "border border-zinc-300/90 shadow-sm shadow-zinc-300/20
               rounded-lg dark:shadow-zinc-950/50 dark:border-zinc-600/80
@@ -39,11 +39,11 @@
     <% end %>
   </div>
 
-  <div class="flex flex-col items-center col-span-4 lg:col-span-2 bg-red-500">
-    <%= render partial: "post", collection: @posts, as: :post, cached: true %>
+  <div class="flex flex-col items-center w-full lg:basis-1/2 gap-4">
+    <%= render partial: "post", collection: @posts, as: :post, cached: ->(post) { [post, @user] } %>
   </div>
 
-  <div class="hidden xl:flex flex-col">
+  <div class="hidden xl:flex flex-col shrink-0 basis-1/4">
     <h4 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Meus Objetivos</h4>
     <%= render partial: "goal", collection: @goals, as: :goal, cached: true %>
   </div>

@@ -1,20 +1,20 @@
 <%= render UI::Card::Component.new(class: "bg-white w-full") do %>
-  <%= render UI::Card::HeaderComponent.new do |header| %>
+  <%= render UI::Card::HeaderComponent.new(class: "px-4 pt-4") do |header| %>
     <% header.with_title do %>
       <div class="flex items-center gap-2">
-        <%= render UI::Avatar::Component.new(src: Current.user.avatar.variant(:thumb), size: :sm) %>
+        <%= render UI::Avatar::Component.new(src: post.owner.avatar.variant(:thumb), size: :sm) %>
         <div>
-          <p class="text-sm"><%= Current.user.first_name %></p>
+          <p class="text-sm"><%= post.owner.name %></p>
           <p class="text-sm text-zinc-500 font-normal dark:text-zinc-400"><%= localize(post.created_at.to_time, format: :friendly) %></p>
         </div>
       </div>
     <% end %>
   <% end %>
-  <%= render UI::Card::BodyComponent.new do |header| %>
+  <%= render UI::Card::BodyComponent.new(class: "px-4 w-full") do |header| %>
     <%= post.body %>
   <% end %>
   <%#= render UI::Card::MediaComponent.new(src: "https://picsum.photos/600/600") %>
-  <%= render UI::Card::ActionsComponent.new do %>
+  <%= render UI::Card::ActionsComponent.new(class: "px-4 pb-4") do %>
     <div class="flex items-center">
       <div class="flex-1 flex items-center gap-4">
         <p class="text-sm text-zinc-500 font-normal dark:text-zinc-400"><%= t(".likes", count: "1.000") %></p>

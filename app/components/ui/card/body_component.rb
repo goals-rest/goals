@@ -4,7 +4,7 @@ module UI
       style do
         base do
           %w[
-            px-3 pt-2 prose prose-zinc dark:prose-invert
+            px-3 pt-2 leading-7 text-zinc-900 dark:text-zinc-100
           ]
         end
       end

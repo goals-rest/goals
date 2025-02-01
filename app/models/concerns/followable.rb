@@ -6,6 +6,7 @@ module Followable
     has_many :followees, through: :follows
     has_many :follows_as_followee, class_name: "Follow", foreign_key: "followee_id", dependent: :destroy
     has_many :followers, through: :follows_as_followee
+    has_many :posts_of_followees, through: :followees, source: :posts
   end
 
   def follows?(user)
