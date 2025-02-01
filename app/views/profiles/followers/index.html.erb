@@ -1,6 +1,6 @@
 <% if @followers.any? %>
   <ul class="divide-y divide-zinc-200/80 dark:divide-zinc-700">
-    <%= render partial: "follower", collection: @followers, cached: true %>
+    <%= render partial: "follower", collection: @followers, cached: ->(follower) { [Current.user || :guest, follower] } %>
   </ul>
 <% end %>
 
