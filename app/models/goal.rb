@@ -1,6 +1,8 @@
 class Goal < ApplicationRecord
   enum :status, [ :pending, :completed ], with_model_name: true
 
+  has_many :progress_changes, dependent: :destroy
+
   belongs_to :user
 
   validates :title, presence: true
@@ -16,6 +18,7 @@ class Goal < ApplicationRecord
   scope :search, ->(title) { where("LOWER(title) LIKE ?", "%#{title.downcase}%") if title.present? }
 
   before_save :set_status
+  after_update :log_progress
 
   def progress
     current / target
@@ -34,5 +37,11 @@ class Goal < ApplicationRecord
 
   def set_status
     self.status = current >= target ? :completed : :pending
+  end
+
+  def log_progress
+    return unless saved_change_to_current?
+
+    Goal::ProgressChange.log_change!(self, current_previously_was, current)
   end
 end

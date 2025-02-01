@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_01_30_133350) do
+ActiveRecord::Schema[8.1].define(version: 2025_02_01_011935) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -57,6 +57,16 @@ ActiveRecord::Schema[8.1].define(version: 2025_01_30_133350) do
     t.index ["followee_id"], name: "index_follows_on_followee_id"
     t.index ["follower_id", "followee_id"], name: "index_follows_on_follower_id_and_followee_id", unique: true
     t.index ["follower_id"], name: "index_follows_on_follower_id"
+  end
+
+  create_table "goal_progress_changes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "goal_id", null: false
+    t.decimal "new_value", precision: 10, scale: 2, default: "0.0", null: false
+    t.decimal "old_value", precision: 10, scale: 2, default: "0.0", null: false
+    t.decimal "target", precision: 10, scale: 2, default: "0.0", null: false
+    t.datetime "updated_at", null: false
+    t.index ["goal_id"], name: "index_goal_progress_changes_on_goal_id"
   end
 
   create_table "goals", force: :cascade do |t|
@@ -110,6 +120,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_01_30_133350) do
   add_foreign_key "follow_requests", "users", column: "requester_id"
   add_foreign_key "follows", "users", column: "followee_id"
   add_foreign_key "follows", "users", column: "follower_id"
+  add_foreign_key "goal_progress_changes", "goals"
   add_foreign_key "goals", "users"
   add_foreign_key "posts", "users", column: "owner_id"
   add_foreign_key "sessions", "users"

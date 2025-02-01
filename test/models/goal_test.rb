@@ -87,4 +87,28 @@ class GoalTest < ActiveSupport::TestCase
 
     assert goal.pending?
   end
+
+  test "creates a goal progress change if current changes" do
+    goal = create(:goal, current: 5, target: 10)
+
+    assert_difference "Goal::ProgressChange.count", +1 do
+      goal.update(current: 10)
+    end
+
+    goal.reload
+
+    progress_change = goal.progress_changes.last
+
+    assert_equal 5, progress_change.old_value
+    assert_equal 10, progress_change.new_value
+    assert_equal 10, progress_change.target
+  end
+
+  test "does not create a goal progress change if current does not change" do
+    goal = create(:goal, current: 5, target: 10)
+
+    assert_no_difference "Goal::ProgressChange.count", 0 do
+      goal.update(target: 20)
+    end
+  end
 end
