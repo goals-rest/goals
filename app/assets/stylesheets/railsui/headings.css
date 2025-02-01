@@ -1,0 +1,47 @@
+.h1 {
+  @apply text-[3em] font-semibold font-heading text-zinc-900 tracking-tighter leading-tight dark:text-zinc-100;
+}
+
+.h2 {
+  @apply text-[2.25em] font-semibold font-heading text-zinc-900 tracking-tighter leading-tight dark:text-zinc-100;
+}
+
+.h3 {
+  @apply text-[1.875em] font-semibold font-heading text-zinc-900 tracking-tighter leading-tight dark:text-zinc-100;
+}
+
+.h4 {
+  @apply text-[1.75em] font-semibold font-heading text-zinc-900 tracking-tighter leading-tight dark:text-zinc-100;
+}
+
+.h5 {
+  @apply text-[1.5em] font-semibold font-heading text-zinc-900 tracking-tighter leading-tight dark:text-zinc-100;
+}
+
+.h6 {
+  @apply text-[1.25em] font-semibold font-heading text-zinc-900 tracking-tighter leading-tight dark:text-zinc-100;
+}
+
+.display-1 {
+  @apply text-[5.25em] font-semibold font-heading text-zinc-900 tracking-tighter leading-[1] dark:text-zinc-100;
+}
+
+.display-2 {
+  @apply text-[4.5em] font-semibold font-heading text-zinc-900 tracking-tighter leading-[1] dark:text-zinc-100;
+}
+
+.display-3 {
+  @apply text-[4em] font-semibold font-heading text-zinc-900 tracking-tighter leading-[1] dark:text-zinc-100;
+}
+
+.display-4 {
+  @apply text-[3.5em] font-semibold font-heading text-zinc-900 tracking-tighter leading-[1] dark:text-zinc-100;
+}
+
+.display-5 {
+  @apply text-[3em] font-semibold font-heading text-zinc-900 tracking-tighter leading-[1] dark:text-zinc-100;
+}
+
+.display-6 {
+  @apply text-[2em] font-semibold font-heading text-zinc-900 tracking-tighter leading-[1] dark:text-zinc-100;
+}
