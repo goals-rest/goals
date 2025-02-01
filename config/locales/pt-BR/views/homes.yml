@@ -1,0 +1,4 @@
+pt-BR:
+  homes:
+    post:
+      likes: "%{count} kudos"

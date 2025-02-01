@@ -1,3 +1,41 @@
 <%= provide(:title, "Goals | Painel") %>
 
-<h1>Home</h1>
+<div class="grid grid-cols-4 gap-8">
+  <div>
+    <%= render UI::Card::Component.new(class: "max-w-sm p-4") do %>
+      <div class="flex flex-col items-center gap-4">
+        <%= render UI::Avatar::Component.new(src: @user.avatar.variant(:thumb), size: :sm) %>
+        <h4 class="dark:text-white h4"><%= @user.name %></h4>
+        <div class="flex justify-center divide-x divide-zinc-200 dark:divide-zinc-600">
+          <div class="w-full flex justify-end pr-4">
+            <div class="flex flex-col items-center">
+              <p class="font-light text-zinc-600 font-heading text-sm dark:text-zinc-400">Seguidores</p>
+              <p class="dark:text-white text-2xl"><%= @user.followers.count %></p>
+            </div>
+          </div>
+          <div class="">
+            <div class="flex flex-col items-center px-4">
+              <p class="font-light text-zinc-600 font-heading text-sm dark:text-zinc-400">Seguindo</p>
+              <p class="dark:text-white text-2xl"><%= @user.follows.count %></p>
+            </div>
+          </div>
+          <div class="flex w-full justify-start pl-4">
+            <div class="flex flex-col items-center">
+              <p class="font-light text-zinc-600 font-heading text-sm dark:text-zinc-400">Metas</p>
+              <p class="dark:text-white text-2xl"><%= @goals.count %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="flex flex-col items-center col-span-2">
+    <%= render partial: "post", collection: @posts, as: :post %>
+  </div>
+
+  <div class="flex flex-col">
+    <h4 class="dark:text-white h4">Meus Objetivos</h4>
+    <%= render partial: "goal", collection: @goals, as: :goal %>
+  </div>
+</div>
