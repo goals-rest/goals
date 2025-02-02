@@ -1,0 +1,3 @@
+<% cache([:feed, entry]) do %>
+  <%= render "entries/entryables/#{entry.entryable_name}", entry: %>
+<% end %>

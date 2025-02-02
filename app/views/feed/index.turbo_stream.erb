@@ -1,0 +1,9 @@
+<%= turbo_stream.append :feed do %>
+  <%= render partial: "entry", collection: @entries %>
+<% end %>
+
+<%= turbo_stream.replace :next_page do %>
+  <% if @pagy.next %>
+    <%= render partial: "next_page", locals: { pagy: @pagy } %>
+  <% end %>
+<% end %>

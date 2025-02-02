@@ -1,0 +1,11 @@
+pt-BR:
+  feed:
+    index:
+      title: Goals | Publicações
+      panel: Painel
+      page_title: Publicações
+    no_entries:
+      title: Nenhuma publicação recente disponível
+      description: Siga perfis ou publique algo para ver conteúdos aqui.
+    next_page:
+      loading: Carregando publicações...
