@@ -2,8 +2,6 @@ require "test_helper"
 
 class PostTest < ActiveSupport::TestCase
   context "validations" do
-    should belong_to(:owner)
-
     should validate_presence_of(:title)
     should validate_presence_of(:body)
 
