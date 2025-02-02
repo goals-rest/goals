@@ -8,7 +8,10 @@ module Goals
 
     def update
       if @goal.update(goal_params)
-        redirect_to goals_path, notice: t(".success")
+        redirect_to new_goal_goal_progress_change_post_path(
+          goal_id: @goal.id,
+          goal_progress_change_id: @goal.progress_changes.last.id
+        ), notice: t(".success")
       else
         redirect_to goals_path, alert: t(".error")
       end

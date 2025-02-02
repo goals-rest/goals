@@ -18,6 +18,12 @@ Rails.application.routes.draw do
   resources :goals, only: %i[index new create edit update destroy] do
     scope module: :goals do
       resource :update_progress, only: %i[edit update]
+
+      resources :goal_progress_changes, only: %i[], path: :progress_changes do
+        scope module: :progress_changes do
+          resources :posts, only: %i[new create]
+        end
+      end
     end
   end
   resources :posts, only: %i[new create]

@@ -78,7 +78,7 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
   end
 
   def submit(content = nil, **options, &block)
-    add_classes(options, [ "btn btn-primary" ])
+    add_classes(options, [ "btn btn-primary cursor-pointer" ])
 
     super(content = nil, **options, &block)
   end

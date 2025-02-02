@@ -52,8 +52,13 @@ module Goals
 
       patch goal_update_progress_url(goal), params: params
 
+      goal.reload
+
       assert_response :redirect
-      assert_redirected_to goals_url
+      assert_redirected_to new_goal_goal_progress_change_post_path(
+        goal_id: goal.id,
+        goal_progress_change_id: goal.progress_changes.last.id
+      )
     end
   end
 end
