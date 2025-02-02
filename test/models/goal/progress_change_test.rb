@@ -26,4 +26,10 @@ class Goal::ProgressChangeTest < ActiveSupport::TestCase
 
     assert_equal 5, progress_change.diff
   end
+
+  test "remaining returns the difference between target and new value" do
+    progress_change = Goal::ProgressChange.new(old_value: 5, new_value: 10, target: 20)
+
+    assert_equal 10, progress_change.remaining
+  end
 end
