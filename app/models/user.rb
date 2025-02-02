@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   has_many :sessions, dependent: :destroy
   has_many :goals, dependent: :destroy
-  has_many :posts, class_name: "Post", foreign_key: "owner_id", dependent: :destroy
+  has_many :entries, dependent: :destroy, foreign_key: "owner_id"
   has_many :follow_requests, dependent: :destroy, foreign_key: "followee_id"
 
   validates :first_name, presence: true

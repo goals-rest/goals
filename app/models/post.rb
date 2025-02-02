@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  belongs_to :owner, class_name: "User", foreign_key: "owner_id"
+  includes Entryable
 
   validates :title, presence: true
   validates :body, presence: true
