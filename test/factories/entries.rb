@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :entry do
-    entryable_type { "MyString" }
-    entryable_id { 1 }
+    trait :post do
+      entryable { create(:post) }
+    end
   end
 end
