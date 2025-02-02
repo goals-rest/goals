@@ -1,0 +1,8 @@
+pt-BR:
+  features:
+    goals:
+      progress_indicator:
+        component:
+          current: Atual
+          goal: Meta
+          remaining: Restante

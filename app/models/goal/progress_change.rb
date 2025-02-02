@@ -9,6 +9,10 @@ class Goal::ProgressChange < ApplicationRecord
     new_value - old_value
   end
 
+  def remaining
+    target - new_value
+  end
+
   def self.log_change!(goal, old_value, new_value)
     params = { old_value:, new_value:, target: goal.target }
 
