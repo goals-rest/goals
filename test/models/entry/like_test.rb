@@ -4,8 +4,8 @@ class Entry::LikeTest < ActiveSupport::TestCase
   should belong_to(:entry)
   should belong_to(:user)
 
-  should "validates user uniqueness" do
-    entry = create(:entry)
+  test "validates user uniqueness" do
+    entry = create(:entry, :post)
     user = create(:user)
 
     create(:entry_like, entry:, user:)
