@@ -1,77 +1,56 @@
 require "test_helper"
 
 class GoalTest < ActiveSupport::TestCase
-  context "validations" do
-    subject { build(:goal) }
+  should validate_presence_of(:title)
+  should validate_presence_of(:current)
+  should validate_presence_of(:target)
 
-    should validate_presence_of(:title)
-    should validate_presence_of(:current)
-    should validate_presence_of(:target)
+  should validate_length_of(:title).is_at_most(60)
+  should validate_length_of(:description).is_at_most(100)
 
-    should validate_length_of(:title).is_at_most(60)
-    should validate_length_of(:description).is_at_most(100)
+  test "start_date presence" do
+    goal = Goal.new(start_date: Time.zone.today)
 
-    should "validates start_date presence" do
-      goal = Goal.new(start_date: Time.zone.today)
-
-      assert goal.errors[:start_date].blank?
-    end
-
-    context "when the end_date is before the start_date" do
-      should "returns an error" do
-        goal = Goal.new(start_date: Time.zone.today, end_date: Time.zone.yesterday)
-
-        assert_not goal.valid?
-        assert_includes goal.errors[:end_date], I18n.t("activerecord.errors.models.goal.before_start_date")
-      end
-    end
+    assert goal.errors[:start_date].blank?
   end
 
-  context "scopes" do
-    context ".search" do
-      context "when the goal with the given title is found" do
-        should "returns the founded goal" do
-          goal_a = create(:goal, title: "Goal A")
-          goal_b = create(:goal, title: "Goal B")
+  test "returns an error when the end_date is before the start_date" do
+    goal = Goal.new(start_date: Time.zone.today, end_date: Time.zone.yesterday)
 
-          result = Goal.search("B")
-
-
-          assert_includes result, goal_b
-        end
-      end
-
-      context "when the goal with the given title is not found" do
-        should "returns an empty array" do
-          goal_a = create(:goal, title: "Goal A")
-          goal_b = create(:goal, title: "Goal B")
-
-          result = Goal.search("C")
-
-          assert_empty result
-        end
-      end
-    end
+    assert_not goal.valid?
+    assert_includes goal.errors[:end_date], I18n.t("activerecord.errors.models.goal.before_start_date")
   end
 
-  context "instance methods" do
-    context ".progress" do
-      should "returns the progress of the goal" do
-        goal = create(:goal, current: 50, target: 100)
+  test "search returns the founded goal when the goal with the given title is found" do
+    goal_a = create(:goal, title: "Goal A")
+    goal_b = create(:goal, title: "Goal B")
 
-        result = goal.progress
+    result = Goal.search("B")
 
-        assert_equal result, 0.5
-      end
-    end
+    assert_includes result, goal_b
+  end
 
-    context ".translated_status" do
-      should "returns the translated status name" do
-        goal = build(:goal, status: :completed)
+  test "search returns an empty array when the goal with the given title is not found" do
+    goal_a = create(:goal, title: "Goal A")
+    goal_b = create(:goal, title: "Goal B")
 
-        assert_equal I18n.t("activerecord.attributes.goal.status.completed"), goal.translated_status
-      end
-    end
+    result = Goal.search("C")
+
+    assert_empty result
+  end
+
+  test "progress returns the progress of the goal" do
+    goal = create(:goal, current: 50, target: 100)
+
+    result = goal.progress
+
+    assert_equal result, 0.5
+  end
+
+  test "translated_status returns the translated status name" do
+    goal = build(:goal, status: :completed)
+
+    assert_equal I18n.t("activerecord.attributes.goal.status.completed"), goal.translated_status
   end
 
   test "changes status to completed when current is bigger than or equal to target" do
