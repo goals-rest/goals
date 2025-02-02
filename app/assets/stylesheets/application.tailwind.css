@@ -7,4 +7,6 @@
 @import "railsui/forms";
 @import "railsui/navigation";
 @import "railsui/properties";
+@import "railsui/buttons";
+@import "railsui/headings";
 @import "tailwindcss/utilities";
