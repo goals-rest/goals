@@ -1,4 +1,8 @@
-<%= render UI::Card::Component.new(class: "bg-white w-full") do %>
+<%= tag.div(
+  class: "border border-zinc-300/90 shadow-sm shadow-zinc-300/20 rounded-lg
+          dark:shadow-zinc-950/50 dark:border-zinc-600/80
+          dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600 w-full"
+) do %>
   <%= render UI::Card::HeaderComponent.new(class: "px-4 pt-4") do |header| %>
     <% header.with_title do %>
       <div class="flex items-center gap-2">
@@ -13,6 +17,7 @@
   <%= render UI::Card::BodyComponent.new(class: "px-4 w-full") do |header| %>
     <%= post.body %>
   <% end %>
+  <!-- TODO: Add image to post -->
   <%#= render UI::Card::MediaComponent.new(src: "https://picsum.photos/600/600") %>
   <%= render UI::Card::ActionsComponent.new(class: "px-4 pb-4") do %>
     <div class="flex items-center">
@@ -27,6 +32,6 @@
           <% button.with_trailing_icon("chat-bubble-oval-left") %>
         <% end %>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 <% end %>

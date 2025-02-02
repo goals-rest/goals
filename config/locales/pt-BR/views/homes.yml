@@ -1,4 +1,9 @@
 pt-BR:
   homes:
+    show:
+      followers: Seguindo
+      following: Seguindo
+      goals: Metas
+      my_goals: Minhas Metas
     post:
       likes: "%{count} kudos"

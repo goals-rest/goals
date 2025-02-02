@@ -7,4 +7,7 @@ class Post < ApplicationRecord
   validates :body, presence: true
 
   validates :title, length: { maximum: 60 }
+
+  scope :feed, ->(user) { where(owner: user).or(where(owner: user.followees)) }
+  scope :sorted, -> { order(created_at: :desc) }
 end

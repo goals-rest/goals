@@ -1,7 +1,7 @@
 class HomesController < DashboardController
   def show
     @user = Current.user
-    @posts = Post.where(owner: @user).or(Post.where(owner: @user.followees)).order(created_at: :desc)
+    @posts = Post.feed(@user).sorted
     @goals = @user.goals
   end
 end

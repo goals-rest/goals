@@ -14,23 +14,31 @@
           </div>
         </div>
 
-        <h4 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight"><%= @user.name %></h4>
+        <h4 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">
+          <%= @user.name %>
+        </h4>
         <div class="flex justify-center divide-x divide-zinc-200 dark:divide-zinc-600">
           <div class="w-full flex justify-end pr-4">
             <div class="flex flex-col items-center">
-              <p class="font-light text-zinc-600 font-heading text-sm dark:text-zinc-400">Seguidores</p>
+              <p class="font-light text-zinc-600 font-heading text-sm dark:text-zinc-400">
+                <%= t(".followers") %>
+              </p>
               <p class="dark:text-white text-2xl"><%= @user.followers.count %></p>
             </div>
           </div>
           <div class="">
             <div class="flex flex-col items-center px-4">
-              <p class="font-light text-zinc-600 font-heading text-sm dark:text-zinc-400">Seguindo</p>
+              <p class="font-light text-zinc-600 font-heading text-sm dark:text-zinc-400">
+                <%= t(".following") %>
+              </p>
               <p class="dark:text-white text-2xl"><%= @user.follows.count %></p>
             </div>
           </div>
           <div class="flex w-full justify-start pl-4">
             <div class="flex flex-col items-center">
-              <p class="font-light text-zinc-600 font-heading text-sm dark:text-zinc-400">Metas</p>
+              <p class="font-light text-zinc-600 font-heading text-sm dark:text-zinc-400">
+                <%= t(".goals") %>
+              </p>
               <p class="dark:text-white text-2xl"><%= @goals.count %></p>
             </div>
           </div>
@@ -44,7 +52,9 @@
   </div>
 
   <div class="hidden xl:flex flex-col shrink-0 basis-1/4">
-    <h4 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">Meus Objetivos</h4>
+    <h4 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">
+      <%= t(".my_goals") %>
+    </h4>
     <%= render partial: "goal", collection: @goals, as: :goal, cached: true %>
   </div>
 </div>
