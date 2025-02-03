@@ -43,3 +43,16 @@ pt-BR:
     no_goals:
       title: Sem metas ainda? Comece agora!
       description: Todo grande objetivo começa com um primeiro passo. Crie sua primeira meta e dê o primeiro passo rumo ao seu sucesso!
+
+    progress_changes:
+      posts:
+        new:
+          title: Goals | Atualização de progresso
+          goals: Metas
+          page_title: Atualização de progresso
+        create:
+          success: Atualização compartilhada com sucesso.
+        form:
+          go_back: Voltar
+          submit: Publicar
+          default_body: "Atualizei minha meta de %{old_value} para %{new_value}. Faltam %{remaining}."
