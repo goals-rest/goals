@@ -1,11 +1,39 @@
 <% post = entry.entryable %>
 
-<%= render UI::Card::Component.new do |card| %>
-  <%= render UI::Card::HeaderComponent.new do |header| %>
-    <% header.with_title.with_content(post.title) %>
+<%= tag.div(
+  class: "border border-zinc-300/90 shadow-sm shadow-zinc-300/20 rounded-lg
+          dark:shadow-zinc-950/50 dark:border-zinc-600/80
+          dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600 w-full"
+) do %>
+  <%= render UI::Card::HeaderComponent.new(class: "px-4 pt-4") do |header| %>
+    <% header.with_title do %>
+      <div class="flex items-center gap-2">
+        <%= render UI::Avatar::Component.new(src: entry.owner.avatar.variant(:thumb), size: :sm) %>
+        <div>
+          <p class="text-sm"><%= entry.owner.name %></p>
+          <p class="text-sm text-zinc-500 font-normal dark:text-zinc-400"><%= localize(post.created_at.to_time, format: :friendly) %></p>
+        </div>
+      </div>
+    <% end %>
   <% end %>
-
-  <%= render UI::Card::BodyComponent.new do |header| %>
+  <%= render UI::Card::BodyComponent.new(class: "px-4 w-full") do |header| %>
     <%= post.body %>
+  <% end %>
+  <!-- TODO: Add image to post -->
+  <%#= render UI::Card::MediaComponent.new(src: "https://picsum.photos/600/600") %>
+  <%= render UI::Card::ActionsComponent.new(class: "px-4 pb-4") do %>
+    <div class="flex items-center">
+      <div class="flex-1 flex items-center gap-4">
+        <p class="text-sm text-zinc-500 font-normal dark:text-zinc-400"><%= t(".likes", count: "1.000") %></p>
+      </div>
+      <div class="flex items-center gap-2">
+        <%= render(UI::Button::Component.new(builder: :button, variant: :rounded, color: :light, size: :sm)) do |button| %>
+          <% button.with_trailing_icon("heart") %>
+        <% end %>
+        <%= render(UI::Button::Component.new(builder: :button, variant: :rounded, color: :light, size: :sm)) do |button| %>
+          <% button.with_trailing_icon("chat-bubble-oval-left") %>
+        <% end %>
+      </div>
+    </div>
   <% end %>
 <% end %>

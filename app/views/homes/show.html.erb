@@ -23,7 +23,7 @@
               <p class="font-light text-zinc-600 font-heading text-sm dark:text-zinc-400">
                 <%= t(".followers") %>
               </p>
-              <p class="dark:text-white text-2xl"><%= @user.followers.count %></p>
+              <p class="dark:text-white text-xl"><%= @user.followers.count %></p>
             </div>
           </div>
           <div class="">
@@ -31,7 +31,7 @@
               <p class="font-light text-zinc-600 font-heading text-sm dark:text-zinc-400">
                 <%= t(".following") %>
               </p>
-              <p class="dark:text-white text-2xl"><%= @user.follows.count %></p>
+              <p class="dark:text-white text-xl"><%= @user.follows.count %></p>
             </div>
           </div>
           <div class="flex w-full justify-start pl-4">
@@ -39,7 +39,7 @@
               <p class="font-light text-zinc-600 font-heading text-sm dark:text-zinc-400">
                 <%= t(".goals") %>
               </p>
-              <p class="dark:text-white text-2xl"><%= @goals.count %></p>
+              <p class="dark:text-white text-xl"><%= @goals.count %></p>
             </div>
           </div>
         </div>
@@ -47,8 +47,8 @@
     <% end %>
   </div>
 
-  <div class="flex flex-col items-center w-full lg:basis-1/2 gap-4">
-    <%= render partial: "post", collection: @posts, as: :post, cached: ->(post) { [post, @user] } %>
+  <div class="w-full lg:basis-1/2">
+    <%= turbo_frame_tag :feed, src: feed_index_path, class: "w-full flex flex-col gap-4" %>
   </div>
 
   <div class="hidden xl:flex flex-col shrink-0 basis-1/4">
