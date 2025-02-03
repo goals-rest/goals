@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+
   def spacer(amount = 16)
     render "rui/shared/email_spacer", amount: amount
   end

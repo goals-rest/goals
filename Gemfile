@@ -90,3 +90,6 @@ gem "tailwind_merge", "0.16.0"
 
 # Centralization of locale data collection for Ruby on Rails [https://github.com/svenfuchs/rails-i18n]
 gem "rails-i18n", "~> 8.0.0"
+
+# "A pagination gem [https://github.com/ddnexus/pagy]"
+gem "pagy", "~> 9.3"

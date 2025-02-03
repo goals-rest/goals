@@ -1,0 +1,7 @@
+<div class="max-w-xl mx-auto">
+  <%= render UI::EmptyState::Component.new do |empty_state| %>
+    <% empty_state.with_icon("document", class: "size-8 font-semibold font-heading text-zinc-900 dark:text-zinc-100") %>
+    <% empty_state.with_title.with_content(t(".title")) %>
+    <% empty_state.with_description.with_content(t(".description")) %>
+  <% end %>
+</div>

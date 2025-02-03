@@ -1,0 +1,11 @@
+<% post = entry.entryable %>
+
+<%= render UI::Card::Component.new do |card| %>
+  <%= render UI::Card::HeaderComponent.new do |header| %>
+    <% header.with_title.with_content(post.title) %>
+  <% end %>
+
+  <%= render UI::Card::BodyComponent.new do |header| %>
+    <%= post.body %>
+  <% end %>
+<% end %>

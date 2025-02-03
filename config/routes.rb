@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   namespace :settings do
     resource :profile, only: %i[edit update]
   end
+  resources :feed, only: %i[index]
 
   scope ":username", as: :profile, constraints: { username: /[a-zA-Z0-9\.]+/ } do
     get "/" => "profiles#show"
