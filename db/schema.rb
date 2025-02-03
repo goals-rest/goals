@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_02_02_140755) do
+ActiveRecord::Schema[8.1].define(version: 2025_02_02_144844) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -47,6 +47,16 @@ ActiveRecord::Schema[8.1].define(version: 2025_02_02_140755) do
     t.datetime "updated_at", null: false
     t.index ["entryable_id", "entryable_type"], name: "index_entries_on_entryable_id_and_entryable_type", unique: true
     t.index ["owner_id"], name: "index_entries_on_owner_id"
+  end
+
+  create_table "entry_likes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "entry_id", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["entry_id", "user_id"], name: "index_entry_likes_on_entry_id_and_user_id", unique: true
+    t.index ["entry_id"], name: "index_entry_likes_on_entry_id"
+    t.index ["user_id"], name: "index_entry_likes_on_user_id"
   end
 
   create_table "follow_requests", force: :cascade do |t|
@@ -125,6 +135,8 @@ ActiveRecord::Schema[8.1].define(version: 2025_02_02_140755) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "entries", "users", column: "owner_id"
+  add_foreign_key "entry_likes", "entries"
+  add_foreign_key "entry_likes", "users"
   add_foreign_key "follow_requests", "users", column: "followee_id"
   add_foreign_key "follow_requests", "users", column: "requester_id"
   add_foreign_key "follows", "users", column: "followee_id"

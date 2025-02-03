@@ -3,6 +3,8 @@ require "test_helper"
 class EntryTest < ActiveSupport::TestCase
   should belong_to(:owner)
 
+  should have_many(:likes).dependent(:destroy)
+
   test "builds with post" do
     post, entry = Entry.build_with_post(Post.new, owner: User.new)
 
