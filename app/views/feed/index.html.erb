@@ -16,12 +16,16 @@
     <%= t(".page_title") %>
   </h1>
 
-  <%= turbo_frame_tag :feed, class: "space-y-4" do %>
-    <% if @entries.any? %>
-      <%= render partial: "entry", collection: @entries %>
-    <% else %>
-      <%= render "no_entries" %>
-    <% end %>
+  <%= turbo_frame_tag :feed_content do %>
+    <div class="mb-4">
+      <%= turbo_frame_tag :feed, class: "space-y-4" do %>
+        <% if @entries.any? %>
+          <%= render partial: "entry", collection: @entries %>
+        <% else %>
+          <%= render "no_entries" %>
+        <% end %>
+      <% end %>
+    </div>
 
     <% if @pagy.next %>
       <%= render partial: "next_page", locals: { pagy: @pagy } %>
