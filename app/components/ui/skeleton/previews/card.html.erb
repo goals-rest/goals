@@ -1,0 +1,16 @@
+<%= render UI::Card::Component.new(class: "max-w-sm") do %>
+  <%= render UI::Card::HeaderComponent.new do |header| %>
+    <% header.with_title do %>
+      <%= render UI::Skeleton::Component.new(class: "w-1/2").with_content("Card title") %>
+    <% end %>
+  <% end %>
+
+  <%= render UI::Card::BodyComponent.new(class: "pb-3") do |header| %>
+    <div class="flex flex-col space-y-2.5">
+      <%= render UI::Skeleton::Component.new(class: "w-full").with_content("body") %>
+      <%= render UI::Skeleton::Component.new(class: "w-full").with_content("body") %>
+      <%= render UI::Skeleton::Component.new(class: "w-full").with_content("body") %>
+      <%= render UI::Skeleton::Component.new(class: "w-full").with_content("body") %>
+    </div>
+  <% end %>
+<% end %>
