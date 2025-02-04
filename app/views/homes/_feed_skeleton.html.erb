@@ -1,4 +1,4 @@
-<% 10.times do %>
+<% Array.new(10).each do %>
   <%= render UI::Card::Component.new(class: "w-full") do |header| %>
     <%= render UI::Card::HeaderComponent.new do |header| %>
       <div class="flex items-center gap-2 mb-2">
@@ -19,7 +19,7 @@
         </p>
 
         <div>
-          <% 5.times do %>
+          <% Array.new(5).each do %>
             <%= render UI::Skeleton::Component.new(class: "w-full").with_content("Paragraph") %>
           <% end %>
         </div>
