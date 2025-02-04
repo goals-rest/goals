@@ -14,11 +14,20 @@
     </div>
   <% end %>
   <%= render UI::Card::BodyComponent.new do |header| %>
-    <div class="flex flex-col gap-2">
-      <p class="text-xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">
+    <div class="flex flex-col">
+      <p class="h6">
         <%= post.title %>
       </p>
+
       <%= post.body %>
+
+      <% if post.goal_progress_change.present? %>
+        <div class="flex items-center justify-start mt-2 lg:mt-4">
+          <%= render Goals::ProgressIndicator::Component.new(
+            progress_change: post.goal_progress_change,
+          ) %>
+        </div>
+      <% end %>
     </div>
   <% end %>
   <!-- TODO: Add image to post -->
