@@ -1,0 +1,5 @@
+pt-BR:
+  entries:
+    entryables:
+      post:
+        likes: "%{count} kudos"

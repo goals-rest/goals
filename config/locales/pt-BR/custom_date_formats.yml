@@ -2,3 +2,6 @@ pt-BR:
   date:
     formats:
       short_month: "%d %b"
+  time:
+    formats:
+      friendly: "%d de %B de %Y às %H:%M"

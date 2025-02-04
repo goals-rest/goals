@@ -1,11 +1,50 @@
 <% post = entry.entryable %>
 
-<%= render UI::Card::Component.new do |card| %>
+<%= render UI::Card::Component.new(class: "w-full") do |header| %>
   <%= render UI::Card::HeaderComponent.new do |header| %>
-    <% header.with_title.with_content(post.title) %>
+    <div class="flex items-center gap-2 mb-2">
+      <%= render UI::Avatar::Component.new(
+        src: entry.owner.avatar.variant(:thumb),
+        size: :sm,
+      ) %>
+      <div>
+        <p class="font-heading"><%= entry.owner.name %></p>
+        <p class="text-sm text-zinc-500 font-normal dark:text-zinc-400"><%= localize(post.created_at.to_time, format: :friendly) %></p>
+      </div>
+    </div>
   <% end %>
-
   <%= render UI::Card::BodyComponent.new do |header| %>
-    <%= post.body %>
+    <div class="flex flex-col">
+      <p class="h6">
+        <%= post.title %>
+      </p>
+
+      <%= post.body %>
+
+      <% if post.goal_progress_change.present? %>
+        <div class="flex items-center justify-start mt-2 lg:mt-4">
+          <%= render Goals::ProgressIndicator::Component.new(
+            progress_change: post.goal_progress_change,
+          ) %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <!-- TODO: Add image to post -->
+  <%#= render UI::Card::MediaComponent.new(src: "https://picsum.photos/600/600") %>
+  <%= render UI::Card::ActionsComponent.new do %>
+    <div class="flex items-center">
+      <div class="flex-1 flex items-center gap-4">
+        <p class="text-sm text-zinc-500 font-normal dark:text-zinc-400"><%= t(".likes", count: "1.000") %></p>
+      </div>
+      <div class="flex items-center gap-2">
+        <%= render(UI::Button::Component.new(builder: :button, variant: :rounded, color: :transparent, size: :sm)) do |button| %>
+          <% button.with_trailing_icon("heart") %>
+        <% end %>
+        <%= render(UI::Button::Component.new(builder: :button, variant: :rounded, color: :transparent, size: :sm)) do |button| %>
+          <% button.with_trailing_icon("chat-bubble-oval-left") %>
+        <% end %>
+      </div>
+    </div>
   <% end %>
 <% end %>

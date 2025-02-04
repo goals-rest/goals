@@ -1,3 +1,6 @@
 class HomesController < DashboardController
-  def show; end
+  def show
+    @user = Current.user
+    @goals = @user.goals
+  end
 end

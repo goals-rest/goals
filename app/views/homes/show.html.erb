@@ -1,3 +1,60 @@
 <%= provide(:title, "Goals | Painel") %>
 
-<h1>Home</h1>
+<div class="flex gap-8">
+  <div class="hidden lg:block shrink-0 basis-1/4">
+    <%= tag.div(
+      class: "border border-zinc-300/90 shadow-sm shadow-zinc-300/20
+              rounded-lg dark:shadow-zinc-950/50 dark:border-zinc-600/80
+              dark:focus:ring-zinc-600/30 dark:focus:border-zinc-600 px-4 pb-4 w-full"
+    ) do %>
+      <div class="flex flex-col items-center gap-4">
+        <div class="h-8 relative w-full">
+          <div class="absolute -translate-y-1/2 flex justify-center w-full">
+            <%= render UI::Avatar::Component.new(src: @user.avatar.variant(:thumb), size: :xl) %>
+          </div>
+        </div>
+
+        <h4 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">
+          <%= @user.name %>
+        </h4>
+        <div class="flex justify-center divide-x divide-zinc-200 dark:divide-zinc-600">
+          <div class="w-full flex justify-end pr-4">
+            <div class="flex flex-col items-center">
+              <p class="font-light text-zinc-600 font-heading text-sm dark:text-zinc-400">
+                <%= t(".followers") %>
+              </p>
+              <p class="dark:text-white text-xl"><%= @user.followers.count %></p>
+            </div>
+          </div>
+          <div class="">
+            <div class="flex flex-col items-center px-4">
+              <p class="font-light text-zinc-600 font-heading text-sm dark:text-zinc-400">
+                <%= t(".following") %>
+              </p>
+              <p class="dark:text-white text-xl"><%= @user.follows.count %></p>
+            </div>
+          </div>
+          <div class="flex w-full justify-start pl-4">
+            <div class="flex flex-col items-center">
+              <p class="font-light text-zinc-600 font-heading text-sm dark:text-zinc-400">
+                <%= t(".goals") %>
+              </p>
+              <p class="dark:text-white text-xl"><%= @goals.count %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="w-full lg:basis-1/2">
+    <%= turbo_frame_tag :feed_content, src: feed_index_path, class: "w-full flex flex-col gap-4" %>
+  </div>
+
+  <div class="hidden xl:flex flex-col shrink-0 basis-1/4">
+    <h4 class="text-2xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight">
+      <%= t(".my_goals") %>
+    </h4>
+    <%= render partial: "goal", collection: @goals, as: :goal, cached: true %>
+  </div>
+</div>

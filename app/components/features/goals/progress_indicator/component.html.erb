@@ -1,17 +1,17 @@
 <div class="flex gap-4">
   <div>
     <div class="flex flex-col items-center">
-      <p class="font-light text-zinc-600 font-heading text-sm dark:text-zinc-400"><%= t(".current") %></p>
+      <p class="font-light text-zinc-600 font-heading text-xs lg:text-sm dark:text-zinc-400"><%= t(".current") %></p>
       <div class="flex">
-        <p class="dark:text-white text-2xl"><%= strip_zeros(progress_change.new_value) %></p>
+        <p class="dark:text-white lg:text-xl"><%= strip_zeros(progress_change.new_value) %></p>
 
         <div class="inline-flex items-center">
           <% if progress_change.diff.positive? %>
-            <%= render UI::Icon::Component.new("arrow-up", class: "size-5 text-green-600") %>
-            <p class="text-2xl text-green-600"><%= "#{strip_zeros(progress_change.diff)}" %></p>
+            <%= render UI::Icon::Component.new("arrow-up", class: "size-4 lg:size-5 text-green-600") %>
+            <p class="lg:text-xl text-green-600"><%= "#{strip_zeros(progress_change.diff)}" %></p>
           <% elsif progress_change.diff.negative? %>
-            <%= render UI::Icon::Component.new("arrow-down", class: "size-5 text-red-600") %>
-            <p class="text-2xl text-red-600"><%= "#{strip_zeros(progress_change.diff)}" %></p>
+            <%= render UI::Icon::Component.new("arrow-down", class: "size-4 lg:size-5 text-red-600") %>
+            <p class="lg:text-xl text-red-600"><%= "#{strip_zeros(progress_change.diff)}" %></p>
           <% end %>
         </div>
       </div>
@@ -22,8 +22,8 @@
 
   <div>
     <div class="flex flex-col items-center">
-      <p class="font-light text-zinc-600 font-heading text-sm dark:text-zinc-400"><%= t(".goal") %></p>
-      <p class="dark:text-white text-2xl"><%= strip_zeros(progress_change.target) %></p>
+      <p class="font-light text-zinc-600 font-heading text-xs lg:text-sm dark:text-zinc-400"><%= t(".goal") %></p>
+      <p class="dark:text-white lg:text-xl"><%= strip_zeros(progress_change.target) %></p>
     </div>
   </div>
 
@@ -31,8 +31,8 @@
 
   <div>
     <div class="flex flex-col items-center">
-      <p class="font-light text-zinc-600 font-heading text-sm dark:text-zinc-400"><%= t(".remaining") %></p>
-      <p class="dark:text-white text-2xl"><%= strip_zeros(progress_change.remaining) %></p>
+      <p class="font-light text-zinc-600 font-heading text-xs lg:text-sm dark:text-zinc-400"><%= t(".remaining") %></p>
+      <p class="dark:text-white lg:text-xl"><%= strip_zeros(progress_change.remaining) %></p>
     </div>
   </div>
 </div>
