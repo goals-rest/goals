@@ -1,0 +1,6 @@
+pt-BR:
+  ui:
+    dropzone:
+      component:
+        click_to_upload: Clique para carregar uma imagem
+        or_drag_and_drop: ou arraste e solte
