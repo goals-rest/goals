@@ -48,7 +48,9 @@
   </div>
 
   <div class="w-full lg:basis-1/2">
-    <%= turbo_frame_tag :feed_content, src: feed_index_path, class: "w-full flex flex-col gap-4" %>
+    <%= turbo_frame_tag :feed_content, src: feed_index_path, class: "w-full flex flex-col gap-4" do %>
+      <%= render partial: "feed_skeleton" %>
+    <% end %>
   </div>
 
   <div class="hidden xl:flex flex-col shrink-0 basis-1/4">
