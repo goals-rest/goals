@@ -67,7 +67,7 @@ group :development do
   gem "web-console"
 
   # Middleware that isplays speed badge for every HTML page, along with (optional) flamegraphs and memory profiling [https://github.com/MiniProfiler/rack-mini-profiler]
-  gem "rack-mini-profiler", "3.3"
+  gem "rack-mini-profiler", "3.3.1"
 end
 
 group :test do
