@@ -65,6 +65,9 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # Middleware that isplays speed badge for every HTML page, along with (optional) flamegraphs and memory profiling [https://github.com/MiniProfiler/rack-mini-profiler]
+  gem "rack-mini-profiler", "3.3"
 end
 
 group :test do
