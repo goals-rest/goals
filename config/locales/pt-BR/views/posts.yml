@@ -9,3 +9,4 @@ pt-BR:
       success: Publicação criada com sucesso
     form:
       go_back: Voltar
+      allowed_file_types: PNG, JPG, GIF ou WEBP

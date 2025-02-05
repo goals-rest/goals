@@ -9,7 +9,7 @@ module UI
           dropzone.with_description.with_content("Dropzone description")
         end
 
-        assert_selector "div"
+        assert_text I18n.t("ui.dropzone.component.click_to_upload")
         assert_selector "input[type='file']"
         assert_text "Dropzone description"
       end

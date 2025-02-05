@@ -1,0 +1,26 @@
+<%= tag.div(**attrs) do %>
+  <%= render UI::Card::Component.new do |card| %>
+    <%= image %>
+
+    <%= render UI::Card::ActionsComponent.new do %>
+      <div class="flex items-center justify-end gap-2">
+        <%= render UI::Button::Component.new(
+                type: :button,
+                variant: :square,
+                color: :transparent,
+                data: {
+                  action: "click->removal#remove"
+                }
+              ) do |button| %>
+          <% button.with_leading_icon(
+            "trash",
+            class: "text-zinc-500 dark:text-zinc-400 size-6",
+          ) %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <%= file_input %>
+  <%= hidden_input %>
+<% end %>

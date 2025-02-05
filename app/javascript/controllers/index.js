@@ -10,10 +10,14 @@ import DarkModeToggleController from "./dark_mode_toggle_controller"
 import ModalController from "./modal_controller"
 import SumUpdaterController from "./sum_updater_controller"
 import ImagePreviewController from "./image_preview_controller"
+import RemovalController from "./removal_controller"
+import MultipleImagePreviewController from "./multiple_image_preview_controller"
 application.register("hello", HelloController)
 application.register("flash", FlashController)
 application.register("dark-mode-toggle", DarkModeToggleController)
 application.register("modal", ModalController)
 application.register("sum-updater", SumUpdaterController)
 application.register("image-preview", ImagePreviewController)
+application.register("multiple-image-preview", MultipleImagePreviewController)
+application.register("removal", RemovalController)
 import "./railsui"

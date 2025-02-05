@@ -1,4 +1,23 @@
-<%= custom_form_with model: post do |form| %>
+<%= custom_form_with(
+  model: post,
+  data: {
+    controller: "multiple-image-preview",
+    multiple_image_preview_direct_upload_url_value: rails_direct_uploads_url,
+    multiple_image_preview_file_input_name_value: "post[images][]",
+    multiple_image_preview_max_images_value: 5
+  }
+) do |form| %>
+  <template data-multiple-image-preview-target="previewTemplate">
+    <%= render ImagePreviewCard::Component.new(
+      data: {
+        multiple_image_preview_target: "imagePreview"
+      }
+    ) do |preview| %>
+      <% preview.with_image %>
+      <% preview.with_file_input %>
+    <% end %>
+  </template>
+
   <%= form.form_group :title do %>
     <%= form.label :title, nil, class: "form-label-required" %>
     <%= form.text_field :title %>
@@ -11,8 +30,48 @@
     <%= form.error_message :body %>
   <% end %>
 
+  <%= form.form_group :images do %>
+    <%= form.label :images %>
+    <%= form.error_message :images, class: "mt-0" %>
+    <%= render UI::Dropzone::Component.new(
+      class: "mt-3",
+      data: {
+        action: [
+          "dragover->multiple-image-preview#handleDragOver",
+          "drop->multiple-image-preview#handleFileDrop",
+        ].join(" ")
+      }
+    ) do |dropzone| %>
+      <% dropzone.with_file_input(
+        multiple: true,
+        data: {
+          action: "change->multiple-image-preview#handleFileChange",
+        },
+      ) %>
+      <% dropzone.with_description.with_content(t(".allowed_file_types")) %>
+    <% end %>
+  <% end %>
+
+  <%= render partial: "preview_container", locals: { post: } %>
+
   <div class="grid grid-cols-2 gap-6 pt-10">
-    <%= render(UI::Button::Component.new(builder: :a, color: :white, href: home_path, class: "cursor-pointer")) { t(".go_back") } %>
-    <%= form.submit value: submit_text, class: "w-full", data: { disable_with: submit_text } %>
+    <%= render(
+      UI::Button::Component.new(
+        builder: :a,
+        color: :white,
+        href: home_path,
+        class: "cursor-pointer",
+      ),
+    ) do %>
+      <%= t(".go_back") %>
+    <% end %>
+
+    <%= form.submit(
+      value: submit_text,
+      class: "w-full",
+      data: {
+        disable_with: submit_text,
+      },
+    ) %>
   </div>
 <% end %>

@@ -96,3 +96,6 @@ gem "rails-i18n", "~> 8.0.0"
 
 # "A pagination gem [https://github.com/ddnexus/pagy]"
 gem "pagy", "~> 9.3"
+
+# Active Storage Validations is a gem that allows you to add validations for Active Storage attributes [https://github.com/igorkasyanchuk/active_storage_validations]
+gem "active_storage_validations", "2.0"
