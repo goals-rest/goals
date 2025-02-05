@@ -283,7 +283,7 @@ GEM
     raabro (1.4.0)
     racc (1.8.1)
     rack (3.1.9)
-    rack-mini-profiler (3.3.0)
+    rack-mini-profiler (3.3.1)
       rack (>= 1.2.0)
     rack-session (2.1.0)
       base64 (>= 0.1.0)
@@ -465,7 +465,7 @@ DEPENDENCIES
   pagy (~> 9.3)
   propshaft
   puma (>= 5.0)
-  rack-mini-profiler (= 3.3)
+  rack-mini-profiler (= 3.3.1)
   rails!
   rails-i18n (~> 8.0.0)
   railsui!
