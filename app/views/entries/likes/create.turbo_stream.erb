@@ -1,0 +1,3 @@
+<%= turbo_stream.update @entry do %>
+  <%= render "entries/entryables/#{@entry.entryable_name}", entry: @entry %>
+<% end %>

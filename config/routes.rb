@@ -27,6 +27,11 @@ Rails.application.routes.draw do
     end
   end
   resources :posts, only: %i[new create]
+  resources :entries, only: %i[] do
+    scope module: :entries do
+      resource :like, only: %i[create destroy]
+    end
+  end
   resources :follows, only: %i[create destroy]
   resources :follow_requests, only: %i[index destroy] do
     scope module: :follow_requests do
