@@ -98,5 +98,13 @@ class CustomFormBuilder < ActionView::Helpers::FormBuilder
 
   def add_classes(options, classes)
     options[:class] = [ classes.flatten, options[:class] ].compact.join(" ")
+
+    merge_tailwind_classes(options)
+  end
+
+  def merge_tailwind_classes(attributes)
+    return unless attributes[:class].is_a?(String)
+
+    attributes[:class] = TailwindMerge::Merger.new.merge(attributes[:class])
   end
 end

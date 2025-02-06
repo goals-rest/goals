@@ -3,7 +3,7 @@ module UI
     class Preview < ViewComponent::Preview
       # @param text
       # @param builder select { choices: [ button, a ] }
-      # @param variant select { choices: [ default, rounded] }
+      # @param variant select { choices: [ default, square, rounded, rounded_outlined] }
       # @param color select { choices: [ primary, secondary, dark, light, white, transparent, link ] }
       # @param size select { choices: [ sm, base, lg ] }
       def playground(builder: :button, variant: :default, text: "Default Button", color: :primary, size: :base)

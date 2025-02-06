@@ -23,6 +23,34 @@ module UI
         defaults { { color: :primary, size: :base } }
       end
 
+      style :square do base { %w[btn gap-2] }
+        base do
+          %w[
+            rounded-lg inline-flex items-center justify-center border
+            focus:ring-4 transition ease-in-out duration-200 group",
+          ]
+        end
+
+        variants {
+          color {
+            transparent do
+              %w[
+                bg-transparent hover:bg-zinc-50 border-transparent
+                focus:border-zinc-300/80 focus:bg-white focus:ring-zinc-300/20
+                dark:hover:bg-zinc-700 dark:focus:bg-zinc-700
+                dark:focus:border-zinc-500 dark:focus:ring-zinc-600/70
+              ]
+            end
+          }
+
+          size {
+            base { %w[px-2 py-1 ] }
+          }
+        }
+
+        defaults { { color: :transparent, size: :base } }
+      end
+
       style :rounded do
         base {
           %w[

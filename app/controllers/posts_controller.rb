@@ -15,6 +15,6 @@ class PostsController < DashboardController
 
   private
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, images: [])
   end
 end

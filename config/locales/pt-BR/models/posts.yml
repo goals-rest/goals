@@ -7,3 +7,12 @@ pt-BR:
         title: Título
         body: Conteúdo
         owner: Autor
+        images: Imagens
+    errors:
+      models:
+        post:
+          attributes:
+            images:
+              content_type: Os formatos de imagens permitidos são JPG, PNG, GIF e WEBP
+              limit: O máximo de imagens por publicação é %{max}
+              size: O tamanho máximo permitido por imagem é %{max}
