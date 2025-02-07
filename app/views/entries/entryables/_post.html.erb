@@ -43,19 +43,7 @@
             url: entry_like_path(entry),
             method: entry.liked? ? :delete : :post
           ) do %>
-            <%= render(UI::Button::Component.new(
-              builder: :button,
-              variant: :rounded,
-              color: :transparent,
-              size: :sm,
-              type: "submit"
-            )) do |button| %>
-              <% if entry.liked? %>
-                <% button.with_trailing_icon("heart", variant: :solid, class: "text-primary-600 dark:text-primary-500") %>
-              <% else %>
-                <% button.with_trailing_icon("heart") %>
-              <% end %>
-            <% end %>
+            <%= render(LikeButton::Component.new(liked: entry.liked?, type: :submit) %>
           <% end %>
 
           <%= render(UI::Button::Component.new(builder: :button, variant: :rounded, color: :transparent, size: :sm)) do |button| %>

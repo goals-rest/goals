@@ -1,0 +1,7 @@
+<%= render UI::Button::Component.new(**attrs) do |button| %>
+  <% button.with_trailing_icon(
+    "heart",
+    variant: :solid,
+    class: liked? ? "text-primary-600 dark:text-primary-500" : "",
+  ) %>
+<% end %>
