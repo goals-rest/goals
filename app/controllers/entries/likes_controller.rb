@@ -9,11 +9,10 @@ module Entries
       respond_to do |format|
         if @like.save
           format.html { redirect_to @entry.entryable }
+          format.turbo_stream
         else
-          format.html { redirect_to @entry.entryable, alert: t(".error") }
+          redirect_to @entry.entryable, alert: t(".error")
         end
-
-        format.turbo_stream
       end
     end
 
@@ -36,6 +35,13 @@ module Entries
 
     def set_like
       @like = @entry.like_for(Current.user)
+
+      return if @like.present?
+
+      respond_to do |format|
+        format.html { redirect_to @entry.entryable }
+        format.turbo_stream { head :no_content }
+      end
     end
   end
 end
