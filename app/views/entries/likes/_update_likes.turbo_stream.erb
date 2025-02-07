@@ -1,0 +1,16 @@
+<%= turbo_stream.replace [entry, :like_button] do %>
+  <%= custom_form_with( 
+      url: entry_like_path(entry),
+      method: like.persisted? ? :delete : :post,
+      id: dom_id(entry, :like_button),
+      data: {
+        turbo: true
+      }
+    ) do %>
+    <%= render LikeButton::Component.new(type: :submit, liked: like.persisted?) %>
+  <% end %>
+<% end %>
+
+<%= turbo_stream.update [entry, :likes_count] do %>
+  <%= t("entries.likes", count: entry.likes.count) %>
+<% end %>

@@ -6,11 +6,14 @@ module Entries
     def create
       @like = Entry::Like.build(entry: @entry, user: Current.user)
 
-      if @like.save
-        respond_to do |format|
+      respond_to do |format|
+        if @like.save
           format.html { redirect_to @entry.entryable }
-          format.turbo_stream
+        else
+          format.html { redirect_to @entry.entryable, alert: t(".error") }
         end
+
+        format.turbo_stream
       end
     end
 
