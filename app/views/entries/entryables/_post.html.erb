@@ -1,56 +1,59 @@
 <% post = entry.entryable %>
 
-<%= turbo_frame_tag entry do %>
-  <%= render UI::Card::Component.new(class: "w-full") do |header| %>
-    <%= render UI::Card::HeaderComponent.new do |header| %>
-      <div class="flex items-center gap-2 mb-2">
-        <%= render UI::Avatar::Component.new(
-          src: entry.owner.avatar.variant(:thumb),
-          size: :sm,
-        ) %>
-        <div>
-          <p class="font-heading"><%= entry.owner.name %></p>
-          <p class="text-sm text-zinc-500 font-normal dark:text-zinc-400"><%= localize(post.created_at.to_time, format: :friendly) %></p>
-        </div>
+<%= render UI::Card::Component.new(class: "w-full") do |header| %>
+  <%= render UI::Card::HeaderComponent.new do |header| %>
+    <div class="flex items-center gap-2 mb-2">
+      <%= render UI::Avatar::Component.new(
+        src: entry.owner.avatar.variant(:thumb),
+        size: :sm,
+      ) %>
+      <div>
+        <p class="font-heading"><%= entry.owner.name %></p>
+        <p class="text-sm text-zinc-500 font-normal dark:text-zinc-400"><%= localize(post.created_at.to_time, format: :friendly) %></p>
       </div>
-    <% end %>
-    <%= render UI::Card::BodyComponent.new do |header| %>
-      <div class="flex flex-col">
-        <p class="h6">
-          <%= post.title %>
-        </p>
+    </div>
+  <% end %>
+  <%= render UI::Card::BodyComponent.new do |header| %>
+    <div class="flex flex-col">
+      <p class="h6">
+        <%= post.title %>
+      </p>
 
-        <%= post.body %>
+      <%= post.body %>
 
-        <% if post.goal_progress_change.present? %>
-          <div class="flex items-center justify-start mt-2 lg:mt-4">
-            <%= render Goals::ProgressIndicator::Component.new(
-              progress_change: post.goal_progress_change,
-            ) %>
-          </div>
+      <% if post.goal_progress_change.present? %>
+        <div class="flex items-center justify-start mt-2 lg:mt-4">
+          <%= render Goals::ProgressIndicator::Component.new(
+            progress_change: post.goal_progress_change,
+          ) %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <!-- TODO: Add image to post -->
+  <%#= render UI::Card::MediaComponent.new(src: "https://picsum.photos/600/600") %>
+  <%= render UI::Card::ActionsComponent.new do %>
+    <div class="flex items-center">
+      <div class="flex-1 flex items-center gap-4">
+        <%= tag.p(
+          t(".likes", count: entry.likes.count),
+          id: dom_id(entry, :likes_count),
+          class: "text-sm text-zinc-500 font-normal dark:text-zinc-400",
+        ) %>
+      </div>
+      <div class="flex items-center gap-2">
+        <%= custom_form_with(
+            url: entry_like_path(entry),
+            method: entry.liked? ? :delete : :post,
+            id: dom_id(entry, :like_button)
+          ) do %>
+          <%= render LikeButton::Component.new(type: :submit, liked: entry.liked?) %>
+        <% end %>
+
+        <%= render(UI::Button::Component.new(builder: :button, variant: :rounded, color: :transparent, size: :sm)) do |button| %>
+          <% button.with_trailing_icon("chat-bubble-oval-left") %>
         <% end %>
       </div>
-    <% end %>
-    <!-- TODO: Add image to post -->
-    <%#= render UI::Card::MediaComponent.new(src: "https://picsum.photos/600/600") %>
-    <%= render UI::Card::ActionsComponent.new do %>
-      <div class="flex items-center">
-        <div class="flex-1 flex items-center gap-4">
-          <p class="text-sm text-zinc-500 font-normal dark:text-zinc-400"><%= t(".likes", count: entry.likes.count) %></p>
-        </div>
-        <div class="flex items-center gap-2">
-          <%= custom_form_with(
-            url: entry_like_path(entry),
-            method: entry.liked? ? :delete : :post
-          ) do %>
-            <%= render(LikeButton::Component.new(liked: entry.liked?, type: :submit) %>
-          <% end %>
-
-          <%= render(UI::Button::Component.new(builder: :button, variant: :rounded, color: :transparent, size: :sm)) do |button| %>
-            <% button.with_trailing_icon("chat-bubble-oval-left") %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+    </div>
   <% end %>
 <% end %>

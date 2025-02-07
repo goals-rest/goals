@@ -4,9 +4,9 @@ module Entries
     before_action :set_like, only: :destroy
 
     def create
-      like = Entry::Like.build(entry: @entry, user: Current.user)
+      @like = Entry::Like.build(entry: @entry, user: Current.user)
 
-      if like.save
+      if @like.save
         respond_to do |format|
           format.html { redirect_to @entry.entryable }
           format.turbo_stream
