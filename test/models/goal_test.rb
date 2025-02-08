@@ -7,6 +7,7 @@ class GoalTest < ActiveSupport::TestCase
 
   should validate_length_of(:title).is_at_most(60)
   should validate_length_of(:description).is_at_most(100)
+  should validate_numericality_of(:current)
 
   test "start_date presence" do
     goal = Goal.new(start_date: Time.zone.today)
@@ -89,5 +90,17 @@ class GoalTest < ActiveSupport::TestCase
     assert_no_difference "Goal::ProgressChange.count", 0 do
       goal.update(target: 20)
     end
+  end
+
+  test "updates the goal progress" do
+    goal = create(:goal, current: 5, target: 10)
+
+    assert goal.update_progress(10)
+  end
+
+  test "does not update the goal progress if new current is equal to current" do
+    goal = create(:goal, current: 5, target: 10)
+
+    assert_not goal.update_progress(5)
   end
 end

@@ -7,7 +7,7 @@ module Goals
     def new; end
 
     def update
-      if @goal.update(goal_params)
+      if @goal.update_progress(goal_params[:current])
         redirect_to new_goal_goal_progress_change_post_path(
           goal_id: @goal.id,
           goal_progress_change_id: @goal.progress_changes.last.id

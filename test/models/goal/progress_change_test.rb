@@ -7,6 +7,13 @@ class Goal::ProgressChangeTest < ActiveSupport::TestCase
   should validate_presence_of(:new_value)
   should validate_presence_of(:target)
 
+  test "validates the old value must be different than the new value" do
+    goal = create(:goal)
+    progress_change = goal.progress_changes.build(old_value: 1, new_value: 1, target: 5)
+
+    assert_not progress_change.valid?
+  end
+
   test "log_change! creates a new progress change" do
     goal = create(:goal)
 

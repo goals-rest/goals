@@ -30,6 +30,7 @@
         <%= form.form_group :current do %>
           <%= render Form::TextField::Component.new(
             placeholder: 0,
+            required: true,
             class: "text-center",
             data: {
               action: "input->sum-updater#update"

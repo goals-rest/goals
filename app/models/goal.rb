@@ -7,8 +7,8 @@ class Goal < ApplicationRecord
 
   validates :title, presence: true
   validates :start_date, presence: true
-  validates :current, presence: true
-  validates :target, presence: true
+  validates :current, presence: true, numericality: true
+  validates :target, presence: true, numericality: true
 
   validates :title, length: { maximum: 60 }
   validates :description, length: { maximum: 100 }
@@ -19,6 +19,12 @@ class Goal < ApplicationRecord
 
   before_save :set_status
   after_update :log_progress
+
+  def update_progress(new_current)
+    return false if new_current.to_d == current
+
+    update(current:)
+  end
 
   def progress
     current / target

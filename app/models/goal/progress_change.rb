@@ -1,9 +1,10 @@
 class Goal::ProgressChange < ApplicationRecord
   belongs_to :goal
 
-  validates :old_value, presence: true
-  validates :new_value, presence: true
-  validates :target, presence: true
+  validates :old_value, presence: true, numericality: true
+  validates :new_value, presence: true, numericality: true
+  validates :target, presence: true, numericality: true
+  validate :old_value_is_different_than_new_value
 
   def diff
     new_value - old_value
@@ -17,5 +18,12 @@ class Goal::ProgressChange < ApplicationRecord
     params = { old_value:, new_value:, target: goal.target }
 
     goal.progress_changes.create!(params)
+  end
+
+  private
+  def old_value_is_different_than_new_value
+    return if old_value != new_value
+
+    errors.add(:new_value, :invalid)
   end
 end
