@@ -11,7 +11,6 @@ class Entries::LikesControllerTest < ActionDispatch::IntegrationTest
       post entry_like_url(entry, format: :turbo_stream)
     end
 
-
     like = Entry::Like.last
 
     assert_response :success
@@ -27,7 +26,6 @@ class Entries::LikesControllerTest < ActionDispatch::IntegrationTest
     assert_difference "Entry::Like.count", +1 do
       post entry_like_url(entry, format: :turbo_stream)
     end
-
 
     like = Entry::Like.last
 
@@ -47,11 +45,21 @@ class Entries::LikesControllerTest < ActionDispatch::IntegrationTest
       post entry_like_url(entry, format: :turbo_stream)
     end
 
-
     like = Entry::Like.last
 
     assert_response :success
     assert user1, like.user
+  end
+
+  test "doesn't create a like if the entry doesn't belong to current user's followees" do
+    current_user = create(:user)
+    entry = create(:entry, :post, owner: create(:user))
+
+    sign_in current_user
+
+    assert_no_difference "Entry::Like.count" do
+      post entry_like_url(entry, format: :turbo_stream)
+    end
   end
 
   # TODO: Uncomment this when the post show page is added
