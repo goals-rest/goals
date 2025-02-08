@@ -30,8 +30,37 @@
       <% end %>
     </div>
   <% end %>
-  <!-- TODO: Add image to post -->
-  <%#= render UI::Card::MediaComponent.new(src: "https://picsum.photos/600/600") %>
+
+  <% if post.images.any? %>
+    <div class="mt-2 lg:mt-4">
+      <%= render UI::Carousel::Component.new(
+        class: "w-full",
+        options: {
+          watchDrag: false
+        }
+      ) do |carousel| %>
+        <% carousel.with_viewport(class: aspect_ratio_css_classes_for(post.images)) do |viewport| %>
+          <% post.images.each do |image| %>
+            <% viewport.with_slide do %>
+              <%= image_tag image.variant(:large),
+              class: "object-cover w-full h-full",
+              loading: :lazy %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <% carousel.with_next_button %>
+        <% carousel.with_previous_button %>
+
+        <% if post.images.count > 1 %>
+          <% Array.new(post.images.count).each_with_index do |_, index| %>
+            <% carousel.with_indicator(slide: index + 1) %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
   <%= render UI::Card::ActionsComponent.new do %>
     <div class="flex items-center">
       <div class="flex-1 flex items-center gap-4">

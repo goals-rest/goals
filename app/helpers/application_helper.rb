@@ -23,4 +23,27 @@ module ApplicationHelper
   def strip_zeros(number)
     number_with_precision(number, strip_insignificant_zeros: true)
   end
+
+  def aspect_ratio_for(images)
+    ratios = images.map { ImageDimensionsAnalyzer.new(it).analyze.aspect_ratio_type }
+                   .tally
+                   .max_by { |_, count| count }
+
+    return :square if ratios.count > 1 && ratios.map { |_, count| count }.uniq.one?
+
+    ratios.first
+  end
+
+  def aspect_ratio_css_classes_for(images)
+    case aspect_ratio_for(images)
+    when :square
+      "aspect-[1/1]"
+    when :portrait
+      "aspect-[4/5]"
+    when :landscape
+      "aspect-[1.91/1]"
+    else
+      "aspect-[1/1]"
+    end
+  end
 end
