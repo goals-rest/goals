@@ -1,0 +1,5 @@
+<%= tag.div(**attrs) do %>
+  <%= render UI::Button::Component.new(**button_attrs) do %>
+    <%= render UI::Icon::Component.new("chevron-left", class: "size-4") %>
+  <% end %>
+<% end %>

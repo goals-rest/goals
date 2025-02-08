@@ -1,0 +1,22 @@
+<%= render UI::Carousel::Component.new(class: "w-full max-w-md") do |carousel| %>
+  <% carousel.with_viewport(class: "aspect-[4/5]") do |viewport| %>
+    <% viewport.with_slide do %>
+      <img src="https://picsum.photos/600/600" class="object-cover h-full">
+    <% end %>
+
+    <% viewport.with_slide do %>
+      <img src="https://picsum.photos/640/480" class="object-cover h-full">
+    <% end %>
+
+    <% viewport.with_slide do %>
+      <img src="https://picsum.photos/1000/1000" class="object-cover h-full">
+    <% end %>
+  <% end %>
+
+  <% carousel.with_next_button %>
+  <% carousel.with_previous_button %>
+
+  <% carousel.with_indicator(slide: 1) %>
+  <% carousel.with_indicator(slide: 2) %>
+  <% carousel.with_indicator(slide: 3) %>
+<% end %>

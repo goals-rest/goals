@@ -10,7 +10,7 @@ class ApplicationComponent < ViewComponent::Base
   end
 
   def call
-    content.html_safe
+    content&.html_safe
   end
 
   def default_attrs
