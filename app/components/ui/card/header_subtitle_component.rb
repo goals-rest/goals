@@ -4,7 +4,7 @@ module UI
       style do
         base do
           %w[
-            text-sm text-zinc-500 font-normal dark:text-zinc-400
+            font-heading text-sm text-zinc-500 font-normal dark:text-zinc-400
           ]
         end
       end

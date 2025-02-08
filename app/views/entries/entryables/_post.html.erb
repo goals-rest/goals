@@ -3,13 +3,17 @@
 <%= render UI::Card::Component.new(class: "w-full") do |header| %>
   <%= render UI::Card::HeaderComponent.new do |header| %>
     <div class="flex items-center gap-2 mb-2">
-      <%= render UI::Avatar::Component.new(
-        src: entry.owner.avatar.variant(:thumb),
-        size: :sm,
-      ) %>
+      <%= link_to profile_path(entry.owner.username), class: "inline-flex", data: { turbo_frame: :_top } do %>
+        <%= render UI::Avatar::Component.new(
+          src: entry.owner.avatar.variant(:thumb),
+          size: :sm,
+        ) %>
+      <% end %>
       <div>
-        <p class="font-heading"><%= entry.owner.name %></p>
-        <p class="text-sm text-zinc-500 font-normal dark:text-zinc-400"><%= localize(post.created_at.to_time, format: :friendly) %></p>
+        <%= link_to profile_path(entry.owner.username), class: "inline-flex", data: { turbo_frame: :_top } do %>
+          <p class="font-heading"><%= entry.owner.name %></p>
+        <% end %>
+        <p class="font-heading text-sm text-zinc-500 font-normal dark:text-zinc-400"><%= localize(post.created_at.to_time, format: :friendly) %></p>
       </div>
     </div>
   <% end %>
