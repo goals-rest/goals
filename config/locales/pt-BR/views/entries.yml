@@ -3,3 +3,4 @@ pt-BR:
     entryables:
       post:
         likes: "%{count} kudos"
+    likes: "%{count} kudos"

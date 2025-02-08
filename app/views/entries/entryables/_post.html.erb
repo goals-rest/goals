@@ -35,12 +35,21 @@
   <%= render UI::Card::ActionsComponent.new do %>
     <div class="flex items-center">
       <div class="flex-1 flex items-center gap-4">
-        <p class="text-sm text-zinc-500 font-normal dark:text-zinc-400"><%= t(".likes", count: "1.000") %></p>
+        <%= tag.p(
+          t(".likes", count: entry.likes.count),
+          id: dom_id(entry, :likes_count),
+          class: "text-sm text-zinc-500 font-normal dark:text-zinc-400",
+        ) %>
       </div>
       <div class="flex items-center gap-2">
-        <%= render(UI::Button::Component.new(builder: :button, variant: :rounded, color: :transparent, size: :sm)) do |button| %>
-          <% button.with_trailing_icon("heart") %>
+        <%= custom_form_with(
+            url: entry_like_path(entry),
+            method: entry.liked? ? :delete : :post,
+            id: dom_id(entry, :like_button)
+          ) do %>
+          <%= render LikeButton::Component.new(type: :submit, liked: entry.liked?) %>
         <% end %>
+
         <%= render(UI::Button::Component.new(builder: :button, variant: :rounded, color: :transparent, size: :sm)) do |button| %>
           <% button.with_trailing_icon("chat-bubble-oval-left") %>
         <% end %>

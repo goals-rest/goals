@@ -35,4 +35,36 @@ class EntryTest < ActiveSupport::TestCase
 
     assert_equal [ post ], Entry.feed(owner: user)
   end
+
+  test "liked? returns true if entry is already liked by given user" do
+    user = create(:user)
+    entry = create(:entry, :post, owner: user)
+    create(:entry_like, entry:, user:)
+
+    assert entry.liked?(user:)
+  end
+
+  test "liked? returns false if entry is not liked by given user" do
+    user = create(:user)
+    entry = create(:entry, :post, owner: user)
+    create(:entry_like, entry:, user: create(:user))
+
+    assert_not entry.liked?(user:)
+  end
+
+  test "like_for returns the user's like if user is provided" do
+    user = create(:user)
+    entry = create(:entry, :post)
+    like = create(:entry_like, entry:, user:)
+
+    assert_equal like, entry.like_for(user)
+  end
+
+  test "like_for returns nil if user is not provided" do
+    user = create(:user)
+    entry = create(:entry, :post)
+    create(:entry_like, entry:, user:)
+
+    assert_nil entry.like_for(nil)
+  end
 end
