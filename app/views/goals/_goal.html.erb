@@ -2,7 +2,9 @@
   <%= render UI::Card::HeaderComponent.new do |header| %>
     <% header.with_title(class: "flex justify-between") do %>
       <%= goal.title %>
-      <span class="text-sm font-sans"><%= strip_zeros(goal.current) %> / <%= strip_zeros(goal.target) %></span>
+      <span class="text-sm"><%= strip_zeros(goal.current) %>
+        /
+        <%= strip_zeros(goal.target) %></span>
     <% end %>
 
     <% header.with_subtitle { goal.description.presence || "" } %>
@@ -12,7 +14,11 @@
     <div class="px-3 pt-3">
       <div class="flex justify-between items-center">
         <div class="flex items-center gap-2">
-          <%= render UI::Icon::Component.new("clock", variant: :outline, class: "text-zinc-600 dark:text-zinc-400") %>
+          <%= render UI::Icon::Component.new(
+            "clock",
+            variant: :outline,
+            class: "text-zinc-600 dark:text-zinc-400",
+          ) %>
           <span class="text-sm text-zinc-600 dark:text-zinc-400">
             <%= localize(goal.start_date.to_date, format: :short_month) %>
           </span>
@@ -33,15 +39,24 @@
             <% end %>
           <% end %>
 
-          <% dropdown.with_item { link_to t(".edit_goal"), edit_goal_path(goal.id), data: { turbo_frame: :_top } } %>
+          <% dropdown.with_item do
+            link_to t(".edit_goal"), edit_goal_path(goal.id), data: { turbo_frame: :_top }
+          end %>
           <% dropdown.with_item(
-            href: edit_goal_update_progress_path(goal), 
-            data: { 
-              turbo_frame: :modal 
-            }
+            href: edit_goal_update_progress_path(goal),
+            data: {
+              turbo_frame: :modal,
+            },
           ) { t(".update_progress") } %>
           <% dropdown.with_divider %>
-          <% dropdown.with_item { button_to t(".destroy_goal"), goal, method: :delete, data: { turbo_frame: :_top } } %>
+          <% dropdown.with_item do
+            button_to t(".destroy_goal"),
+            goal,
+            method: :delete,
+            data: {
+              turbo_frame: :_top,
+            }
+          end %>
         <% end %>
       </div>
     </div>
@@ -49,7 +64,9 @@
     <div class="pb-3">
       <%= render UI::Card::BodyComponent.new do |header| %>
         <% if goal.completed? %>
-          <%= render UI::Badge::Component.new(color: :green).with_content(goal.translated_status) %>
+          <%= render UI::Badge::Component.new(color: :green).with_content(
+            goal.translated_status,
+          ) %>
         <% else %>
           <%= render UI::ProgressBar::Component.new(progress: goal.progress, size: :sm) %>
         <% end %>
