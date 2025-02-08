@@ -17,7 +17,7 @@ class Entries::LikesControllerTest < ActionDispatch::IntegrationTest
     assert user, like.user
   end
 
-  test "creates a like for an entry with id equal as entry_id" do
+  test "creates a like for a given entry" do
     user = create(:user)
     entry = create(:entry, :post, owner: user)
 
