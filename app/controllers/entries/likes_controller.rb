@@ -28,9 +28,7 @@ module Entries
     private
 
     def set_entry
-      @entry = Entry.where(owner: Current.user)
-                    .or(Entry.where(owner: Current.user.followees))
-                    .find(params[:entry_id])
+      @entry = Entry.visible(Current.user).find(params[:entry_id])
     end
 
     def set_like
