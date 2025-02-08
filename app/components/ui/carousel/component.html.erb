@@ -1,0 +1,11 @@
+<%= tag.div(**attrs) do %>
+  <%= viewport %>
+  <%= next_button %>
+  <%= previous_button %>
+
+  <div class="absolute w-full bottom-6 flex items-center justify-center gap-2">
+    <% indicators.each do |indicator| %>
+      <%= indicator %>
+    <% end %>
+  </div>
+<% end %>
