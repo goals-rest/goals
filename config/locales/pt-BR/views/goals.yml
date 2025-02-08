@@ -56,3 +56,4 @@ pt-BR:
           go_back: Voltar
           submit: Publicar
           default_body: "Atualizei minha meta de %{old_value} para %{new_value}. Faltam %{remaining}."
+          allowed_file_types: PNG, JPG, GIF ou WEBP

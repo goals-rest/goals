@@ -28,7 +28,7 @@ class Goals::ProgressChanges::PostsController < DashboardController
 
   def post_params
     params.require(:post)
-      .permit(:title, :body)
+      .permit(:title, :body, images: [])
       .merge(goal_progress_change: @progress_change)
   end
 end
