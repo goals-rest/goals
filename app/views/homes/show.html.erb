@@ -58,7 +58,7 @@
     <% end %>
   </div>
 
-  <div class="w-full lg:basis-1/2">
+  <div class="basis-full xl:basis-1/2">
     <%= turbo_frame_tag :feed_content, src: feed_index_path, class: "w-full flex flex-col gap-4" do %>
       <%= cache :skeleton do %>
         <%= render partial: "feed_skeleton" %>
@@ -75,6 +75,33 @@
     >
       <%= t(".my_goals") %>
     </h4>
-    <%= render partial: "goal", collection: @goals, as: :goal, cached: true %>
+
+    <% if @goals.any? %>
+      <div>
+        <%= render partial: "goal", collection: @goals, as: :goal, cached: true %>
+      </div>
+    <% end %>
+
+    <% if @user.goals.pending.count > 5 %>
+      <div class="mt-4">
+        <%= link_to(
+          t(".see_goals"),
+          goals_path,
+          class:
+          "font-heading text-zinc-800 focus:text-primary-600 font-normal 
+          hover:transition hover:duration-300 hover:ease-in-out 
+          hover:text-zinc-950 dark:text-white dark:hover:text-zinc-300 
+          dark:focus:text-white underline"
+        ) %>
+      </div>
+    <% end %>
+
+    <% if @goals.none? %>
+      <div class="mt-4">
+        <p class="text-zinc-500 dark:text-zinc-300 text-center">
+          <%= t(".no_pending_goals") %>
+        </p>
+      </div>
+    <% end %>
   </div>
 </div>

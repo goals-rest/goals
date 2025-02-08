@@ -48,6 +48,12 @@ class GoalTest < ActiveSupport::TestCase
     assert_equal result, 0.5
   end
 
+  test "progress returns 0 if target is 0" do
+    goal = create(:goal, current: 50, target: 0)
+
+    assert_equal 0, goal.progress
+  end
+
   test "translated_status returns the translated status name" do
     goal = Goal.new(status: :completed)
 

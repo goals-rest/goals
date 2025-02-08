@@ -27,6 +27,8 @@ class Goal < ApplicationRecord
   end
 
   def progress
+    return 0 if target.zero?
+
     current / target
   end
 
