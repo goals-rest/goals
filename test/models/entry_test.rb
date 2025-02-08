@@ -27,6 +27,16 @@ class EntryTest < ActiveSupport::TestCase
     assert_equal [ post1, post2 ], Entry.feed(owner: user1)
   end
 
+  test "visible scope returns entries owned by the current user and their followees" do
+    current_user = create(:user)
+    followee = create(:user)
+    create(:follow, follower: current_user, followee:)
+    entry1 = create(:entry, :post, owner: current_user)
+    entry2 = create(:entry, :post, owner: followee)
+
+    assert_equal [ entry1, entry2 ], Entry.visible(current_user)
+  end
+
   test "feed scope returns entries with type Post" do
     user = create(:user)
     post = create(:entry, :post, owner: user)

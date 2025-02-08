@@ -9,10 +9,12 @@ class Entry < ApplicationRecord
 
   validates_associated :entryable
 
+  scope :visible, ->(current_user) do
+    where(owner: current_user).or(Entry.where(owner: current_user.followees))
+  end
+
   scope :feed, ->(owner: Current.user) do
-    where(entryable_type: FEED_ENTRIES)
-      .where(owner:)
-      .or(Entry.where(owner: owner.followees))
+    where(entryable_type: FEED_ENTRIES).visible(owner)
   end
 
   def self.build_with_post(post, owner: Current.user)
