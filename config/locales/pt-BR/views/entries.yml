@@ -4,3 +4,6 @@ pt-BR:
       post:
         likes: "%{count} kudos"
     likes: "%{count} kudos"
+    comments:
+      load_more_button:
+        load_more_comments: Carregar mais comentários

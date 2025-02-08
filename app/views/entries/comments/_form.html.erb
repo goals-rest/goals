@@ -1,0 +1,14 @@
+<div>
+  <%= custom_form_with(
+    model: [entry, comment], 
+    class: "w-full"
+  ) do |form| %>
+    <div class="flex items-center gap-2 mb-2 shrink-0">
+      <%= render UI::Avatar::Component.new(src: user.avatar.variant(:thumb), size: :xs) %>
+      <div class="basis-full">
+        <%= form.text_field(:body, placeholder: "Adicionar comentário", autofocus: true) %>
+        <%= form.error_message :body %>
+      </div>
+    </div>
+  <% end %>
+</div>

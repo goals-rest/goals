@@ -5,7 +5,8 @@
       id: dom_id(entry, :like_button),
       data: {
         turbo: true
-      }
+      },
+      class: "inline-flex items-center justify-center"
     ) do %>
     <%= render LikeButton::Component.new(type: :submit, liked: like.persisted?) %>
   <% end %>

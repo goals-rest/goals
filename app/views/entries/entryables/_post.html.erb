@@ -78,15 +78,30 @@
         <%= custom_form_with(
             url: entry_like_path(entry),
             method: entry.liked? ? :delete : :post,
-            id: dom_id(entry, :like_button)
+            id: dom_id(entry, :like_button),
+            class: "inline-flex items-center justify-center"
           ) do %>
           <%= render LikeButton::Component.new(type: :submit, liked: entry.liked?) %>
         <% end %>
 
-        <%= render(UI::Button::Component.new(builder: :button, variant: :rounded, color: :transparent, size: :sm)) do |button| %>
+        <%= render UI::Button::Component.new(
+          builder: :a, 
+          href: new_entry_comment_path(entry), 
+          variant: :rounded, 
+          color: :transparent, 
+          size: :sm,
+          data: {
+            turbo: true,
+            turbo_frame: dom_id(entry, :new_comment)
+          }
+        ) do |button| %>
           <% button.with_trailing_icon("chat-bubble-oval-left") %>
         <% end %>
       </div>
     </div>
   <% end %>
+
+  <%= turbo_frame_tag dom_id(entry, :new_comment) %>
+
+  <%= render partial: "entries/comments/comment_section", locals: { entry: } %>
 <% end %>

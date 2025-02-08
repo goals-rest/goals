@@ -1,0 +1,19 @@
+<div class="px-3">
+  <%= turbo_frame_tag dom_id(entry, :comments), class: "block space-y-4 pb-3 empty:pb-0" do %>
+    <% if entry.comments.any? %>
+      <%= render(
+        partial: "entries/entryables/comment",
+        collection: entry.comments.order(created_at: :desc).limit(3),
+        cached: ->(comment) { [Current.user, comment] },
+      ) %>
+    <% end %>
+  <% end %>
+
+  <% if entry.comments.count > 3 %>
+    <%= turbo_frame_tag dom_id(entry, :next_page) do %>
+      <div class="mt-1 pb-3">
+        <%= render partial: "entries/comments/load_more_button", locals: { entry:, page: 2 } %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
