@@ -96,6 +96,7 @@ class GoalTest < ActiveSupport::TestCase
     goal = create(:goal, current: 5, target: 10)
 
     assert goal.update_progress(10)
+    assert_equal 10, goal.reload.current
   end
 
   test "does not update the goal progress if new current is equal to current" do

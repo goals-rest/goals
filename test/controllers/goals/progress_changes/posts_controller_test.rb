@@ -4,7 +4,7 @@ class Goals::ProgressChanges::PostsControllerTest < ActionDispatch::IntegrationT
   test "new" do
     user = create(:user)
     goal = create(:goal, user:)
-    progress_change = create(:goal_progress_change, goal:)
+    progress_change = create(:goal_progress_change, goal:, new_value: goal.current + 1)
 
     sign_in user
 
@@ -16,7 +16,7 @@ class Goals::ProgressChanges::PostsControllerTest < ActionDispatch::IntegrationT
   test "creates a new post" do
     user = create(:user)
     goal = create(:goal, user:)
-    progress_change = create(:goal_progress_change, goal:)
+    progress_change = create(:goal_progress_change, goal:, new_value: goal.current + 1)
     params = {
       post: attributes_for(:post)
     }
@@ -34,7 +34,7 @@ class Goals::ProgressChanges::PostsControllerTest < ActionDispatch::IntegrationT
   test "create returns a error response if the post is invalid" do
     user = create(:user)
     goal = create(:goal, user:)
-    progress_change = create(:goal_progress_change, goal:)
+    progress_change = create(:goal_progress_change, goal:, new_value: goal.current + 1)
     params = {
       post: attributes_for(:post, body: nil)
     }
@@ -51,7 +51,7 @@ class Goals::ProgressChanges::PostsControllerTest < ActionDispatch::IntegrationT
   test "can create post with images" do
     user = create(:user)
     goal = create(:goal, user:)
-    progress_change = create(:goal_progress_change, goal:)
+    progress_change = create(:goal_progress_change, goal:, new_value: goal.current + 1)
     params = {
       post: attributes_for(
         :post,

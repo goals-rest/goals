@@ -23,7 +23,7 @@ class Goal < ApplicationRecord
   def update_progress(new_current)
     return false if new_current.to_d == current
 
-    update(current:)
+    update(current: new_current)
   end
 
   def progress
