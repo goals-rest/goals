@@ -1,9 +1,10 @@
 class Entry < ApplicationRecord
   FEED_ENTRIES = %w[ Post ]
 
-  delegated_type :entryable, types: %w[ Post ], dependent: :destroy
+  delegated_type :entryable, types: %w[ Post Comment ], dependent: :destroy
 
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   belongs_to :owner, class_name: "User", foreign_key: :owner_id
 
@@ -19,6 +20,10 @@ class Entry < ApplicationRecord
 
   def self.build_with_post(post, owner: Current.user)
     [ post, build(entryable: post, owner:) ]
+  end
+
+  def self.build_with_comment(comment, owner: Current.user)
+    [ comment, build(entryable: comment, owner:) ]
   end
 
   def liked?(user: Current.user)

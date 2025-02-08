@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  includes Entryable
+  include Entryable
 
   has_many_attached :images do |attachable|
     attachable.variant :large, resize_to_limit: [ 1200, 1200 ], preprocessed: true

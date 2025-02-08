@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_02_02_211320) do
+ActiveRecord::Schema[8.1].define(version: 2025_02_08_171856) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -37,6 +37,14 @@ ActiveRecord::Schema[8.1].define(version: 2025_02_02_211320) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body", limit: 2200, null: false
+    t.datetime "created_at", null: false
+    t.integer "entry_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entry_id"], name: "index_comments_on_entry_id"
   end
 
   create_table "entries", force: :cascade do |t|
@@ -136,6 +144,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_02_02_211320) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "entries"
   add_foreign_key "entries", "users", column: "owner_id"
   add_foreign_key "entry_likes", "entries"
   add_foreign_key "entry_likes", "users"
