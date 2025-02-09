@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :posts, only: %i[new create]
   resources :entries, only: %i[] do
     scope module: :entries do
+      resources :likes, only: %i[index]
       resource :like, only: %i[create destroy]
       resources :comments, only: %i[index new create]
     end

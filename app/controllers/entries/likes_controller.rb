@@ -1,7 +1,14 @@
 module Entries
   class LikesController < ApplicationController
+    include EnforceTurboRequest
+
+    before_action :ensure_turbo_request, only: :index
     before_action :set_entry
     before_action :set_like, only: :destroy
+
+    def index
+      @likes = @entry.likes
+    end
 
     def create
       @like = Entry::Like.build(entry: @entry, user: Current.user)

@@ -1,0 +1,24 @@
+<%= turbo_frame_tag dom_id(@entry, :likes) do %>
+  <% if @entry.likes.present? %>
+    <div class="flex flex-col">
+      <h3 class="text-xl font-semibold font-heading text-zinc-900
+          dark:text-zinc-100 tracking-tight not-prose mb-4">
+        <%= t(".likes", count: @entry.likes.count)%>
+      </h3>
+      <% @entry.likes.each do |like| %>
+        <div class="flex gap-2 items-center mb-4">
+          <div>
+            <%= render UI::Avatar::Component.new(
+                src: like.user.avatar.variant(:thumb),
+                size: :sm,
+                class: "not-prose"
+            ) %>
+          </div>
+          <div><%= like.user.name %></div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="py-4 text-zinc-900 dark:text-zinc-100 tracking-tight"><%= t(".without_likes")%><div>
+  <% end %>
+<% end %>

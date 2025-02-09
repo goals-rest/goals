@@ -1,6 +1,16 @@
 require "test_helper"
 
 class Entries::LikesControllerTest < ActionDispatch::IntegrationTest
+  test "index" do
+    user = create(:user)
+    entry = create(:entry, :post, owner: user)
+
+    sign_in user
+    get entry_likes_url(entry), headers: { "Turbo-Frame" => "frame" }
+
+    assert_response :success
+  end
+
   test "creates a like if the entry belongs to current user" do
     user = create(:user)
     entry = create(:entry, :post, owner: user)

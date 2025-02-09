@@ -68,11 +68,19 @@
   <%= render UI::Card::ActionsComponent.new do %>
     <div class="flex items-center">
       <div class="flex-1 flex items-center gap-4">
-        <%= tag.p(
-          t(".likes", count: entry.likes.count),
-          id: dom_id(entry, :likes_count),
-          class: "text-sm text-zinc-500 font-normal dark:text-zinc-400",
-        ) %>
+        <%= render UI::Modal::Component.new(class: "w-full max-w-lg") do |modal| %>
+          <% modal.with_trigger do %>
+            <%= tag.p t(".likes", count: entry.likes.count),
+              id: dom_id(entry, :likes_count),
+              class: "text-sm text-zinc-500 font-normal dark:text-zinc-400 cursor-pointer" %>
+          <% end %>
+          <% modal.with_close_button %>
+          <%= render UI::Modal::BodyComponent.new do %>
+            <%= turbo_frame_tag dom_id(entry, :likes), src: entry_likes_path(entry) do %>
+              <%= t(".loading") %>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
       <div class="flex items-center gap-2">
         <%= custom_form_with(
