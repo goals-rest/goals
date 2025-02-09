@@ -1,6 +1,10 @@
 class FeedController < DashboardController
   def index
-    @pagy, @entries = pagy(Current.entries.includes(:owner, entryable: :comments).feed.order(created_at: :desc))
+    @entries = Current.entries
+                      .includes(owner: { avatar_attachment: :blob })
+                      .feed
+                      .order(created_at: :desc)
+    @pagy, @entries = pagy(@entries)
 
     respond_to do |format|
       format.html
