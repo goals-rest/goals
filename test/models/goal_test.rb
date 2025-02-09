@@ -41,7 +41,7 @@ class GoalTest < ActiveSupport::TestCase
   end
 
   test "progress returns the progress of the goal" do
-    goal = create(:goal, current: 50, target: 100)
+    goal = Goal.new(current: 50, target: 100)
 
     result = goal.progress
 
@@ -49,7 +49,7 @@ class GoalTest < ActiveSupport::TestCase
   end
 
   test "translated_status returns the translated status name" do
-    goal = build(:goal, status: :completed)
+    goal = Goal.new(status: :completed)
 
     assert_equal I18n.t("activerecord.attributes.goal.status.completed"), goal.translated_status
   end

@@ -19,7 +19,7 @@ class EntryTest < ActiveSupport::TestCase
 
     post1 = create(:entry, :post, owner: user1)
     post2 = create(:entry, :post, owner: user2)
-    post3 = create(:entry, :post, owner: user3)
+    _post3 = create(:entry, :post, owner: user3)
 
     # user 1 follows user 2
     create(:follow, follower: user1, followee: user2)

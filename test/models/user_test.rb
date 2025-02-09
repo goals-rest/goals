@@ -113,20 +113,20 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "allowed to view profile if user is themselves" do
-    user = create(:user, profile_visibility: :private)
+    user = User.new(profile_visibility: :private)
 
     assert user.allowed_to_view_profile?(user)
   end
 
   test "allowed to view profile if the profile is public" do
-    user = create(:user, profile_visibility: :public)
-    user2 = create(:user)
+    user = User.new(profile_visibility: :public)
+    user2 = User.new
 
     assert user.allowed_to_view_profile?(user2)
   end
 
   test "allowed to view profile if the profile is public and user is nil" do
-    user = create(:user, profile_visibility: :public)
+    user = User.new(profile_visibility: :public)
 
     assert user.allowed_to_view_profile?(nil)
   end
@@ -140,7 +140,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "pending_follow_request_for? returns false if user is nil" do
-    user = create(:user)
+    user = User.new
 
     assert_not user.pending_follow_request_for?(nil)
   end
