@@ -1,6 +1,7 @@
 class Entries::CommentsController < ApplicationController
   before_action :ensure_turbo_request, only: %i[index new]
   before_action :set_entry
+  before_action :ensure_current_user_has_access
 
   def index
     @pagy, @comments = pagy(@entry.comments.order(created_at: :desc), limit: 3)
@@ -26,9 +27,16 @@ class Entries::CommentsController < ApplicationController
     redirect_to root_path
   end
 
+  def ensure_current_user_has_access
+    return if Current.user == @entry.owner ||
+                @entry.owner.public_profile? ||
+                Current.user.follows?(@entry.owner)
+
+    redirect_to root_path
+  end
+
   def set_entry
-    @entry = Entry.visible(Current.user)
-                  .find(params[:entry_id])
+    @entry = Entry.find(params[:entry_id])
   end
 
   def comment_params
