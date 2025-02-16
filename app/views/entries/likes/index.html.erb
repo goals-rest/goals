@@ -10,7 +10,7 @@
         collection: @likes,
         cached: ->(like) { [Current.user, like] },
       ) %>
-      <% if @entry.likes.count > 1 %>
+      <% if @entry.likes.count > 5 %>
         <%= turbo_frame_tag dom_id(@entry, :next_page) do %>
           <div class="mt-1 pb-3">
             <%= render partial: "load_more_button", locals: { entry: @entry, page: 2 } %>
