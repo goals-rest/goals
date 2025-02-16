@@ -1,0 +1,27 @@
+<% @comments.each do |comment| %>
+  <%= turbo_stream.remove comment %>
+<% end %>
+
+<%= turbo_stream.append dom_id(@entry, :comments) do %>
+  <div class="space-y-4">
+    <%= render(
+      partial: "entries/entryables/comment",
+      collection: @comments,
+      cached: ->(comment) { [Current.user, comment] },
+    ) %>
+  </div>
+<% end %>
+
+<% if @pagy.next %>
+  <%= turbo_stream.update dom_id(@entry, :next_page) do %>
+    <div class="mt-1 pb-3">
+      <%= render partial: "entries/comments/load_more_button",
+      locals: {
+        entry: @entry,
+        page: @pagy.next,
+      } %>
+    </div>
+  <% end %>
+<% else %>
+  <%= turbo_stream.remove dom_id(@entry, :next_page) %>
+<% end %>

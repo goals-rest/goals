@@ -1,0 +1,12 @@
+<%= turbo_frame_tag dom_id(@entry, :new_comment) do %>
+  <div class="px-3 pb-2">
+    <%= render(
+      partial: "form",
+      locals: {
+        entry: @entry,
+        comment: @comment,
+        user: Current.user,
+      },
+    ) %>
+  </div>
+<% end %>

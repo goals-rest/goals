@@ -1,0 +1,11 @@
+<%= turbo_stream.update [@entry, :new_comment] %>
+
+<%= turbo_stream.prepend [@entry, :comments] do %>
+  <%= render(
+    partial: "entries/entryables/comment",
+    locals: {
+      entry: @entry,
+      comment: @comment,
+    },
+  ) %>
+<% end %>

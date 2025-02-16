@@ -1,0 +1,24 @@
+<%= turbo_frame_tag comment, class: "block" do %>
+  <div>
+    <div class="flex items-start gap-2">
+      <%= link_to profile_path(comment.owner.username), data: { turbo_frame: :_top } do %>
+        <%= render UI::Avatar::Component.new(
+          src: comment.owner.avatar.variant(:thumb),
+          size: :xs,
+        ) %>
+      <% end %>
+      <div>
+        <div>
+          <%= link_to profile_path(comment.owner.username), data: { turbo_frame: :_top } do %>
+            <p class="font-heading"><%= comment.owner.name %></p>
+          <% end %>
+          <p class="text-sm text-zinc-500 font-normal dark:text-zinc-400"><%= localize(comment.created_at.to_time, format: :friendly) %></p>
+        </div>
+
+        <div class="mt-1">
+          <%= comment.body %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
