@@ -3,7 +3,15 @@ pt-BR:
     entryables:
       post:
         likes: "%{count} kudos"
-    likes: "%{count} kudos"
+        loading: "Carregando..."
+    likes:
+      index:
+        likes: "Kudos (%{count})"
+        without_likes: "Seja o primeiro a dar kudos"
+      like:
+        likes: "Kudos (%{count})"
+      load_more_button:
+        load_more_likes: "Carregar mais kudos"
     comments:
       load_more_button:
         load_more_comments: Carregar mais comentários

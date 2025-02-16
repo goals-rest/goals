@@ -1,0 +1,21 @@
+<%= turbo_stream.append dom_id(@entry, :likes_list) do %>
+  <%= render(
+    partial: "like",
+    collection: @likes,
+    cached: ->(like) { [Current.user, like] },
+  ) %>
+<% end %>
+
+<% if @pagy.next %>
+  <%= turbo_stream.update dom_id(@entry, :next_page) do %>
+    <div class="mt-1">
+      <%= render partial: "load_more_button",
+      locals: {
+        entry: @entry,
+        page: @pagy.next,
+      } %>
+    </div>
+  <% end %>
+<% else %>
+  <%= turbo_stream.remove dom_id(@entry, :next_page) %>
+<% end %>
