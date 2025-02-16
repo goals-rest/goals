@@ -7,7 +7,7 @@ module Entries
     before_action :set_like, only: :destroy
 
     def index
-      @likes = @entry.likes
+      @pagy, @likes = pagy(@entry.likes.order(created_at: :desc), limit: 1)
     end
 
     def create

@@ -1,0 +1,33 @@
+<% @likes.each do |like| %>
+  <%= turbo_stream.remove like %>
+<% end %>
+
+<div class="flex flex-col">
+  <h3 class="text-xl font-semibold font-heading text-zinc-900
+      dark:text-zinc-100 tracking-tight not-prose mb-4">
+    <%= t(".likes", count: @entry.likes.count)%>
+  </h3>
+  <%= turbo_stream.append dom_id(@entry, :likes) do %>
+    <div class="space-y-4">
+      <%= render(
+        partial: "like",
+        collection: @likes,
+        cached: ->(like) { [Current.user, like] },
+      ) %>
+    </div>
+  <% end %>
+</div>
+
+<% if @pagy.next %>
+  <%= turbo_stream.update dom_id(@entry, :next_page) do %>
+    <div class="mt-1 pb-3">
+      <%= render partial: "load_more_button",
+      locals: {
+        entry: @entry,
+        page: @pagy.next,
+      } %>
+    </div>
+  <% end %>
+<% else %>
+  <%= turbo_stream.remove dom_id(@entry, :next_page) %>
+<% end %>

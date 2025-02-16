@@ -1,30 +1,24 @@
 <%= turbo_frame_tag dom_id(@entry, :likes) do %>
-  <% if @entry.likes.present? %>
-    <div class="flex flex-col">
-      <h3 class="text-xl font-semibold font-heading text-zinc-900
-          dark:text-zinc-100 tracking-tight not-prose mb-4">
-        <%= t(".likes", count: @entry.likes.count)%>
-      </h3>
-      <% @entry.likes.each do |like| %>
-        <div class="flex gap-2 items-center mb-4">
-          <div>
-            <%= link_to profile_path(like.user.username), data: { turbo_frame: :_top } do %>
-              <%= render UI::Avatar::Component.new(
-                  src: like.user.avatar.variant(:thumb),
-                  size: :sm,
-                  class: "not-prose"
-              ) %>
-            <% end %>
+  <div class="flex flex-col">
+    <h3 class="text-xl font-semibold font-heading text-zinc-900
+        dark:text-zinc-100 tracking-tight not-prose mb-4">
+      <%= t(".likes", count: @entry.likes.count)%>
+    </h3>
+    <% if @likes.present? %>
+      <%= render(
+        partial: "like",
+        collection: @likes,
+        cached: ->(like) { [Current.user, like] },
+      ) %>
+      <% if @entry.likes.count > 1 %>
+        <%= turbo_frame_tag dom_id(@entry, :next_page) do %>
+          <div class="mt-1 pb-3">
+            <%= render partial: "load_more_button", locals: { entry: @entry, page: 2 } %>
           </div>
-          <div>
-            <%= link_to profile_path(like.user.username), class: "not-prose", data: { turbo_frame: :_top } do %>
-              <%= like.user.name %>
-            <% end %>
-          </div>
-        </div>
+        <% end %>
       <% end %>
-    </div>
-  <% else %>
-    <div class="py-4 text-zinc-900 dark:text-zinc-100 tracking-tight"><%= t(".without_likes")%><div>
-  <% end %>
+    <% else %>
+      <div class="py-4 text-zinc-900 dark:text-zinc-100 tracking-tight"><%= t(".without_likes")%><div>
+    <% end %>
+  </div>
 <% end %>
