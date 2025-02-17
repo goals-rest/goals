@@ -15,7 +15,7 @@ class Entry < ApplicationRecord
   end
 
   scope :feed, ->(owner: Current.user) do
-    where(entryable_type: FEED_ENTRIES).visible(owner)
+    visible(owner).where(entryable_type: FEED_ENTRIES)
   end
 
   def self.build_with_post(post, owner: Current.user)

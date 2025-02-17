@@ -47,6 +47,17 @@ class EntryTest < ActiveSupport::TestCase
     assert_equal [ post ], Entry.feed(owner: user)
   end
 
+  test "feed scope returns followee entries with type Post" do
+    current_user = create(:user)
+    followee = create(:user)
+    create(:follow, follower: current_user, followee:)
+    post = create(:entry, :post, owner: followee)
+
+    create(:entry, entryable_type: User, entryable_id: 1, owner: followee)
+
+    assert_equal [ post ], Entry.feed(owner: current_user)
+  end
+
   test "liked? returns true if entry is already liked by given user" do
     user = create(:user)
     entry = create(:entry, :post, owner: user)
