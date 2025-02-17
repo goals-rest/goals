@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/getrailsui/railsui.git
-  revision: 76bf734f587aee790cfabb7345ca52be3ce95cba
+  revision: 66c3270232eeb83a10a93c93ac83488ce9694874
   branch: main
   specs:
     railsui (3.0.1)
