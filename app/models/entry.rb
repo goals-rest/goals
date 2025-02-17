@@ -4,7 +4,7 @@ class Entry < ApplicationRecord
   delegated_type :entryable, types: %w[ Post Comment ], dependent: :destroy
 
   has_many :likes, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  has_many :comments, dependent: :destroy, inverse_of: :parent
 
   belongs_to :owner, class_name: "User", foreign_key: :owner_id
 
