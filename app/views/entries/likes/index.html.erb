@@ -17,7 +17,9 @@
         <% if @entry.likes.count > 5 %>
           <%= turbo_frame_tag dom_id(@entry, :next_page) do %>
             <div class="mt-1">
-              <%= render partial: "load_more_button", locals: { entry: @entry, page: 2 } %>
+              <%= render(LoadMoreButton::Component.new(
+                href: entry_likes_path(@entry, page: 2, format: :turbo_stream)
+              )) { t(".load_more_likes") } %>
             </div>
           <% end %>
         <% end %>
