@@ -12,7 +12,9 @@
   <% if entry.comments.count > 3 %>
     <%= turbo_frame_tag dom_id(entry, :next_page) do %>
       <div class="mt-1 pb-3">
-        <%= render partial: "entries/comments/load_more_button", locals: { entry:, page: 2 } %>
+        <%= render(LoadMoreButton::Component.new(
+            href: entry_comments_path(entry, page: 2, format: :turbo_stream)
+        )) { t(".load_more_comments") } %>
       </div>
     <% end %>
   <% end %>

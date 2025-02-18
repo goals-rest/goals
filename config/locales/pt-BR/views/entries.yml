@@ -12,5 +12,5 @@ pt-BR:
       like:
         likes: "Kudos (%{count})"
     comments:
-      load_more_button:
+      comment_section:
         load_more_comments: Carregar mais comentários
