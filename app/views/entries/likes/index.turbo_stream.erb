@@ -9,11 +9,9 @@
 <% if @pagy.next %>
   <%= turbo_stream.update dom_id(@entry, :next_page) do %>
     <div class="mt-1">
-      <%= render partial: "load_more_button",
-      locals: {
-        entry: @entry,
-        page: @pagy.next,
-      } %>
+      <%= render(LoadMoreButton::Component.new(
+        href: entry_likes_path(@entry, page: @pagy.next, format: :turbo_stream)
+      )) { t(".load_more_likes") } %>
     </div>
   <% end %>
 <% else %>

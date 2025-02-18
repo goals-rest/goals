@@ -8,10 +8,9 @@ pt-BR:
       index:
         likes: "Kudos (%{count})"
         without_likes: "Seja o primeiro a dar kudos"
+        load_more_likes: "Carregar mais kudos"
       like:
         likes: "Kudos (%{count})"
-      load_more_button:
-        load_more_likes: "Carregar mais kudos"
     comments:
-      load_more_button:
+      comment_section:
         load_more_comments: Carregar mais comentários
