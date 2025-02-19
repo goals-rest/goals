@@ -4,7 +4,7 @@ class Entries::CommentsController < ApplicationController
   before_action :ensure_current_user_has_access
 
   def index
-    @pagy, @comments = pagy(@entry.comments.order(created_at: :desc), limit: 3)
+    @pagy, @comments = pagy(@entry.comments.order(:created_at), limit: 3)
   end
 
   def new
