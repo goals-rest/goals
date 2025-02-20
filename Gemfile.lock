@@ -489,7 +489,6 @@ DEPENDENCIES
   tailwind_merge (= 0.16.0)
   thruster
   turbo-rails
-  tzinfo-data
   view_component (= 3.21.0)
   view_component-contrib (= 0.2.4)
   web-console
