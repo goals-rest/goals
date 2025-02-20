@@ -96,3 +96,6 @@ gem "pagy", "~> 9.3"
 
 # Active Storage Validations is a gem that allows you to add validations for Active Storage attributes [https://github.com/igorkasyanchuk/active_storage_validations]
 gem "active_storage_validations", "2.0.2"
+
+# Authorization framework for Ruby and Rails applications [https://github.com/palkan/action_policy]
+gem "action_policy", "0.7.3"
