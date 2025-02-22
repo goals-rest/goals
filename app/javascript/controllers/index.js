@@ -13,6 +13,7 @@ import ImagePreviewController from './image_preview_controller'
 import RemovalController from './removal_controller'
 import MultipleImagePreviewController from './multiple_image_preview_controller'
 import CarouselController from './carousel_controller'
+import TooltipController from './tooltip_controller'
 application.register('hello', HelloController)
 application.register('flash', FlashController)
 application.register('dark-mode-toggle', DarkModeToggleController)
@@ -22,4 +23,5 @@ application.register('image-preview', ImagePreviewController)
 application.register('multiple-image-preview', MultipleImagePreviewController)
 application.register('removal', RemovalController)
 application.register('carousel', CarouselController)
+application.register('tooltip', TooltipController)
 import './railsui'
