@@ -1,0 +1,9 @@
+<%= tag.div(**attrs) do %>
+  <%= content %>
+  <%= tag.div(
+    class: "absolute bg-zinc-900 size-2 rotate-45 dark:bg-zinc-700",
+    data: {
+      tooltip_target: "arrow",
+    },
+  ) %>
+<% end %>
