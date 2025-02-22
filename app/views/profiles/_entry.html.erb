@@ -1,1 +1,9 @@
-<%= render "entries/entryables/#{entry.entryable_name}", entry: %>
+<%= turbo_frame_tag entry, class: "block" do %>
+  <%= render(
+    partial: "entries/entryables/#{entry.entryable_name}",
+    locals: {
+      entry:,
+      destroy_entry_path: profile_feed_entry_path(@user.username, entry),
+    },
+  ) %>
+<% end %>

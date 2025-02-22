@@ -1,0 +1,19 @@
+<%= turbo_stream.remove(@post.entry) %>
+
+<%= turbo_stream.replace :flash do %>
+  <%= render partial: "shared/flash" %>
+<% end %>
+
+<% if Current.user.entries.feed.none? %>
+  <%= turbo_stream.append :feed do %>
+    <div class="mb-4">
+      <%= render "feed/no_entries" %>
+    </div>
+  <% end %>
+
+  <%= turbo_stream.append :profile_feed do %>
+    <div class="mb-4">
+      <%= render "feed/no_entries" %>
+    </div>
+  <% end %>
+<% end %>
