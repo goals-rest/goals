@@ -8,6 +8,8 @@ pt-BR:
     header:
       panel: Painel
       goals: Metas
+      new_post: Nova publicação
+      new_goal: Nova meta
       my_profile: Meu Perfil
       settings: Configurações
       logout: Sair

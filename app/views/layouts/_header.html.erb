@@ -11,7 +11,7 @@
   <% header.with_item do %>
     <div class="md:mr-4 mr-3">
       <%= render DarkModeToggle::Component.new(
-        variant: :rounded_outlined, 
+        variant: :rounded_outlined,
         color: :dark,
         size: nil,
         class: "md:w-10 md:h-10 size-12"
@@ -29,7 +29,7 @@
           <% dropdown.with_trigger do %>
             <div class="flex items-center justify-center">
               <%= render UI::Button::Component.new(
-                variant: :rounded_outlined, 
+                variant: :rounded_outlined,
                 color: :dark,
                 size: nil,
                 class: "md:w-10 md:h-10 size-12"
@@ -43,11 +43,19 @@
             </div>
           <% end %>
 
-          <% dropdown.with_item(href: profile_path(Current.user.username)) do %>
-            <%= t(".my_profile") %>
+          <% dropdown.with_item(href: new_post_path) do %>
+            <%= t(".new_post") %>
+          <% end %>
+
+          <% dropdown.with_item(href: new_goal_path) do %>
+            <%= t(".new_goal") %>
           <% end %>
 
           <% dropdown.with_divider %>
+
+          <% dropdown.with_item(href: profile_path(Current.user.username)) do %>
+            <%= t(".my_profile") %>
+          <% end %>
 
           <% dropdown.with_item(href: edit_settings_profile_path) do %>
             <%= t(".settings") %>
