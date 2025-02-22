@@ -17,7 +17,7 @@
     <div class="mt-1 pb-3">
       <%= render(LoadMoreButton::Component.new(
         href: entry_comments_path(@entry, page: @pagy.next, format: :turbo_stream)
-      )) { t("comment_section.load_more_comments") } %>
+      )) { t(".load_more_comments") } %>
     </div>
   <% end %>
 <% else %>

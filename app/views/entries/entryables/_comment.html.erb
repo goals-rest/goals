@@ -7,16 +7,35 @@
           size: :xs,
         ) %>
       <% end %>
-      <div>
-        <div>
-          <%= link_to profile_path(comment.owner.username), data: { turbo_frame: :_top } do %>
-            <p class="font-heading"><%= comment.owner.name %></p>
-          <% end %>
-          <p class="text-sm text-zinc-500 font-normal dark:text-zinc-400"><%= localize(comment.created_at.to_time, format: :friendly) %></p>
+      <div class="flex flex-1 items-center">
+        <div class="flex-1 space-y-1">
+          <div>
+            <%= link_to profile_path(comment.owner.username), data: { turbo_frame: :_top } do %>
+              <p class="font-heading"><%= comment.owner.name %></p>
+            <% end %>
+            <p class="text-sm text-zinc-500 font-normal dark:text-zinc-400"><%= localize(comment.created_at.to_time, format: :friendly) %></p>
+          </div>
+
+          <div>
+            <%= comment.body %>
+          </div>
+
+          <div class="flex items-center gap-1">
+            <%= turbo_frame_tag dom_id(comment.entry, :likes_count) do %>
+              <%= render partial: "entries/likes/likes_count", locals: { entry: comment.entry } %>
+            <% end %>
+          </div>
         </div>
 
-        <div class="mt-1">
-          <%= comment.body %>
+        <div>
+          <%= custom_form_with(
+              url: entry_like_path(comment.entry),
+              method: comment.entry.liked? ? :delete : :post,
+              id: dom_id(comment.entry, :like_button),
+              class: "inline-flex items-center justify-center"
+            ) do %>
+            <%= render LikeButton::Component.new(type: :submit, liked: comment.entry.liked?) %>
+          <% end %>
         </div>
       </div>
     </div>
