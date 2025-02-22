@@ -17,6 +17,8 @@ pt-BR:
       likes_count:
         likes: "%{count} kudos"
         loading: "Carregando..."
+      create:
+        error: "Não foi possível dar kudos"
     comments:
       comment_section:
         load_more_comments: Carregar mais comentários

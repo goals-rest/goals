@@ -18,7 +18,8 @@ module Entries
           format.html { redirect_to @entry.entryable }
           format.turbo_stream
         else
-          redirect_to @entry.entryable, alert: t(".error")
+          format.html { redirect_to @entry.entryable, alert: t(".error") }
+          format.turbo_stream
         end
       end
     end
