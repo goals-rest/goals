@@ -13,6 +13,10 @@ pt-BR:
         status: Status
         status:
           completed: Finalizado
+        visibility:
+          one: Visiblidade
+          public: Pública
+          private: Privada
     errors:
       models:
         goal:

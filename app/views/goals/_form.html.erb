@@ -11,6 +11,19 @@
     <%= form.error_message :description %>
   <% end %>
 
+  <%= form.form_group :visibility do %>
+    <%= form.label :visibility, nil, class: "form-label-required" %>
+    <%= form.select(
+      :visibility,
+      [
+        [t("activerecord.attributes.goal.visibility.public"), :public],
+        [t("activerecord.attributes.goal.visibility.private"), :private],
+      ],
+      required: true,
+    ) %>
+    <%= form.error_message :visibility %>
+  <% end %>
+
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
     <%= form.form_group :start_date do %>
       <%= form.label :start_date, nil, class: "form-label-required" %>

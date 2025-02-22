@@ -13,15 +13,38 @@
   <div class="flex-1 flex flex-col justify-end">
     <div class="px-3 pt-3">
       <div class="flex justify-between items-center">
-        <div class="flex items-center gap-2">
-          <%= render UI::Icon::Component.new(
-            "clock",
-            variant: :outline,
-            class: "text-zinc-600 dark:text-zinc-400",
-          ) %>
-          <span class="text-sm text-zinc-600 dark:text-zinc-400">
-            <%= localize(goal.start_date.to_date, format: :short_month) %>
-          </span>
+        <div class="flex items-center gap-4">
+          <%= render UI::Tooltip::Component.new do |tooltip| %>
+            <% tooltip.with_trigger(class: "flex items-center gap-2") do %>
+              <%= render UI::Icon::Component.new(
+                "clock",
+                variant: :outline,
+                class: "text-zinc-600 dark:text-zinc-400",
+              ) %>
+
+              <span class="text-sm text-zinc-600 dark:text-zinc-400">
+                <%= localize(goal.start_date.to_date, format: :short_month) %>
+              </span>
+            <% end %>
+
+            <% tooltip.with_body.with_content(localize(goal.start_date.to_date, format: :long)) %>
+          <% end %>
+
+          <% if goal.private_goal? %>
+            <div class="flex items-center gap-2">
+              <%= render UI::Tooltip::Component.new do |tooltip| %>
+                <% tooltip.with_trigger do %>
+                  <%= render UI::Icon::Component.new(
+                    "eye-slash",
+                    variant: :outline,
+                    class: "text-zinc-600 dark:text-zinc-400",
+                  ) %>
+                <% end %>
+
+                <% tooltip.with_body.with_content(t(".private_goal")) %>
+              <% end %>
+            </div>
+          <% end %>
         </div>
 
         <%= render UI::Dropdown::Component.new(alignment: :right) do |dropdown| %>
