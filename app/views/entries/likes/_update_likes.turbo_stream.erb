@@ -13,5 +13,5 @@
 <% end %>
 
 <%= turbo_stream.update [entry, :likes_count] do %>
-  <%= render partial: "entries/likes/likes_count", locals: { entry: entry } %>
+  <%= render Entries::LikeCount::Component.new(entry:) %>
 <% end %>

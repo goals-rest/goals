@@ -6,3 +6,8 @@ pt-BR:
           current: Atual
           goal: Meta
           remaining: Restante
+    entries:
+      like_count:
+        component:
+          loading: Carregando...
+          likes: "%{count} kudos"

@@ -1,5 +1,6 @@
 class ApplicationComponent < ViewComponent::Base
   include ViewComponentContrib::StyleVariants
+  include Turbo::FramesHelper
 
   attr_reader :attrs
 

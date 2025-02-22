@@ -22,7 +22,7 @@
 
           <div class="flex items-center gap-1">
             <%= turbo_frame_tag dom_id(comment.entry, :likes_count) do %>
-              <%= render partial: "entries/likes/likes_count", locals: { entry: comment.entry } %>
+              <%= render Entries::LikeCount::Component.new(entry: comment.entry) %>
             <% end %>
           </div>
         </div>
