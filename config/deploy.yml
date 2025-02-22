@@ -2,12 +2,12 @@
 service: goals
 
 # Name of the container image.
-image: "<%= ENV.fetch("DOCKER_IMAGE") %>"
+image: "<%= ENV.fetch("GOALS_DOCKER_IMAGE") %>"
 
 # Deploy to these servers.
 servers:
   web:
-    - "<%= ENV.fetch("SERVER_IP") %>"
+    - "<%= ENV.fetch("GOALS_SERVER_IP") %>"
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -19,7 +19,7 @@ servers:
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
 proxy:
   ssl: true
-  host: <%= ENV.fetch("HOSTNAME") %>
+  host: "<%= ENV.fetch("GOALS_HOST") %>"
 
 # Credentials for your image host.
 registry:
@@ -88,7 +88,7 @@ builder:
 
 # Use a different ssh user than root
 ssh:
-  user: "<%= ENV.fetch("SSH_USER") %>"
+  user: "<%= ENV.fetch("GOALS_SSH_USER") %>"
 
 # Use accessory services (secrets come from .kamal/secrets).
 # accessories:
