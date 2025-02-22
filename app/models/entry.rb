@@ -10,6 +10,8 @@ class Entry < ApplicationRecord
 
   validates_associated :entryable
 
+  scope :posts_owned_by, ->(owner) { where(owner: owner, entryable_type: "Post") }
+
   scope :visible, ->(current_user) do
     where(owner: current_user).or(Entry.where(owner: current_user.followees))
   end

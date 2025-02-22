@@ -24,3 +24,5 @@ pt-BR:
       destroy:
         success: Solicitação cancelada.
         error: Não foi possível cancelar a solicitação para seguir.
+    next_page:
+      loading: Carregando...
