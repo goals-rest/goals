@@ -4,6 +4,9 @@ pt-BR:
       post:
         likes: "%{count} kudos"
         loading: "Carregando..."
+      comment:
+        likes: "%{count} kudos"
+        loading: "Carregando..."
     likes:
       index:
         likes: "Kudos (%{count})"
@@ -11,6 +14,11 @@ pt-BR:
         load_more_likes: "Carregar mais kudos"
       like:
         likes: "Kudos (%{count})"
+      likes_count:
+        likes: "%{count} kudos"
+        loading: "Carregando..."
     comments:
       comment_section:
         load_more_comments: Carregar mais comentários
+      index:
+        load_more_comments: "Carregar mais comentários"

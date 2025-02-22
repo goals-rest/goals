@@ -13,5 +13,5 @@
 <% end %>
 
 <%= turbo_stream.update [entry, :likes_count] do %>
-  <%= t("entries.entryables.post.likes", count: entry.likes.count) %>
+  <%= render Entries::LikeCount::Component.new(entry:) %>
 <% end %>
