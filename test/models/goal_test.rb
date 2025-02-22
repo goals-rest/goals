@@ -9,6 +9,9 @@ class GoalTest < ActiveSupport::TestCase
   should validate_length_of(:description).is_at_most(100)
   should validate_numericality_of(:current)
 
+  should define_enum_for(:status)
+  should define_enum_for(:visibility)
+
   test "start_date presence" do
     goal = Goal.new(start_date: Time.zone.today)
 

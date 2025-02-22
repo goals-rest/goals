@@ -1,5 +1,6 @@
 class Goal < ApplicationRecord
-  enum :status, [ :pending, :completed ], with_model_name: true
+  enum :status, [ :pending, :completed ]
+  enum :visibility, [ :public, :private ], suffix: :goal, default: :public
 
   has_many :progress_changes, dependent: :destroy
 

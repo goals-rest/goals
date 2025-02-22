@@ -42,6 +42,6 @@ class GoalsController < DashboardController
   end
 
   def goal_params
-    params.require(:goal).permit(:title, :description, :start_date, :end_date, :current, :target)
+    params.require(:goal).permit(:title, :description, :start_date, :end_date, :current, :target, :visibility)
   end
 end
