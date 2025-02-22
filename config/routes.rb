@@ -53,4 +53,8 @@ Rails.application.routes.draw do
       resource :follow_request, only: %i[create destroy]
     end
   end
+
+  # Entryables without show page will redirected to the home page
+  get "posts/:id" => "homes#show", as: :post
+  get "comments/:id" => "homes#show", as: :comment
 end
