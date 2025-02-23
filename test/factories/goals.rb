@@ -7,5 +7,13 @@ FactoryBot.define do
     start_date { Time.zone.today }
     current { 0 }
     target { 10 }
+
+    trait :public do
+      visibility { :public }
+    end
+
+    trait :private do
+      visibility { :private }
+    end
   end
 end

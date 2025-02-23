@@ -1,0 +1,13 @@
+<%= turbo_stream.append :goals do %>
+  <%= render(
+    partial: "goals/goal",
+    collection: @goals,
+    cached: ->(goal) { [Current.user, goal] },
+  ) %>
+<% end %>
+
+<%= turbo_stream.replace :next_page do %>
+  <% if @pagy.next %>
+    <%= render partial: "next_page", locals: { pagy: @pagy } %>
+  <% end %>
+<% end %>

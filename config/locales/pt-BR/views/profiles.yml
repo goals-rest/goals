@@ -29,3 +29,11 @@ pt-BR:
     no_entries:
       title: Nenhuma publicação recente disponível
       description: Este usuário ainda não compartilhou nenhuma publicação. Volte mais tarde para ver as novidades!
+    goals:
+      index:
+        title: Goals | Metas
+      no_goals:
+        title: Nenhuma meta por aqui... ainda!
+        description: Parece que este usuário ainda não definiu suas metas. Fique de olho, novidades podem aparecer em breve!
+      next_page:
+        loading: Carregando...

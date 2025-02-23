@@ -1,0 +1,25 @@
+<%= provide(:title, t(".title")) %>
+
+<div>
+  <div class="mb-4">
+    <%= turbo_frame_tag :goals, class: "space-y-4" do %>
+      <% if @goals.any? %>
+        <%= render(
+          partial: "goals/goal",
+          collection: @goals,
+          cached: ->(goal) { [Current.user, goal] },
+        ) %>
+      <% else %>
+        <% if profile_owner? %>
+          <%= render partial: "goals/no_goals" %>
+        <% else %>
+          <%= render partial: "no_goals" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if @pagy.next %>
+    <%= render partial: "next_page", locals: { pagy: @pagy } %>
+  <% end %>
+</div>
