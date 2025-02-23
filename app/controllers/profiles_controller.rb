@@ -4,7 +4,18 @@ class ProfilesController < ApplicationController
   before_action :resume_session
   before_action :set_user, only: %i[show]
 
-  def show; end
+  def show
+    @entries = Entry
+                    .includes(owner: { avatar_attachment: :blob })
+                    .posts_owned_by(@user)
+                    .order(created_at: :desc)
+    @pagy, @entries = pagy(@entries)
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
+  end
 
   private
   def set_user

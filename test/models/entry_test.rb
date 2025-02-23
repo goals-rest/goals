@@ -13,6 +13,16 @@ class EntryTest < ActiveSupport::TestCase
     assert_instance_of Entry, entry
   end
 
+  test "posts_owned_by scope returns entries owned by the given user" do
+    user1 = create(:user)
+    user2 = create(:user)
+
+    post1 = create(:entry, :post, owner: user1)
+    post2 = create(:entry, :post, owner: user2)
+
+    assert_equal [ post1 ], Entry.posts_owned_by(user1)
+  end
+
   test "feed scope returns the owner and their followee posts" do
     user1 = create(:user)
     user2 = create(:user)

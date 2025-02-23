@@ -1,7 +1,15 @@
-<div class="max-w-xl mx-auto">
-  <%= render UI::EmptyState::Component.new do |empty_state| %>
-    <% empty_state.with_icon("wrench-screwdriver", class: "size-8 font-semibold font-heading text-zinc-900 dark:text-zinc-100") %>
-    <% empty_state.with_title.with_content("Em construção") %>
-    <% empty_state.with_description.with_content("Estamos trabalhando para trazer algo incrível! Em breve, nossa página estará no ar. Agradecemos pela sua paciência e compreensão.") %>
+<div>
+  <div class="mb-4">
+    <%= turbo_frame_tag :profile_feed, class: "space-y-4" do %>
+      <% if @entries.any? %>
+        <%= render partial: "entry", collection: @entries, cached: ->(entry) { [:profile_feed, entry, Current.user] } %>
+      <% else %>
+        <%= render partial: "no_entries" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if @pagy.next %>
+    <%= render partial: "next_page", locals: { pagy: @pagy, user: @user } %>
   <% end %>
 </div>
