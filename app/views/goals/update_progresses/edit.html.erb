@@ -1,7 +1,10 @@
 <%= turbo_frame_tag :modal do %>
   <%= render UI::Modal::Component.new(
     open: true,
-    class: "w-full max-w-sm"
+    class: "w-full max-w-sm",
+    data: {
+      turbo_temporary: true
+    }
   ) do |modal| %>
     <% modal.with_close_button %>
 
@@ -33,15 +36,17 @@
             required: true,
             class: "text-center",
             data: {
-              action: "input->sum-updater#update"
+              action: "input->sum-updater#update",
             },
-            onenter: "this.form.requestSubmit()"
+            onenter: "this.form.requestSubmit()",
           ) %>
         <% end %>
 
         <div>
           <div class="form-input text-center" disabled>
-            <span data-sum-updater-target="output"><%= strip_zeros(@goal.current) %></span> / <span><%= strip_zeros(@goal.target) %></span>
+            <span data-sum-updater-target="output"><%= strip_zeros(@goal.current) %></span>
+            /
+            <span><%= strip_zeros(@goal.target) %></span>
           </div>
         </div>
       <% end %>
@@ -52,14 +57,13 @@
           color: :transparent,
           class: "w-full",
           data: {
-            action: "click->modal#close"
-          }
+            action: "click->modal#close",
+          },
         ).with_content(t(".cancel")) %>
 
-        <%= render UI::Button::Component.new(
-          class: "w-full",
-          type: :submit
-        ).with_content(t(".submit")) %>
+        <%= render UI::Button::Component.new(class: "w-full", type: :submit).with_content(
+          t(".submit"),
+        ) %>
       <% end %>
     <% end %>
   <% end %>

@@ -1,6 +1,8 @@
 class Goal::ProgressChange < ApplicationRecord
   belongs_to :goal
 
+  has_many :posts, dependent: :destroy, foreign_key: "goal_progress_change_id"
+
   validates :old_value, presence: true, numericality: true
   validates :new_value, presence: true, numericality: true
   validates :target, presence: true, numericality: true

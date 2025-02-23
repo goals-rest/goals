@@ -1,17 +1,19 @@
 <div class="pb-4">
   <div class="flex md:items-center items-start space-x-3">
     <%= link_to follow_requests_path do %>
-      <%= render UI::Icon::Component.new(
-        "users",
-        class: "md:size-10 size-16"
-      ) %>
+      <%= render UI::Icon::Component.new("users", class: "md:size-10 size-16") %>
     <% end %>
 
     <div class="flex items-center justify-between flex-1">
       <div class="flex-1">
         <div class="flex gap-2">
           <%= link_to follow_requests_path do %>
-            <h4 class="font-medium md:text-base text-lg leading-tight text-zinc-700 line-clamp-1 dark:text-zinc-50">
+            <h4
+              class="
+                font-medium md:text-base text-lg leading-tight text-zinc-700 line-clamp-1
+                dark:text-zinc-50
+              "
+            >
               <%= t(".title") %>
             </h4>
           <% end %>
@@ -19,14 +21,21 @@
 
         <div>
           <%= link_to follow_requests_path do %>
-            <h4 class="gont-light md:text-sm text-base text-zinc-500 leading-tight line-clamp-1 dark:text-zinc-300/80">
+            <h4
+              class="
+                gont-light md:text-sm text-base text-zinc-500 leading-tight line-clamp-1
+                dark:text-zinc-300/80
+              "
+            >
               <%= t(".description") %>
             </h4>
           <% end %>
         </div>
       </div>
 
-      <%= render UI::Badge::Component.new(color: :pink).with_content(@user.follow_requests.count) %>
+      <%= render UI::Badge::Component.new(color: :pink).with_content(
+        @user.follow_requests.count,
+      ) %>
     </div>
   </div>
 </div>

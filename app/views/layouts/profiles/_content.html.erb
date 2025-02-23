@@ -15,7 +15,10 @@
         <% tab.with_title.with_content(t(".nav.followers")) %>
       <% end %>
 
-      <% tab_nav.with_tab do |tab| %>
+      <% tab_nav.with_tab(
+        href: profile_goals_path(@user.username),
+        active: current_page?(profile_goals_path(@user.username)),
+      ) do |tab| %>
         <% tab.with_title.with_content(t(".nav.goals")) %>
       <% end %>
     <% end %>

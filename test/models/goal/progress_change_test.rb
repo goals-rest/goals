@@ -3,6 +3,8 @@ require "test_helper"
 class Goal::ProgressChangeTest < ActiveSupport::TestCase
   should belong_to(:goal)
 
+  should have_many(:posts)
+
   should validate_presence_of(:old_value)
   should validate_presence_of(:new_value)
   should validate_presence_of(:target)
