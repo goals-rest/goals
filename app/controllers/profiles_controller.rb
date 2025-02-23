@@ -4,6 +4,8 @@ class ProfilesController < ApplicationController
   before_action :resume_session
   before_action :set_user, only: %i[show]
 
+  authorize :profile_owner, through: :current_profile_owner
+
   def show
     @entries = Entry
                     .includes(owner: { avatar_attachment: :blob })
@@ -33,4 +35,8 @@ class ProfilesController < ApplicationController
     Current.user == @user
   end
   helper_method :profile_owner?
+
+  def current_profile_owner
+    @user
+  end
 end
