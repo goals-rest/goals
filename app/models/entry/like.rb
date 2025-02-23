@@ -1,5 +1,5 @@
 class Entry::Like < ApplicationRecord
-  belongs_to :entry, touch: true
+  belongs_to :entry, touch: true, counter_cache: true
   belongs_to :user
 
   validates :user, uniqueness: { scope: :entry }
@@ -9,6 +9,6 @@ class Entry::Like < ApplicationRecord
 
   private
   def touch_entryable
-    entry.entryable.touch
+    entry.entryable&.touch
   end
 end
