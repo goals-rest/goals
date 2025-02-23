@@ -1,6 +1,6 @@
 <%= render UI::Modal::Component.new(class: "w-full max-w-lg") do |modal| %>
   <% modal.with_trigger do %>
-    <%= tag.p t(".likes", count: entry.likes.count), class: "text-sm text-zinc-500 font-normal dark:text-zinc-400 cursor-pointer" %>
+    <%= tag.p t(".likes", count: entry.likes_count), class: "text-sm text-zinc-500 font-normal dark:text-zinc-400 cursor-pointer" %>
   <% end %>
   <% modal.with_close_button %>
   <%= render UI::Modal::BodyComponent.new do %>
