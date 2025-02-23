@@ -1,9 +1,9 @@
 <%= turbo_stream.append :profile_feed do %>
-  <%= render partial: "entry", collection: @entries %>
+  <%= render partial: "entry", collection: @entries, cached: ->(entry) { [:profile_feed, entry, Current.user] } %>
 <% end %>
 
 <%= turbo_stream.replace :next_page do %>
   <% if @pagy.next %>
-    <%= render partial: "next_page", locals: { pagy: @pagy, username: @username } %>
+    <%= render partial: "next_page", locals: { pagy: @pagy, user: @user } %>
   <% end %>
 <% end %>

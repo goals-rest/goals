@@ -1,3 +1,1 @@
-<% cache([:profile_feed, entry, Current.user]) do %>
-  <%= render "entries/entryables/#{entry.entryable_name}", entry: %>
-<% end %>
+<%= render "entries/entryables/#{entry.entryable_name}", entry: %>

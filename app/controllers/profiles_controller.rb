@@ -5,12 +5,11 @@ class ProfilesController < ApplicationController
   before_action :set_user, only: %i[show]
 
   def show
-    @username = @user.username
     @entries = Entry
                     .includes(owner: { avatar_attachment: :blob })
                     .posts_owned_by(@user)
                     .order(created_at: :desc)
-    @pagy, @entries = pagy(@entries)
+    @pagy, @entries = pagy(@entries, limit: 2)
 
     respond_to do |format|
       format.html
