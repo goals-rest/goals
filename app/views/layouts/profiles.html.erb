@@ -4,7 +4,7 @@
   <% if content_for?(:main) %>
     <% yield :main %>
   <% else %>
-    <main class="container mx-auto px-4 md:py-16 py-6">
+    <main class="container mx-auto max-w-screen-xl px-4 md:py-16 py-6">
       <div>
         <div class="relative h-16">
           <%= render UI::Avatar::Component.new(

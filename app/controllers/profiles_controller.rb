@@ -9,7 +9,7 @@ class ProfilesController < ApplicationController
                     .includes(owner: { avatar_attachment: :blob })
                     .posts_owned_by(@user)
                     .order(created_at: :desc)
-    @pagy, @entries = pagy(@entries, limit: 2)
+    @pagy, @entries = pagy(@entries)
 
     respond_to do |format|
       format.html

@@ -26,3 +26,6 @@ pt-BR:
         error: Não foi possível cancelar a solicitação para seguir.
     next_page:
       loading: Carregando...
+    no_entries:
+      title: Nenhuma publicação recente disponível
+      description: Este usuário ainda não compartilhou nenhuma publicação. Volte mais tarde para ver as novidades!

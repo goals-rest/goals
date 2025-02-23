@@ -1,10 +1,10 @@
-<div class="max-w-2xl mx-auto">
+<div>
   <div class="mb-4">
     <%= turbo_frame_tag :profile_feed, class: "space-y-4" do %>
       <% if @entries.any? %>
         <%= render partial: "entry", collection: @entries, cached: ->(entry) { [:profile_feed, entry, Current.user] } %>
       <% else %>
-        <%= render partial: "feed/no_entries" %>
+        <%= render partial: "no_entries" %>
       <% end %>
     <% end %>
   </div>
