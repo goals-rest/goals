@@ -1,0 +1,22 @@
+<div
+  class="flex w-full h-full"
+  data-controller="tooltip"
+  data-tooltip-placement-value="top"
+>
+  <div class="cursor-pointer flex w-full h-full" data-tooltip-target="trigger">
+    <%= tag.div(class: classes, **attrs) %>
+  </div>
+  <div
+    class="
+      bg-zinc-900 text-white absolute top-0 left-0 w-max px-3 py-2 rounded text-sm
+      dark:bg-zinc-700 invisible opacity-0 transition-opacity duration-300 z-10
+    "
+    data-tooltip-target="content"
+  >
+    <%= t(".updates", count: day.updates, date: localize(day.date, format: :short_month)) %>
+    <div
+      class="absolute bg-zinc-900 size-2 rotate-45 dark:bg-zinc-700"
+      data-tooltip-target="arrow"
+    ></div>
+  </div>
+</div>
