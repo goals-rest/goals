@@ -1,3 +1,7 @@
+<% @entries.each do |entry| %>
+  <%= turbo_stream.remove entry %>
+<% end %>
+
 <%= turbo_stream.append :profile_feed do %>
   <%= render partial: "entry", collection: @entries, cached: ->(entry) { [:profile_feed, entry, Current.user] } %>
 <% end %>

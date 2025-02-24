@@ -1,0 +1,11 @@
+<%= turbo_stream.remove @entry %>
+
+<%= turbo_stream.replace :flash do %>
+  <%= render "shared/flash" %>
+<% end %>
+
+<% if Entry.posts_owned_by(@user).none? %>
+  <%= turbo_stream.append :profile_feed do %>
+    <%= render partial: "profiles/no_entries" %>
+  <% end %>
+<% end %>

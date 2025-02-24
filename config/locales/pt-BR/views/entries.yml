@@ -4,6 +4,7 @@ pt-BR:
       post:
         likes: "%{count} kudos"
         loading: "Carregando..."
+        destroy: "Excluir"
       comment:
         likes: "%{count} kudos"
         loading: "Carregando..."
