@@ -159,4 +159,24 @@ class UserTest < ActiveSupport::TestCase
 
     assert user1.pending_follow_request_for?(user2)
   end
+
+  test "goals_progress_calendar builds a progress calendar" do
+    user = create(:user)
+    goal = create(:goal, user:)
+    create(:goal_progress_change, goal:, created_at: Date.new(2025, 1, 1))
+
+    progress_calendar = user.goals_progress_calendar
+
+    assert_instance_of ProgressCalendar, progress_calendar
+  end
+
+  test "goals_progress_calendar builds a progress calendar for the last 4 months" do
+    travel_to Date.new(2025, 4, 1)
+
+    user = create(:user)
+    progress_calendar = user.goals_progress_calendar
+
+    assert_equal Date.new(2025, 1, 1), progress_calendar.days.first.date
+    assert_equal Date.new(2025, 4, 30), progress_calendar.days.last.date
+  end
 end
