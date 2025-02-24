@@ -1,12 +1,12 @@
-module Goals
+module UI
   module ProgressCalendar
     class Component < ApplicationComponent
-      MONTH_COLUMNS = [ 4, 4, 4, 5, 4, 4, 5, 4, 4, 5, 4, 5 ].freeze
+      MONTH_CSS_COLUMNS = [ 4, 4, 4, 5, 4, 4, 5, 4, 4, 5, 4, 5 ].freeze
 
       attr_reader :calendar
 
-      def initialize(goals_progress_calendar:, **attrs)
-        @calendar = goals_progress_calendar
+      def initialize(progress_calendar:, **attrs)
+        @calendar = progress_calendar
 
         super(**attrs)
       end
@@ -19,13 +19,13 @@ module Goals
         (start_month..end_month).map { it.month }.uniq
       end
 
-      def months
+      def month_names
         month_numbers.map do |month|
           I18n.t("date.abbr_month_names")[month].capitalize
         end
       end
 
-      def week_days
+      def week_day_names
         [ nil, 1, nil, 3, nil, 5, nil ].map do |day|
           next if day.blank?
 
@@ -35,7 +35,7 @@ module Goals
 
       def month_grid_template_column_classes
         month_numbers.map do |month|
-          "calc(var(--week-width) * #{MONTH_COLUMNS[month - 1]})"
+          "calc(var(--week-width) * #{MONTH_CSS_COLUMNS[month - 1]})"
         end.join(" ")
       end
     end

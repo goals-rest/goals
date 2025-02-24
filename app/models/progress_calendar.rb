@@ -1,4 +1,4 @@
-class GoalsProgressCalendar
+class ProgressCalendar
   attr_reader :days
 
   def initialize(days)
