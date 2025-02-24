@@ -6,6 +6,12 @@ pt-BR:
           current: Atual
           goal: Meta
           remaining: Restante
+      progress_calendar:
+        day_component:
+          updates: 
+            zero: "%{count} atualizações de progresso em %{date}"
+            one: "%{count} atualização de progresso em %{date}"
+            other: "%{count} atualizações de progresso em %{date}"
     entries:
       like_count:
         component:

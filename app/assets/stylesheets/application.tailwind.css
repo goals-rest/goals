@@ -10,3 +10,26 @@
 @import "railsui/buttons";
 @import "railsui/headings";
 @import "tailwindcss/utilities";
+
+:root {
+  --week-width: calc(16px + 0.25rem);
+}
+
+.goals-progress-calendar-component {
+  display: inline-grid;
+  grid-template-areas: "empty months" "weeks days";
+}
+
+/* See: https://bitsofco.de/github-contribution-graph-css-grid/ */
+.goals-progress-calendar-component__months-row {
+  display: grid;
+  grid-area: months;
+}
+
+.goals-progress-calendar-component__week-days {
+  grid-area: weeks;
+}
+
+.goals-progress-calendar-component__days {
+  grid-area: days;
+}
