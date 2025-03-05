@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 0702af7849d12fcb5ed19e1b6a2808c0579d6779
+  revision: bd16ad7844076f0c662793d499ab741cf8b43781
   branch: main
   specs:
     actioncable (8.1.0.alpha)
@@ -292,7 +292,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (3.1.10)
+    rack (3.1.11)
     rack-mini-profiler (3.3.1)
       rack (>= 1.2.0)
     rack-session (2.1.0)
@@ -423,7 +423,7 @@ GEM
     unicode-display_width (3.1.3)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
-    uri (1.0.2)
+    uri (1.0.3)
     useragent (0.16.11)
     view_component (3.21.0)
       activesupport (>= 5.2.0, < 8.1)
