@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/getrailsui/railsui.git
-  revision: 66c3270232eeb83a10a93c93ac83488ce9694874
+  revision: a59bd90ba46db166a66e0a75b99a8ad6f32ab42c
   branch: main
   specs:
-    railsui (3.0.1)
+    railsui (3.1.1)
       meta-tags
       psych
       rails (>= 7.0)
@@ -292,7 +292,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (3.1.10)
+    rack (3.1.11)
     rack-mini-profiler (3.3.1)
       rack (>= 1.2.0)
     rack-session (2.1.0)
@@ -423,7 +423,7 @@ GEM
     unicode-display_width (3.1.3)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
-    uri (1.0.2)
+    uri (1.0.3)
     useragent (0.16.11)
     view_component (3.21.0)
       activesupport (>= 5.2.0, < 8.1)
