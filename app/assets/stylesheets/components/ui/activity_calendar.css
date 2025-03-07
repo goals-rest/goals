@@ -1,0 +1,19 @@
+/* See: https://bitsofco.de/github-contribution-graph-css-grid/ */
+
+.ui--activity-calendar--component {
+  display: inline-grid;
+  grid-template-areas: "empty months" "weeks days";
+}
+
+.ui--activity-calendar--component__months {
+  display: grid;
+  grid-area: months;
+}
+
+.ui--activity-calendar--component__week-days {
+  grid-area: weeks;
+}
+
+.ui--activity-calendar--component__days {
+  grid-area: days;
+}

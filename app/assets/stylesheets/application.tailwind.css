@@ -10,3 +10,10 @@
 @import "railsui/buttons";
 @import "railsui/headings";
 @import "tailwindcss/utilities";
+
+@import "./components/ui/activity_calendar";
+
+:root {
+  --week-width: calc(16px + 0.25rem);
+}
+

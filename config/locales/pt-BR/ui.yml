@@ -4,3 +4,9 @@ pt-BR:
       component:
         click_to_upload: Clique para carregar uma imagem
         or_drag_and_drop: ou arraste e solte
+    progress_calendar:
+      day_component:
+        updates: 
+          zero: "%{count} atualizações de progresso em %{date}"
+          one: "%{count} atualização de progresso em %{date}"
+          other: "%{count} atualizações de progresso em %{date}"
