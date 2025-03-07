@@ -45,6 +45,11 @@ class User < ApplicationRecord
     follow_requests.exists?(requester_id: user.id)
   end
 
+  def goals_progress_calendar
+    GoalsProgressCalendarBuilder.new(self)
+      .build(3.months.ago.beginning_of_month..Time.zone.now.end_of_month)
+  end
+
   private
   def set_username
     return if username.present?

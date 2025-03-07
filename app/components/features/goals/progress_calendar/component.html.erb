@@ -1,0 +1,5 @@
+<%= render UI::ActivityCalendar::Component.new(calendar_date_range) do |activity_calendar| %>
+  <% progress_calendar.days.each do |day| %>
+    <% activity_calendar.with_day(grade: day.grade).with_content(tooltip_content_for(day)) %>
+  <% end %>
+<% end %>
