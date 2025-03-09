@@ -170,13 +170,13 @@ class UserTest < ActiveSupport::TestCase
     assert_instance_of ProgressCalendar, progress_calendar
   end
 
-  test "goals_progress_calendar builds a progress calendar for the last 4 months" do
+  test "goals_progress_calendar builds a progress calendar for the last 2 months" do
     travel_to Date.new(2025, 4, 1)
 
     user = create(:user)
     progress_calendar = user.goals_progress_calendar
 
-    assert_equal Date.new(2025, 1, 1), progress_calendar.days.first.date
+    assert_equal Date.new(2025, 2, 1), progress_calendar.days.first.date
     assert_equal Date.new(2025, 4, 30), progress_calendar.days.last.date
   end
 end
