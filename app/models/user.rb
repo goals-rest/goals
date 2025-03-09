@@ -47,7 +47,7 @@ class User < ApplicationRecord
 
   def goals_progress_calendar
     GoalsProgressCalendarBuilder.new(self)
-      .build(3.months.ago.beginning_of_month..Time.zone.now.end_of_month)
+      .build(2.months.ago.beginning_of_month..Time.zone.now.end_of_month)
   end
 
   private
