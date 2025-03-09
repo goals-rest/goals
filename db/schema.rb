@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_02_23_002249) do
+ActiveRecord::Schema[8.1].define(version: 2025_03_09_194225) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -111,6 +111,14 @@ ActiveRecord::Schema[8.1].define(version: 2025_02_23_002249) do
     t.integer "user_id", null: false
     t.integer "visibility", default: 0
     t.index ["user_id"], name: "index_goals_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "notifiable_id", null: false
+    t.string "notifiable_type", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable"
   end
 
   create_table "posts", force: :cascade do |t|
