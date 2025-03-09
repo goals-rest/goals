@@ -7,7 +7,7 @@ class GoalsProgressCalendarBuilder
     progresses = DailyGoalsProgress
       .where(
         goal_progress_changes: { created_at: range },
-        goal: { user_id: @user.id },
+        goal: { user_id: @user.id, visibility: :public },
         **args
       )
       .group_by(&:date)
