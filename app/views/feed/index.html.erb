@@ -20,7 +20,9 @@
     <div class="mb-4">
       <%= turbo_frame_tag :feed, class: "space-y-4" do %>
         <% if @entries.any? %>
-          <%= render partial: "entry", collection: @entries, cached: ->(entry) { [Current.user, entry] } %>
+          <%= render partial: "entry",
+          collection: @entries,
+          cached: ->(entry) { [:feed, Current.user, entry] } %>
         <% else %>
           <%= render "no_entries" %>
         <% end %>

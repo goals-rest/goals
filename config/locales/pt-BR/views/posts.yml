@@ -7,6 +7,8 @@ pt-BR:
       submit: Criar publicação
     create:
       success: Publicação criada com sucesso
+    destroy:
+      success: Publicação excluída com sucesso
     form:
       go_back: Voltar
       allowed_file_types: PNG, JPG, GIF ou WEBP
