@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_03_09_194225) do
+ActiveRecord::Schema[8.1].define(version: 2025_03_09_200022) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -139,6 +139,16 @@ ActiveRecord::Schema[8.1].define(version: 2025_03_09_194225) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
+  create_table "user_notifications", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "notification_id", null: false
+    t.datetime "read_at"
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["notification_id"], name: "index_user_notifications_on_notification_id"
+    t.index ["user_id"], name: "index_user_notifications_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email_address", null: false
@@ -166,4 +176,6 @@ ActiveRecord::Schema[8.1].define(version: 2025_03_09_194225) do
   add_foreign_key "goals", "users"
   add_foreign_key "posts", "goal_progress_changes"
   add_foreign_key "sessions", "users"
+  add_foreign_key "user_notifications", "notifications"
+  add_foreign_key "user_notifications", "users"
 end
