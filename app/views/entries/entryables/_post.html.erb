@@ -1,7 +1,7 @@
 <% post = entry.entryable %>
 
 <%= render UI::Card::Component.new(class: "w-full") do |header| %>
-  <%= render UI::Card::HeaderComponent.new do |header| %>
+  <%= render UI::Card::HeaderComponent.new(class: "flex justify-between") do |header| %>
     <div class="flex items-center gap-2 mb-2">
       <%= link_to profile_path(entry.owner.username), class: "inline-flex", data: { turbo_frame: :_top } do %>
         <%= render UI::Avatar::Component.new(
@@ -16,7 +16,31 @@
         <p class="font-heading text-sm text-zinc-500 font-normal dark:text-zinc-400"><%= localize(post.created_at.to_time, format: :friendly) %></p>
       </div>
     </div>
+
+    <% if allowed_to?(:destroy?, entry) %>
+      <div>
+        <%= render UI::Dropdown::Component.new(alignment: :right) do |dropdown| %>
+          <% dropdown.with_trigger do %>
+            <%= render UI::Button::Component.new(variant: :square) do |button| %>
+              <% button.with_leading_icon("ellipsis-horizontal") %>
+            <% end %>
+          <% end %>
+
+          <% dropdown.with_item do %>
+            <%= button_to(
+              t(".destroy"),
+              destroy_entry_path,
+              method: :delete,
+              data: {
+                turbo_frame: :_top,
+              },
+            ) %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
+
   <%= render UI::Card::BodyComponent.new do |header| %>
     <div class="flex flex-col">
       <p class="h6">

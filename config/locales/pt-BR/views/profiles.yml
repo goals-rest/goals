@@ -37,3 +37,6 @@ pt-BR:
         description: Parece que este usuário ainda não definiu suas metas. Fique de olho, novidades podem aparecer em breve!
       next_page:
         loading: Carregando...
+    feed_entries:
+      destroy:
+        success: Publicação removida

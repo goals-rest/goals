@@ -1,3 +1,9 @@
-<% cache([:feed, entry, Current.user]) do %>
-  <%= render "entries/entryables/#{entry.entryable_name}", entry: %>
+<%= turbo_frame_tag entry, class: "block" do %>
+  <%= render(
+    partial: "entries/entryables/#{entry.entryable_name}",
+    locals: {
+      entry:,
+      destroy_entry_path: ""
+    },
+  ) %>
 <% end %>
