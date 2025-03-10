@@ -1,4 +1,4 @@
-<%= turbo_frame_tag :next_page, src: profile_path(user.username, format: :turbo_stream, page: pagy.next), loading: :lazy do %>
+<%= turbo_frame_tag :next_page, src: profile_path(user.username, format: :turbo_stream, page: pagy.next, load_more: true), loading: :lazy do %>
   <div class="flex items-center justify-center">
     <span class="text-zinc-500 dark:text-zinc-300">
       <%= t(".loading") %>

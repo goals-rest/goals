@@ -8,7 +8,7 @@ class FeedController < DashboardController
 
     respond_to do |format|
       format.html
-      format.turbo_stream
+      format.turbo_stream if params[:load_more]
     end
   end
 end
