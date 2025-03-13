@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 801959745469e3ab2ad48ba3f2191f68792e7def
+  revision: 8e9d63d04bd84d40e958950eea3586bc4fa2065b
   branch: main
   specs:
     actioncable (8.1.0.alpha)
@@ -240,7 +240,7 @@ GEM
       benchmark
       logger
     mini_mime (1.1.5)
-    minitest (5.25.4)
+    minitest (5.25.5)
     msgpack (1.7.5)
     net-imap (0.5.6)
       date
@@ -293,7 +293,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (3.1.11)
+    rack (3.1.12)
     rack-mini-profiler (3.3.1)
       rack (>= 1.2.0)
     rack-session (2.1.0)
