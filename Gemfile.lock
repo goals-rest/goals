@@ -111,7 +111,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    action_policy (0.7.3)
+    action_policy (0.7.4)
       ruby-next-core (>= 1.0)
     active_storage_validations (2.0.2)
       activejob (>= 6.1.4)
@@ -355,7 +355,7 @@ GEM
       rubocop (>= 1.72)
       rubocop-performance (>= 1.24)
       rubocop-rails (>= 2.30)
-    ruby-next-core (1.0.3)
+    ruby-next-core (1.1.1)
     ruby-progressbar (1.13.0)
     ruby-vips (2.2.3)
       ffi (~> 1.12)
@@ -460,7 +460,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  action_policy (= 0.7.3)
+  action_policy (= 0.7.4)
   active_storage_validations (= 2.0.2)
   bcrypt (~> 3.1.7)
   bootsnap
