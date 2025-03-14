@@ -98,4 +98,4 @@ gem "pagy", "~> 9.3"
 gem "active_storage_validations", "2.0.2"
 
 # Authorization framework for Ruby and Rails applications [https://github.com/palkan/action_policy]
-gem "action_policy", "0.7.3"
+gem "action_policy", "0.7.4"
