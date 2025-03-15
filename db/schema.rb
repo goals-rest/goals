@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_03_09_200022) do
+ActiveRecord::Schema[8.1].define(version: 2025_03_14_230038) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -113,6 +113,13 @@ ActiveRecord::Schema[8.1].define(version: 2025_03_09_200022) do
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
+  create_table "notification_likes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "entry_like_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entry_like_id"], name: "index_notification_likes_on_entry_like_id"
+  end
+
   create_table "notifications", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "notifiable_id", null: false
@@ -174,6 +181,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_03_09_200022) do
   add_foreign_key "follows", "users", column: "follower_id"
   add_foreign_key "goal_progress_changes", "goals"
   add_foreign_key "goals", "users"
+  add_foreign_key "notification_likes", "entry_likes"
   add_foreign_key "posts", "goal_progress_changes"
   add_foreign_key "sessions", "users"
   add_foreign_key "user_notifications", "notifications"
