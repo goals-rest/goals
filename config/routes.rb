@@ -51,7 +51,7 @@ Rails.application.routes.draw do
     scope module: :profiles do
       resources :followers, only: %i[index destroy]
       resource :follow_request, only: %i[create destroy]
-      resources :goals, only: %i[index]
+      resources :goals, only: %i[show index]
       resources :feed_entries, only: %i[destroy]
     end
   end

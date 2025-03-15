@@ -17,6 +17,10 @@ pt-BR:
           one: Visiblidade
           public: Pública
           private: Privada
+        remaining_days:
+          zero: "%{count} dias restantes"
+          one: "%{count} dias restante"
+          other: "%{count} dias restantes"
     errors:
       models:
         goal:

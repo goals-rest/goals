@@ -23,4 +23,15 @@ class Profiles::GoalsControllerTest < ActionDispatch::IntegrationTest
       get profile_goals_url(user.username)
     end
   end
+
+  test "show is authorized" do
+    user = create(:user)
+    goal = create(:goal, user:)
+
+    sign_in user
+
+    assert_authorized_to(:show?, goal, with: Profiles::GoalPolicy) do
+      get profile_goal_url(user.username, goal)
+    end
+  end
 end

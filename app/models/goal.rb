@@ -33,6 +33,12 @@ class Goal < ApplicationRecord
     current / target
   end
 
+  def remaining_days
+    return if end_date.blank?
+
+    (end_date.to_date - start_date.to_date).to_i
+  end
+
   def translated_status
     I18n.t("activerecord.attributes.goal.status.#{status}")
   end
