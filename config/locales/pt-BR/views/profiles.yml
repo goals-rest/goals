@@ -32,6 +32,8 @@ pt-BR:
     goals:
       index:
         title: Goals | Metas
+      show: 
+        title: Goals | Meta
       no_goals:
         title: Nenhuma meta por aqui... ainda!
         description: Parece que este usuário ainda não definiu suas metas. Fique de olho, novidades podem aparecer em breve!

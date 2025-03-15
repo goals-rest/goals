@@ -1,7 +1,9 @@
 <%= render UI::Card::Component.new(class: "flex flex-col") do %>
   <%= render UI::Card::HeaderComponent.new do |header| %>
     <% header.with_title(class: "flex justify-between") do %>
-      <%= goal.title %>
+      <%= link_to profile_goal_path(goal.user.username, goal), data: { turbo_frame: :_top } do %>
+        <%= goal.title %>
+      <% end %>
       <span class="text-sm whitespace-nowrap"><%= strip_zeros(goal.current) %>
         /
         <%= strip_zeros(goal.target) %></span>
