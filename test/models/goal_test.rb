@@ -113,4 +113,28 @@ class GoalTest < ActiveSupport::TestCase
 
     assert_not goal.update_progress(5)
   end
+
+  test "remaining days returns the difference in days between today's date and end date" do
+    travel_to Date.new(2025, 4, 15)
+
+    goal = create(:goal, current: 5, target: 10, start_date: Date.new(2025, 1, 1), end_date: Date.new(2025, 5, 1))
+
+    assert_equal 16, goal.remaining_days
+  end
+
+  test "remaining days returns nil if end date is not set" do
+    travel_to Date.new(2025, 4, 15)
+
+    goal = create(:goal, current: 5, target: 10, end_date: nil)
+
+    assert_nil goal.remaining_days
+  end
+
+  test "remaining days returns 0 if today's date is past the end date" do
+    travel_to Date.new(2025, 6, 1)
+
+    goal = create(:goal, current: 5, target: 10, start_date: Date.new(2025, 1, 1), end_date: Date.new(2025, 5, 1))
+
+    assert_equal 0, goal.remaining_days
+  end
 end
