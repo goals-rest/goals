@@ -36,7 +36,7 @@ class Goal < ApplicationRecord
   def remaining_days
     return if end_date.blank?
 
-    (end_date.to_date - start_date.to_date).to_i
+    [ 0, (end_date.to_date - Time.zone.now.to_date).to_i ].max
   end
 
   def translated_status
