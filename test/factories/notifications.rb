@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :notification do
-    notifiable { "NotificationLike" }
+    notifiable { create(:notification_like) }
   end
 end
