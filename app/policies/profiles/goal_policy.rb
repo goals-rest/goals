@@ -19,7 +19,7 @@ module Profiles
     end
 
     def allow_owner
-      owner?
+      allow! if owner?
     end
   end
 end

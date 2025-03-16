@@ -13,7 +13,7 @@
         <%= @goal.description %>
       </span>
     <% end %>
-    <%= link_to profile_path(@user.username) do %>
+    <%= link_to profile_path(@goal.user.username) do %>
       <div class="flex justify-center mt-2">
         <div
           class="
@@ -22,10 +22,10 @@
           "
         >
           <%= render UI::Avatar::Component.new(
-            src: Current.user.avatar.variant(:thumb),
+            src: @goal.user.avatar.variant(:thumb),
             size: :xs,
           ) %>
-          <%= @user.handle %>
+          <%= @goal.user.handle %>
         </div>
       </div>
     <% end %>
