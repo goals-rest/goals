@@ -5,25 +5,24 @@ module Notifications
     def initialize(user_notification:, **user_attrs)
       @user_notification = user_notification
       @notification = @user_notification.notification
-      @notifiable = @notification.notifiable
       super(**user_attrs)
     end
 
     private
 
-    attr_reader :notification, :notifiable
+    attr_reader :notification
 
     def component_type
-      "Notifications::Types::#{notifiable_type}Component".constantize
+      "Notifications::Types::#{notifiable_type.classify}Component".constantize
     end
 
     def record
-      record = { notification_like: notifiable.entry_like }
-      record[notifiable_type.param_key.to_sym]
+      record = { notification_like: notification.notifiable.entry_like }
+      record[notifiable_type.to_sym]
     end
 
     def notifiable_type
-      notifiable.model_name
+      notification.notifiable_name
     end
   end
 end

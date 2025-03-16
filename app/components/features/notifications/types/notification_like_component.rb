@@ -12,7 +12,7 @@ module Notifications
       attr_reader :record, :user
 
       def entry_type
-        record.entry.entryable.model_name.param_key
+        record.entry.entryable_name
       end
     end
   end
