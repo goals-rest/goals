@@ -8,7 +8,7 @@ pt-BR:
           remaining: Restante
       progress_calendar:
         component:
-          updates: 
+          updates:
             zero: "%{count} atualizações de progresso em %{date}"
             one: "%{count} atualização de progresso em %{date}"
             other: "%{count} atualizações de progresso em %{date}"
@@ -17,3 +17,12 @@ pt-BR:
         component:
           loading: Carregando...
           likes: "%{count} kudos"
+    notifications:
+      types:
+        notification_like_component:
+          ago: " atrás"
+          entry_post: deu kudos em sua publicação
+          entry_comment: deu kudos em seu comentário
+      list_component:
+        empty_state_message: Você não possui notificações
+        see_all: Ver todas as notificações

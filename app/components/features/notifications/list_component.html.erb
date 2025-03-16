@@ -1,0 +1,39 @@
+<div class="md:flex justify-end md:flex-1 md:mr-4 mr-3 relative" data-controller="railsui-dropdown">
+  <%= render UI::Button::Component.new(
+    variant: :rounded_outlined,
+    color: :dark,
+    class: "md:w-10 md:h-10 w-12 h-12",
+    data: { action: "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" }
+  ) do %>
+    <div class="relative">
+      <%= render UI::Icon::Component.new("bell", class: "md:w-5 md:h-5 w-6 h-6") %>
+
+      <% if unread_notifications? %>
+        <%= tag.span(class: style(:unread_indicator)) %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= tag.div(
+      class: style(:list_wrapper),
+      data: {
+        dropdown_target: "menu",
+        transition_enter_from: "opacity-0 scale-95",
+        transition_enter_to: "opacity-100 scale-100",
+        transition_leave_from: "opacity-100 scale-100",
+        transition_leave_to: "opacity-0 scale-95",
+        railsui_dropdown_target: "menu"
+      }
+    ) do %>
+    <% if user_notifications.any? %>
+      <%= render Notifications::ItemComponent.with_collection(user_notifications) %>
+
+      <%= link_to(href, class: style(:view_all_button)) do %>
+        <span> <%= t(".see_all") %> </span>
+        <%= render UI::Icon::Component.new("chevron-right", class: "w-4 h-4") %>
+      <% end %>
+    <% else %>
+      <p class="text-center py-2"><%= t(".empty_state_message") %></p>
+    <% end %>
+  <% end %>
+</div>
