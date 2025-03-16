@@ -29,7 +29,7 @@ module Notifications
       end
     end
 
-    def initialize(user_notifications: [], href: "#",**user_attrs)
+    def initialize(user_notifications: [], href: "#", **user_attrs)
       @user_notifications = user_notifications
       @href = href
       super(**user_attrs)
