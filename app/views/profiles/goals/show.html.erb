@@ -1,0 +1,59 @@
+<%= provide(:title, t(".title")) %>
+
+<div>
+  <header class="pb-6 lg:pb-16 text-center">
+    <h1 class="h2"><%= @goal.title %></h1>
+    <% if @goal.description.presence %>
+      <span
+        class="
+          font-light text-base text-zinc-700 tracking-normal dark:text-zinc-300
+          font-heading
+        "
+      >
+        <%= @goal.description %>
+      </span>
+      <%= link_to profile_path(@user.username) do %>
+        <div class="flex justify-center mt-2">
+          <div
+            class="
+              flex items-center text-sm font-light text-base text-zinc-700 tracking-normal
+              dark:text-zinc-300 font-heading gap-2
+            "
+          >
+            <%= render UI::Avatar::Component.new(
+              src: Current.user.avatar.variant(:thumb),
+              size: :xs,
+            ) %>
+            <%= @user.handle %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </header>
+
+  <div class="space-y-2">
+    <div>
+      <span class="font-heading whitespace-nowrap"><%= strip_zeros(@goal.current) %>
+        /
+        <%= strip_zeros(@goal.target) %></span>
+    </div>
+    <div class="lg:max-w-xl">
+      <%= render UI::ProgressBar::Component.new(progress: @goal.progress) %>
+    </div>
+    <div class="text-zinc-600 dark:text-zinc-400">
+      <% if @goal.end_date.present? %>
+        <%= localize(@goal.start_date.to_date, format: :short) %>
+        -
+        <%= localize(@goal.end_date.to_date, format: :short) %>
+        -
+        <%= I18n.t(
+          "activerecord.attributes.goal.remaining_days",
+          count: @goal.remaining_days,
+        ) %>
+      <% else %>
+        Iniciado em
+        <%= localize(@goal.start_date.to_date, format: :short) %>
+      <% end %>
+    </div>
+  </div>
+</div>
