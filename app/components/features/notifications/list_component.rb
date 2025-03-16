@@ -42,7 +42,7 @@ module Notifications
     def unread_notifications?
       return if user_notifications.empty?
 
-      user_notifications.where.not(read_at: nil).exists?
+      user_notifications.where(read_at: nil).exists?
     end
   end
 end
