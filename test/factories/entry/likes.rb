@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :entry_like, class: "Entry::Like" do
-    entry { create(:entry, :post) }
-    user
+    association :entry, factory: [ :entry, :post ]
+    association :user
   end
 end

@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :notification do
-    notifiable { create(:notification_like) }
+    trait :like do
+      notifiable { association :notification_like, notification: instance }
+    end
   end
 end
