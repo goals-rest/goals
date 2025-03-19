@@ -1,0 +1,5 @@
+<%= render UI::Counter::Component.new do |counter| %>
+  <% counter.with_decrement_button %>
+  <% counter.with_increment_button %>
+  <% counter.with_input(value:) %>
+<% end %>

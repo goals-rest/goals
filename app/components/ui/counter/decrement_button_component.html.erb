@@ -1,0 +1,6 @@
+<%= render UI::Counter::ButtonComponent.new(**attrs) do %>
+  <%= render UI::Icon::Component.new(
+    "minus-small",
+    class: "w-5 h-5 shrink-0 stroke-current select-none pointer-events-none",
+  ) %>
+<% end %>
