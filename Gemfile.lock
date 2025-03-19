@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/getrailsui/railsui.git
-  revision: b582583a59d48151674312277a6cba0c61b39724
-  tag: v3.0.1
+  revision: a59bd90ba46db166a66e0a75b99a8ad6f32ab42c
+  tag: v3.1.1
   specs:
-    railsui (3.0.0)
+    railsui (3.1.1)
       meta-tags
       psych
       rails (>= 7.0)
