@@ -31,15 +31,24 @@
         class: "text-left", 
       ) do %>
         <%= form.form_group :current do %>
-          <%= render Form::TextField::Component.new(
-            placeholder: 0,
-            required: true,
-            class: "text-center",
+          <%= render UI::Counter::Component.new(
             data: {
-              action: "input->sum-updater#update",
-            },
-            onenter: "this.form.requestSubmit()",
-          ) %>
+              action: "counter-input:change->sum-updater#update",
+            }
+          ) do |counter| %>
+            <% counter.with_decrement_button %>
+            <% counter.with_increment_button %>
+            <% counter.with_input(
+              placeholder: 0,
+              required: true,
+              class: "text-center",
+              onenter: "this.form.requestSubmit()",
+              class: "w-full",
+              data: {
+                sum_updater_target: "input",
+              },
+            ) %>
+          <% end %>
         <% end %>
 
         <div>
