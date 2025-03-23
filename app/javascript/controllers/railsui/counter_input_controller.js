@@ -16,6 +16,7 @@ export default class extends Controller {
     // Increment value by 1
     this.valueTarget.value = parseValue(this.valueTarget.value) + 1
     this.disableDecrementIfZero()
+    this.notifyChange()
   }
 
   decrement(event) {
@@ -23,6 +24,7 @@ export default class extends Controller {
     // Decrement value by 1, but ensure it doesn't go below 0
     this.valueTarget.value = Math.max(parseValue(this.valueTarget.value) - 1, 0)
     this.disableDecrementIfZero()
+    this.notifyChange()
   }
 
   disableDecrementIfZero() {
@@ -36,5 +38,9 @@ export default class extends Controller {
       )
       this.decrementBtnTarget.removeAttribute('disabled')
     }
+  }
+
+  notifyChange() {
+    this.dispatch('change', { value: this.valueTarget.value })
   }
 }

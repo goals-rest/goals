@@ -5,7 +5,7 @@ module UI
         base do
           %(
             btn btn-white rounded-full w-8 h-8 flex items-center
-            justify-center p-0 cursor-pointer
+            justify-center p-0 cursor-pointer shrink-0 shadow-none
           )
         end
       end
