@@ -24,6 +24,10 @@
 
   <% if Current.user.present? %>
     <% header.with_item do %>
+    <%= render Notifications::ListComponent.new(user_notifications: Current.user.user_notifications) %>
+  <% end %>
+
+    <% header.with_item do %>
       <div class="flex items-center justify-center">
         <%= render UI::Dropdown::Component.new(alignment: :right) do |dropdown| %>
           <% dropdown.with_trigger do %>
