@@ -4,6 +4,8 @@ class Entry::LikeTest < ActiveSupport::TestCase
   should belong_to(:entry)
   should belong_to(:user)
 
+  should have_many(:notification_likes).dependent(:destroy)
+
   test "validates user uniqueness" do
     entry = create(:entry, :post)
     user = create(:user)
