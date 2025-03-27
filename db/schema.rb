@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_03_14_230038) do
+ActiveRecord::Schema[8.1].define(version: 2025_03_27_224528) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -113,6 +113,17 @@ ActiveRecord::Schema[8.1].define(version: 2025_03_14_230038) do
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
+  create_table "mentions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "entry_id"
+    t.integer "mentionee_id", null: false
+    t.integer "mentioner_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entry_id"], name: "index_mentions_on_entry_id"
+    t.index ["mentionee_id"], name: "index_mentions_on_mentionee_id"
+    t.index ["mentioner_id"], name: "index_mentions_on_mentioner_id"
+  end
+
   create_table "notification_likes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "entry_like_id", null: false
@@ -181,6 +192,9 @@ ActiveRecord::Schema[8.1].define(version: 2025_03_14_230038) do
   add_foreign_key "follows", "users", column: "follower_id"
   add_foreign_key "goal_progress_changes", "goals"
   add_foreign_key "goals", "users"
+  add_foreign_key "mentions", "entries"
+  add_foreign_key "mentions", "users", column: "mentionee_id"
+  add_foreign_key "mentions", "users", column: "mentioner_id"
   add_foreign_key "notification_likes", "entry_likes"
   add_foreign_key "posts", "goal_progress_changes"
   add_foreign_key "sessions", "users"

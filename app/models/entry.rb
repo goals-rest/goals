@@ -5,6 +5,7 @@ class Entry < ApplicationRecord
 
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy, inverse_of: :parent
+  has_many :mentions, dependent: :destroy, inverse_of: :entry, foreign_key: :entry_id
 
   belongs_to :owner, class_name: "User", foreign_key: :owner_id
 
