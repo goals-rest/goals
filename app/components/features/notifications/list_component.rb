@@ -1,13 +1,5 @@
 module Notifications
   class ListComponent < ApplicationComponent
-    style :unread_indicator do
-      base do
-        %w[w-2 h-2 bg-red-500 rounded-full hover:animate-pulse absolute top-0
-          right-0 z-20 dark:bg-primary-500/95
-        ]
-      end
-    end
-
     style :list_wrapper do
       base do
         %w[origin-to-right md:absolute mt-2 ml-2 md:ml-0 md:mt-0 md:shadow-xl sm:w-[360px]
@@ -38,11 +30,5 @@ module Notifications
     private
 
     attr_reader :user_notifications, :href
-
-    def unread_notifications?
-      return if user_notifications.empty?
-
-      user_notifications.where(read_at: nil).exists?
-    end
   end
 end
