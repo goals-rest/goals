@@ -122,4 +122,11 @@ class EntryTest < ActiveSupport::TestCase
 
     assert_equal [ Handle.new("@user1"), Handle.new("@user2") ], entry.mentioned_handles
   end
+
+  test "render_content returns the rendered content" do
+    post = create(:post, body: "Hello, world!")
+    entry = create(:entry, entryable: post)
+
+    assert_equal "Hello, world!", entry.render_content
+  end
 end

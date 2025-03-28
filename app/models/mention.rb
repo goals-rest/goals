@@ -7,4 +7,3 @@ class Mention < ApplicationRecord
     Rails.application.routes.url_helpers.profile_path(mentionee.username)
   end
 end
-

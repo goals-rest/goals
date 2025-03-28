@@ -47,7 +47,7 @@
         <%= post.title %>
       </p>
 
-      <%= post.body %>
+      <%= entry.render_content.html_safe %>
 
       <% if post.goal_progress_change.present? %>
         <div class="flex items-center justify-start mt-2 lg:mt-4">
