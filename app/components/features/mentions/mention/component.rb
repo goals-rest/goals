@@ -21,7 +21,10 @@ module Mentions
       private
       def default_attrs
         {
-          class: style
+          class: style,
+          data: {
+            turbo_frame: :_top
+          }
         }
       end
     end

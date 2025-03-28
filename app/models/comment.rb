@@ -1,6 +1,8 @@
 class Comment < ApplicationRecord
   include Entryable
 
+  alias_attribute :content, :body
+
   belongs_to :parent, class_name: "Entry", foreign_key: :entry_id, inverse_of: :comments, touch: true
   has_one :owner, through: :entry
 

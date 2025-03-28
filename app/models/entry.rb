@@ -3,6 +3,7 @@ class Entry < ApplicationRecord
 
   delegated_type :entryable, types: %w[ Post Comment ], dependent: :destroy
   delegate :extract_handles, to: :entryable
+  delegate :content, to: :entryable
 
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy, inverse_of: :parent
@@ -49,5 +50,9 @@ class Entry < ApplicationRecord
 
   def mentioned_handles
     mentioned_users.map { Handle.new(it.handle) }
+  end
+
+  def render_content
+    Renderer.new(self).render.html_safe
   end
 end
