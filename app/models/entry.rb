@@ -19,6 +19,8 @@ class Entry < ApplicationRecord
     where(owner: current_user).or(Entry.where(owner: current_user.followees))
   end
 
+  after_create_commit :sync_mentions_later
+
   scope :feed, ->(owner: Current.user) do
     visible(owner).where(entryable_type: FEED_ENTRIES)
   end
