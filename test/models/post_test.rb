@@ -17,4 +17,10 @@ class PostTest < ActiveSupport::TestCase
       entry.post.destroy
     end
   end
+
+  test "mentioned_handles" do
+    post = create(:post, body: "Hello @user, @user2.")
+
+    assert_equal [ Handle.new("@user"), Handle.new("@user2") ], post.mentioned_handles
+  end
 end
