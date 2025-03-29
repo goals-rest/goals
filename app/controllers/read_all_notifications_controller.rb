@@ -1,4 +1,4 @@
-class UserNotificationsController < DashboardController
+class ReadAllNotificationsController < DashboardController
   def update
     user_notifications = Current.user.user_notifications
     unread_notifications = user_notifications.unread

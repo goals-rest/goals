@@ -1,5 +1,5 @@
 <%= turbo_frame_tag :notification_toggle do %>
-  <%= form_with url: user_notification_path(Current.user), method: :put do %>
+  <%= form_with url: read_all_notifications_path, method: :patch do %>
     <%= render UI::Button::Component.new(
       variant: :rounded_outlined,
       color: :dark,
