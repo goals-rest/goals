@@ -179,4 +179,42 @@ class UserTest < ActiveSupport::TestCase
     assert_equal Date.new(2025, 2, 1), progress_calendar.days.first.date
     assert_equal Date.new(2025, 4, 30), progress_calendar.days.last.date
   end
+
+  test "username is valid" do
+    %w[
+      test
+      abcd.abcd
+      1234
+      test.1234
+      ____
+    ].each do |username|
+      user = build(:user, username: username)
+
+      assert user.valid?
+    end
+  end
+
+  test "username cannot start with a dot" do
+    user = build(:user, username: ".test")
+
+    assert_not user.valid?
+  end
+
+  test "username cannot end with a dot" do
+    user = build(:user, username: "test.")
+
+    assert_not user.valid?
+  end
+
+  test "username cannot have two dots in a row" do
+    user = build(:user, username: "test..test")
+
+    assert_not user.valid?
+  end
+
+  test "username cannot have three dots in a row" do
+    user = build(:user, username: "test...test")
+
+    assert_not user.valid?
+  end
 end
