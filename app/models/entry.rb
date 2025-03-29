@@ -2,10 +2,12 @@ class Entry < ApplicationRecord
   FEED_ENTRIES = %w[ Post ]
 
   delegated_type :entryable, types: %w[ Post Comment ], dependent: :destroy
+  delegate :extract_handles, to: :entryable
 
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy, inverse_of: :parent
   has_many :mentions, dependent: :destroy, inverse_of: :entry, foreign_key: :entry_id
+  has_many :mentioned_users, through: :mentions, source: :mentionee
 
   belongs_to :owner, class_name: "User", foreign_key: :owner_id
 
@@ -37,5 +39,13 @@ class Entry < ApplicationRecord
     return if user.blank?
 
     likes.find_by(user_id: user.id)
+  end
+
+  def sync_mentions_later
+    MentionSyncerJob.perform_later(self)
+  end
+
+  def mentioned_handles
+    mentioned_users.map { Handle.new(it.handle) }
   end
 end

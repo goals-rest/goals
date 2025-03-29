@@ -1,6 +1,8 @@
 require "test_helper"
 
 class EntryTest < ActiveSupport::TestCase
+  include ActiveJob::TestHelper
+
   should belong_to(:owner)
 
   should have_many(:likes).dependent(:destroy)
@@ -98,5 +100,26 @@ class EntryTest < ActiveSupport::TestCase
     create(:entry_like, entry:, user:)
 
     assert_nil entry.like_for(nil)
+  end
+
+  test "sync_mentions_later enqueues a Entry::MentionSyncerJob" do
+    entry = create(:entry, :post)
+
+    assert_enqueued_with(job: Entry::MentionSyncerJob, args: [ entry ]) do
+      entry.sync_mentions_later
+    end
+  end
+
+  test "mentioned_handles returns the usernames of the mentioned users" do
+    user1 = create(:user, username: "user1")
+    user2 = create(:user, username: "user2")
+
+    post = create(:post, body: "Hello @user1, @user2.")
+    entry = create(:entry, entryable: post)
+
+    create(:mention, entry:, mentionee: user1, mentioner: user1)
+    create(:mention, entry:, mentionee: user2, mentioner: user1)
+
+    assert_equal [ Handle.new("@user1"), Handle.new("@user2") ], entry.mentioned_handles
   end
 end

@@ -5,4 +5,8 @@ class Comment < ApplicationRecord
   has_one :owner, through: :entry
 
   validates :body, presence: true, length: { maximum: 2200 }
+
+  def extract_handles
+    HandleTextParser.new(body).parse
+  end
 end

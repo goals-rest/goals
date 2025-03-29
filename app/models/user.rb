@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  USERNAME_PATTERN = /\A[a-zA-Z0-9_]([a-zA-Z0-9_]|\.[a-zA-Z0-9_])+\z/
+
   include Followable, CurrentPassword
 
   has_secure_password
@@ -23,6 +25,8 @@ class User < ApplicationRecord
   validates :first_name, length: { maximum: 255 }
   validates :last_name, length: { maximum: 255 }
   validates :username, length: { maximum: 255 }
+
+  validate :username_format
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 
@@ -61,5 +65,11 @@ class User < ApplicationRecord
       self.username = self.username.first(248)
       self.username += ".#{SecureRandom.hex(3)}"
     end
+  end
+
+  def username_format
+    return if username.blank?
+
+    errors.add(:username, :invalid) unless username.match?(USERNAME_PATTERN)
   end
 end
