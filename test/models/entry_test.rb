@@ -109,4 +109,17 @@ class EntryTest < ActiveSupport::TestCase
       entry.sync_mentions_later
     end
   end
+
+  test "mentioned_handles returns the usernames of the mentioned users" do
+    user1 = create(:user, username: "user1")
+    user2 = create(:user, username: "user2")
+
+    post = create(:post, body: "Hello @user1, @user2.")
+    entry = create(:entry, entryable: post)
+
+    create(:mention, entry:, mentionee: user1, mentioner: user1)
+    create(:mention, entry:, mentionee: user2, mentioner: user1)
+
+    assert_equal [ Handle.new("@user1"), Handle.new("@user2") ], entry.mentioned_handles
+  end
 end

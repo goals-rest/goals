@@ -20,7 +20,7 @@ class Post < ApplicationRecord
             limit: { max: 5, message: :limit },
             size: { less_than_or_equal_to: 8.megabytes, message: :size }
 
-  def mentioned_handles
+  def extract_handles
     HandleTextParser.new(body).parse
   end
 end

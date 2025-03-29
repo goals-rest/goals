@@ -18,9 +18,9 @@ class PostTest < ActiveSupport::TestCase
     end
   end
 
-  test "mentioned_handles" do
+  test "extract_handles" do
     post = create(:post, body: "Hello @user, @user2.")
 
-    assert_equal [ Handle.new("@user"), Handle.new("@user2") ], post.mentioned_handles
+    assert_equal [ Handle.new("@user"), Handle.new("@user2") ], post.extract_handles
   end
 end

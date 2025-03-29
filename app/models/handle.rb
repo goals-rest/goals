@@ -21,7 +21,11 @@ class Handle
     value
   end
 
-  def ==(other)
+  def eql?(other)
     other.is_a?(Handle) && value == other.value
+  end
+
+  def ==(other)
+    eql?(other)
   end
 end

@@ -6,7 +6,7 @@ class Comment < ApplicationRecord
 
   validates :body, presence: true, length: { maximum: 2200 }
 
-  def mentioned_handles
+  def extract_handles
     HandleTextParser.new(body).parse
   end
 end
