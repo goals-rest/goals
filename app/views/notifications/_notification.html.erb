@@ -1,0 +1,29 @@
+<li class="flex flex-wrap items-center justify-start space-y-3 md:space-y-0 py-6 md:py-4">
+  <div class="md:flex-1 w-full">
+    <%= render Notifications::ItemComponent.new(user_notification: notification) %>
+  </div>
+
+  <div class="flex items-center justify-end md:w-1/12 w-full md:pt-0 pt-4">
+    <%= render UI::Dropdown::Component.new(alignment: :right) do |dropdown| %>
+      <% dropdown.with_trigger do %>
+        <%= button_tag(
+          type: :button,
+          class: "flex relative z-40 md:w-10 md:h-9 py-3 px-4 md:px-0 md:py-0 w-full md:rounded-xl rounded-full bg-white focus:ring-4 focus:ring-zinc-300/30 items-center md:justify-center justify-between border md:border-transparent focus:border-zinc-300 border-zinc-300/80 hover:border-zinc-300  dark:hover:bg-zinc-800 dark:hover:border-zinc-600 dark:focus:bg-zinc-800 dark:focus:border-zinc-500 dark:bg-zinc-700/60 dark:text-white dark:border-zinc-500/30 dark:shadow-zinc-950/40 dark:hover:bg-zinc-800/90 dark:focus:ring-zinc-700/80 dark:focus:border-zinc-400/80"
+        ) do %>
+        <% render UI::Icon::Component.new(
+          "ellipsis-horizontal",
+          class: "md:block hidden stroke-current w-6 h-6 flex-shrink-0 text-zinc-600/80 dark:text-zinc-200"
+        ) %>
+        <% end %>
+      <% end %>
+
+      <% dropdown.with_item do
+        link_to(
+          t(".delete"),
+          notification_path(notification),
+          data: { turbo_method: :delete }
+        ) %>
+      <% end %>
+    <% end %>
+  </div>
+</li>

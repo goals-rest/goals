@@ -1,0 +1,19 @@
+<%= provide(:title, t(".page_title")) %>
+
+<div class="max-w-2xl mx-auto">
+  <%= render UI::Breadcrumb::Component.new do |breadcrumb| %>
+    <% breadcrumb.with_item(href: home_path) { t(".panel") } %>
+    <% breadcrumb.with_separator %>
+    <% breadcrumb.with_item(active: true) { t(".page_title") } %>
+  <% end %>
+
+  <h1 class="mb-6 text-4xl font-semibold font-heading text-zinc-900 dark:text-zinc-100 tracking-tight"><%= t(".page_title") %></h1>
+
+  <% if @notifications.any? %>
+    <ul class="divide-y divide-zinc-200/80 dark:divide-zinc-700">
+      <%= render partial: "notification", collection: @notifications, cached: true %>
+    </ul>
+  <% else %>
+    <%= render "empty_state" %>
+  <% end %>
+</div>

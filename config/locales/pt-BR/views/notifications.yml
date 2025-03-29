@@ -1,0 +1,13 @@
+pt-BR:
+  notifications:
+    index:
+      page_title: Notificações
+      panel: Painel
+    destroy:
+      success: Notificação excluída com sucesso
+      error: Não foi possível excluir a notificação.
+    empty_state:
+      title: Nenhuma notificação por aqui!
+      description: Você ainda não tem notificações. Quando algo importante acontecer, avisaremos você aqui.
+    notification:
+      delete: Excluir
