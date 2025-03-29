@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       resources :comments, only: %i[index new create]
     end
   end
+  resource :read_all_notifications, only: %i[update]
   resources :follows, only: %i[create destroy]
   resources :follow_requests, only: %i[index destroy] do
     scope module: :follow_requests do

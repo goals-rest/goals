@@ -1,18 +1,5 @@
 <div class="md:flex justify-end md:flex-1 md:mr-4 mr-3 relative" data-controller="railsui-dropdown">
-  <%= render UI::Button::Component.new(
-    variant: :rounded_outlined,
-    color: :dark,
-    class: "md:w-10 md:h-10 w-12 h-12",
-    data: { action: "click->railsui-dropdown#toggle click@window->railsui-dropdown#hide" }
-  ) do %>
-    <div class="relative">
-      <%= render UI::Icon::Component.new("bell", class: "md:w-5 md:h-5 w-6 h-6") %>
-
-      <% if unread_notifications? %>
-        <%= tag.span(class: style(:unread_indicator)) %>
-      <% end %>
-    </div>
-  <% end %>
+  <%= render Notifications::ToggleComponent.new(user_notifications:) %>
 
   <%= tag.div(
       class: style(:list_wrapper),
