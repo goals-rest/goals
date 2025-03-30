@@ -13,7 +13,7 @@
       }
     ) do %>
     <% if user_notifications.any? %>
-      <%= render Notifications::ItemComponent.with_collection(user_notifications) %>
+      <%= render Notifications::ItemComponent.with_collection(user_notifications.last(5)) %>
 
       <%= link_to(href, class: style(:view_all_button)) do %>
         <span> <%= t(".see_all") %> </span>
