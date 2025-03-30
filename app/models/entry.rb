@@ -3,6 +3,7 @@ class Entry < ApplicationRecord
 
   delegated_type :entryable, types: %w[ Post Comment ], dependent: :destroy
   delegate :extract_handles, to: :entryable
+  delegate :content, to: :entryable
 
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy, inverse_of: :parent
@@ -18,6 +19,8 @@ class Entry < ApplicationRecord
   scope :visible, ->(current_user) do
     where(owner: current_user).or(Entry.where(owner: current_user.followees))
   end
+
+  after_create_commit :sync_mentions_later
 
   scope :feed, ->(owner: Current.user) do
     visible(owner).where(entryable_type: FEED_ENTRIES)
@@ -47,5 +50,9 @@ class Entry < ApplicationRecord
 
   def mentioned_handles
     mentioned_users.map { Handle.new(it.handle) }
+  end
+
+  def render_content
+    Renderer.new(self).render.html_safe
   end
 end

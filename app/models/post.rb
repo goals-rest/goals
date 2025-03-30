@@ -1,6 +1,8 @@
 class Post < ApplicationRecord
   include Entryable
 
+  alias_attribute :content, :body
+
   has_many_attached :images do |attachable|
     attachable.variant :large, resize_to_limit: [ 1200, 1200 ], preprocessed: true
     attachable.variant :medium, resize_to_limit: [ 600, 600 ], preprocessed: true
