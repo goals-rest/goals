@@ -6,6 +6,7 @@ class Entry < ApplicationRecord
   delegate :content, to: :entryable
 
   has_many :likes, dependent: :destroy
+  has_many :notification_comments, class_name: "Notification::Comment", dependent: :destroy
   has_many :comments, dependent: :destroy, inverse_of: :parent
   has_many :mentions, dependent: :destroy, inverse_of: :entry, foreign_key: :entry_id
   has_many :mentioned_users, through: :mentions, source: :mentionee

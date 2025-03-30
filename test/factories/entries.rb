@@ -5,7 +5,7 @@ FactoryBot.define do
     end
 
     trait :comment do
-      entryable { create(:comment) }
+      entryable { create(:comment, parent: create(:entry, :post)) }
     end
 
     association :owner, factory: :user

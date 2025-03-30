@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_03_27_224528) do
+ActiveRecord::Schema[8.1].define(version: 2025_03_30_193352) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -124,6 +124,13 @@ ActiveRecord::Schema[8.1].define(version: 2025_03_27_224528) do
     t.index ["mentioner_id"], name: "index_mentions_on_mentioner_id"
   end
 
+  create_table "notification_comments", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "entry_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entry_id"], name: "index_notification_comments_on_entry_id"
+  end
+
   create_table "notification_likes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "entry_like_id", null: false
@@ -195,6 +202,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_03_27_224528) do
   add_foreign_key "mentions", "entries"
   add_foreign_key "mentions", "users", column: "mentionee_id"
   add_foreign_key "mentions", "users", column: "mentioner_id"
+  add_foreign_key "notification_comments", "entries"
   add_foreign_key "notification_likes", "entry_likes"
   add_foreign_key "posts", "goal_progress_changes"
   add_foreign_key "sessions", "users"
