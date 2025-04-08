@@ -1,0 +1,8 @@
+servers:
+  web:
+    hosts:
+      - "<%= ENV.fetch("GOALS_SERVER_IP") %>"
+
+builder:
+  args:
+    RAILS_ENV: production
