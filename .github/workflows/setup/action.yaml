@@ -11,7 +11,7 @@ inputs:
 outputs:
   kamal-registry-password:
     description: Kamal Registry Password
-    value: ${{ steps.login-ecr.outputs.docker_password_<%= AWS_ACCOUNT_ID %>_dkr_ecr_us_east_1_amazonaws_com }}
+    value: ${{ steps.login-ecr.outputs.docker_password }}
 
 runs:
   using: composite
@@ -28,14 +28,14 @@ runs:
 
     - uses: webfactory/ssh-agent@v0.9.0
       with:
-        ssh-private-key: ${{ inputs.ssh-private-key }}
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v4
       with:
-        role-to-assume: ${{ inputs.aws-role-access }}
-        role-session-name: samplerolesession
-        aws-region: us-east-1
+        role-to-assume: ${{ secrets.AWS_ROLE_ACCESS }}
+        role-session-name: kamal-deploy-session
+        aws-region: sa-east-1
         mask-aws-account-id: "true"
 
     - name: login-to-aws-ecr
