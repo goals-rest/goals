@@ -86,7 +86,7 @@ gem "view_component", "3.22.0"
 gem "view_component-contrib", "0.2.4"
 
 # Utility function to efficiently merge Tailwind CSS classes without style conflicts [https://github.com/gjtorikian/tailwind_merge]
-gem "tailwind_merge", "1.1.0"
+gem "tailwind_merge", "1.2.0"
 
 # Centralization of locale data collection for Ruby on Rails [https://github.com/svenfuchs/rails-i18n]
 gem "rails-i18n", "~> 8.0.0"
