@@ -9,6 +9,7 @@ on:
   push:
     branches:
       - main
+      - config/deploy_with_ci
 
 jobs:
   build_and_deploy:
