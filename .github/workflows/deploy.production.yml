@@ -42,3 +42,4 @@ jobs:
           environment: production
         env:
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          GOALS_DOCKER_IMAGE: "something"
