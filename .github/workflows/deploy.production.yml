@@ -42,4 +42,9 @@ jobs:
           environment: production
         env:
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-          GOALS_DOCKER_IMAGE: "something"
+          GOALS_DOCKER_IMAGE: ${{ secrets.GOALS_DOCKER_IMAGE }}
+          GOALS_SERVER_IP: ${{ secrets.GOALS_SERVER_IP }}
+          GOALS_HOST: ${{ secrets.GOALS_HOST }}
+          KAMAL_REGISTRY_USERNAME: ${{ secrets.KAMAL_REGISTRY_USERNAME }}
+          KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
+          GOALS_SSH_USER: ${{ secrets.GOALS_SSH_USER }}
