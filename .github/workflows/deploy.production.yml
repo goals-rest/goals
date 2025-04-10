@@ -11,6 +11,10 @@ on:
       - main
       - config/deploy_with_ci
 
+concurrency:
+  group: ci-tests-${{ github.ref }}-1
+  cancel-in-progress: true
+
 jobs:
   build_and_deploy:
     name: deploy-production
