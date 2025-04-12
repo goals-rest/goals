@@ -43,7 +43,7 @@ env:
     JOB_CONCURRENCY: 1
 
     # Set number of cores available to the application on each server (default: 1).
-    WEB_CONCURRENCY: 1
+    WEB_CONCURRENCY: 0
 
     # Match this to any external database server to configure Active Record correctly
     # Use goals-db for a db accessory server on same machine via local kamal docker network.
