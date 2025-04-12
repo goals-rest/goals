@@ -21,8 +21,9 @@ pt-BR:
       types:
         notification_like_component:
           ago: " atrás"
-          entry_post: deu kudos em sua publicação
-          entry_comment: deu kudos em seu comentário
+          entry_post: em sua publicação
+          entry_comment: em seu comentário
+          likes: deu kudos
       list_component:
         empty_state_message: Você não possui notificações
         see_all: Ver todas as notificações

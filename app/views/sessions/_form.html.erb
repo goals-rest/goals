@@ -1,4 +1,4 @@
-<%= custom_form_with url: session_path do |form| %>
+<%= custom_form_with url: session_path, data: { turbo: false } do |form| %>
   <%= form.form_group :email_address do %>
     <%= form.label :email_address, t(".email_address") %>
     <%= form.email_field(

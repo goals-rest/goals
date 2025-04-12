@@ -1,6 +1,17 @@
 class PostsController < DashboardController
+  before_action :set_post, only: :show
+
   def new
     @post = Post.new
+  end
+
+  def show
+    authorize! @post
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   def create
@@ -16,5 +27,9 @@ class PostsController < DashboardController
   private
   def post_params
     params.require(:post).permit(:title, :body, images: [])
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 end

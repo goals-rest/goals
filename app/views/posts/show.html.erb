@@ -1,0 +1,13 @@
+<%= provide(:title, t(".title")) %>
+
+<div class="max-w-2xl mx-auto">
+  <%= render UI::Breadcrumb::Component.new do |breadcrumb| %>
+    <% breadcrumb.with_item(href: root_path) { t(".home") } %>
+    <% breadcrumb.with_separator %>
+    <% breadcrumb.with_item(active: true) { t(".page_title") } %>
+  <% end %>
+
+  <%= turbo_frame_tag :post, class: "block" do %>
+    <%= render partial: "entries/entryables/post", locals: { entry: @post.entry, destroy_entry_path: nil } %>
+  <% end %>
+</div>

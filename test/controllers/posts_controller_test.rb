@@ -1,6 +1,9 @@
 require "test_helper"
+require "action_policy/test_helper"
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
+  include ActionPolicy::TestHelper
+
   test "new" do
     user = create(:user)
 
@@ -8,6 +11,40 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
     get new_post_url
     assert_response :success
+  end
+
+  test "show" do
+    user = create(:user)
+    post = create(:post)
+    entry = create(:entry, entryable: post, owner: user)
+
+    sign_in user
+
+    get post_url(post)
+    assert_response :success
+  end
+
+  test "show returns success response for turbo stream format" do
+    user = create(:user)
+    post = create(:post)
+    entry = create(:entry, entryable: post, owner: user)
+
+    sign_in user
+
+    get post_url(post, format: :turbo_stream)
+    assert_response :success
+  end
+
+  test "show is authorized" do
+    user = create(:user)
+    post = create(:post)
+    entry = create(:entry, entryable: post, owner: user)
+
+    sign_in user
+
+    assert_authorized_to(:show?, post, with: PostPolicy) do
+      get post_url(post)
+    end
   end
 
   test "can create post" do
