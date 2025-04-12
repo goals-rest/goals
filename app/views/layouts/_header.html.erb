@@ -25,7 +25,8 @@
   <% if Current.user.present? %>
     <% header.with_item do %>
     <%= render Notifications::ListComponent.new(
-      user_notifications: Current.user.user_notifications, href: notifications_path
+      user_notifications: Current.user.user_notifications.order(created_at: :desc).limit(5), 
+      href: notifications_path
     ) %>
   <% end %>
 
