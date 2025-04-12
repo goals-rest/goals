@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :posts, only: %i[new create]
+  resources :posts, only: %i[new show create]
   resources :entries, only: %i[] do
     scope module: :entries do
       resources :likes, only: %i[index]

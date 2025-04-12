@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <% if allowed_to?(:destroy?, entry) %>
+    <% if allowed_to?(:destroy?, entry) && destroy_entry_path.present? %>
       <div>
         <%= render UI::Dropdown::Component.new(alignment: :right) do |dropdown| %>
           <% dropdown.with_trigger do %>
@@ -47,7 +47,7 @@
         <%= post.title %>
       </p>
 
-      <%= entry.render_content.html_safe %>
+      <%= entry.render_content %>
 
       <% if post.goal_progress_change.present? %>
         <div class="flex items-center justify-start mt-2 lg:mt-4">

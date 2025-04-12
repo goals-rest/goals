@@ -3,7 +3,7 @@
 
   <div class="flex-1">
     <p class="font-semibold">
-      <%= user.name %> <%= t(".entry_#{entry_type}") %>
+      <%= user.name %> <%= t(".likes") %> <%= entry_link %>
     </p>
     <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
       <%= time_ago_in_words(record.created_at) + t(".ago") %>

@@ -5,6 +5,10 @@ pt-BR:
       title: Goals | Nova publicação
       page_title: Nova publicação
       submit: Criar publicação
+    show:
+      title: Goals | Publicação
+      page_title: Publicação
+      home: Painel
     create:
       success: Publicação criada com sucesso
     destroy:

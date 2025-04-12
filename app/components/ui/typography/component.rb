@@ -62,7 +62,7 @@ module UI
       end
 
       def call
-        content_tag(as, content, **default_attrs)
+        content_tag(as, content, **attrs)
       end
 
       def default_attrs
