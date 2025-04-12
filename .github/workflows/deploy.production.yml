@@ -9,7 +9,6 @@ on:
   push:
     branches:
       - main
-      - config/deploy_with_ci
 
 concurrency:
   group: ci-tests-${{ github.ref }}-1
