@@ -17,8 +17,10 @@ module Notifications
     end
 
     def record
-      record = { notification_like: notification.notifiable.entry_like }
-      record[notifiable_type.to_sym]
+      case notification.notifiable
+      in Notification::Like => notification then notification.entry_like
+      in Notification::Comment => notification then notification.entry.comment
+      end
     end
 
     def notifiable_type
