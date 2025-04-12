@@ -43,7 +43,6 @@ jobs:
         with:
           registry-username: ${{ secrets.KAMAL_REGISTRY_USERNAME }}
           registry-password: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
-          environment: production
         env:
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
           GOALS_DOCKER_IMAGE: ${{ secrets.GOALS_DOCKER_IMAGE }}
