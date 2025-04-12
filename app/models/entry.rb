@@ -22,6 +22,7 @@ class Entry < ApplicationRecord
   end
 
   after_create_commit :sync_mentions_later
+  after_create_commit :notify_comment_event, if: :comment?
 
   scope :feed, ->(owner: Current.user) do
     visible(owner).where(entryable_type: FEED_ENTRIES)
@@ -55,5 +56,11 @@ class Entry < ApplicationRecord
 
   def render_content
     Renderer.new(self).render.html_safe
+  end
+
+  def notify_comment_event
+    ActiveSupport::Notifications.instrument "comment.entry", self do
+      Rails.logger.info "Event published for Comment with id: #{self.id}"
+    end
   end
 end
