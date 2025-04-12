@@ -19,6 +19,9 @@ pt-BR:
           likes: "%{count} kudos"
     notifications:
       types:
+        notification_comment_component:
+          ago: " atrás"
+          message: "%{user_name} comentou sobre "
         notification_like_component:
           ago: " atrás"
           entry_post: em sua publicação
