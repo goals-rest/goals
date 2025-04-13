@@ -27,7 +27,7 @@
 <%= turbo_frame_tag "search-result" do %>
   <% if @goals.any? %>
     <div class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 my-8">
-      <%= render @goals, cached: true %>
+      <%= render partial: "goal", collection: @goals, cached: ->(goal) { [Current.user, goal] } %>
     </div>
   <% elsif Goal.any? %>
     <%= render "no_goals_found" %>

@@ -1,6 +1,6 @@
 class NotificationsController < DashboardController
   def index
-    @notifications = Current.user.user_notifications.order(created_at: :desc)
+    @notifications = Current.user.user_notifications.notification_center.order(created_at: :desc)
   end
 
   def destroy

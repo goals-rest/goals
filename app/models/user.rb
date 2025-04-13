@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :goals, dependent: :destroy
   has_many :entries, dependent: :destroy, foreign_key: "owner_id"
   has_many :follow_requests, dependent: :destroy, foreign_key: "followee_id"
-  has_many :user_notifications, dependent: :destroy
+  has_many :user_notifications, dependent: :destroy, inverse_of: :user
 
   validates :first_name, presence: true
   validates :last_name, presence: true

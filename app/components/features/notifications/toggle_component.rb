@@ -18,8 +18,6 @@ module Notifications
     attr_reader :user_notifications
 
     def unread_notifications?
-      return if user_notifications.empty?
-
       user_notifications.unread.any?
     end
   end
