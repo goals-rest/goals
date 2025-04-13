@@ -1,5 +1,5 @@
 class Goal::ProgressChange < ApplicationRecord
-  belongs_to :goal
+  belongs_to :goal, touch: true
 
   has_many :posts, dependent: :destroy, foreign_key: "goal_progress_change_id"
 

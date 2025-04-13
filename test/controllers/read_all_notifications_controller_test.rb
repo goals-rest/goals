@@ -26,4 +26,15 @@ class ReadAllNotificationsControllerTest < ActionDispatch::IntegrationTest
     assert_equal Time.zone.yesterday.to_date, notification_a.reload.read_at.to_date
     assert_equal Time.zone.yesterday.to_date, notification_b.reload.read_at.to_date
   end
+
+  test "touches user" do
+    user = create(:user)
+    notification = create(:user_notification, read_at: nil, user:)
+
+    sign_in user
+
+    assert_changes -> { user.reload.updated_at } do
+      patch read_all_notifications_path
+    end
+  end
 end
