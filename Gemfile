@@ -72,6 +72,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 
+  # A mocking and stubbing library for Ruby [https://github.com/freerange/mocha]
+  gem "mocha", "2.7.1"
+
   # Makes tests easy on the fingers and the eyes [https://github.com/thoughtbot/shoulda]
   gem "shoulda", "5.0.0.rc1"
 end
