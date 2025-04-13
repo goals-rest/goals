@@ -16,3 +16,7 @@
 :root {
   --week-width: calc(16px + 0.25rem);
 }
+
+.turbo-progress-bar {
+  background: #f43f5e;
+}
