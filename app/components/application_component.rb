@@ -4,8 +4,10 @@ class ApplicationComponent < ViewComponent::Base
 
   attr_reader :attrs
 
+  TAILWIND_MERGER = TailwindMerge::Merger.new.freeze
+
   def initialize(**user_attrs)
-    @attrs = AttributeMerger.new(default_attrs, user_attrs).merge
+    @attrs = AttributeMerger.merge(default_attrs, user_attrs)
 
     merge_tailwind_classes(attrs)
   end
@@ -22,6 +24,6 @@ class ApplicationComponent < ViewComponent::Base
   def merge_tailwind_classes(attributes)
     return unless attributes[:class].is_a?(String)
 
-    attributes[:class] = TailwindMerge::Merger.new.merge(attributes[:class])
+    attributes[:class] = TAILWIND_MERGER.merge(attributes[:class])
   end
 end

@@ -1,34 +1,36 @@
 class AttributeMerger
-  attr_reader :default_attrs, :user_attrs
-
-  def initialize(default_attrs, user_attrs)
-    @default_attrs = default_attrs
-    @user_attrs = user_attrs
-  end
-
-  def merge
-    merge_attributes(default_attrs, user_attrs)
-  end
-
-  private
-  def merge_attributes(*args)
+  def self.merge(*args)
     args.each_with_object({}) do |object, result|
-      result.merge! object do |_key, old, new|
-        merge_values(old, new)
+      result.merge!(object) do |_key, old, new|
+       case [ old, new ].freeze
+       in [Array, Array] | [Set, Set]
+          old + new
+       in [Array, Set]
+          old + new.to_a
+       in [Array, String]
+          old + [ new ]
+       in [Hash, Hash]
+          merge(old, new)
+       in [Set, Array]
+          old.to_a + new
+       in [Set, String]
+          old.to_a + [ new ]
+       in [String, Array]
+          [ old ] + new
+       in [String, Set]
+          [ old ] + new.to_a
+       in [String, String]
+          "#{old} #{new}"
+       in [_, Hash]
+          { _: old, **new }
+       in [Hash, _]
+          { **old, _: new }
+       in [_, nil]
+          old
+       else
+          new
+       end
       end
-    end
-  end
-
-  def merge_values(old, new)
-    case old
-    when String
-      new.is_a?(String) ? "#{old} #{new}" : new
-    when Hash
-      new.is_a?(Hash) ? merge_attributes(old, new) : new
-    when Array
-      new.is_a?(Array) ? old + new : new
-    else
-      new
     end
   end
 end
