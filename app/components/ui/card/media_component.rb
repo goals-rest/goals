@@ -22,7 +22,7 @@ module UI
 
       def initialize(src: nil, wrapper_attrs: {}, **user_attrs)
         @src = src
-        @wrapper_attrs = AttributeMerger.new(default_wrapper_attrs, wrapper_attrs).merge
+        @wrapper_attrs = AttributeMerger.merge(default_wrapper_attrs, wrapper_attrs)
 
         super(**user_attrs)
       end
