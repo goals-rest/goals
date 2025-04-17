@@ -12,8 +12,8 @@ module Chats
       style :link do
         base do
           %w[
-            flex items-start space-x-4 font-heading p-2 relative rounded-lg 
-            hover:bg-zinc-50 dark:hover:bg-zinc-800 transition ease-in-out 
+            flex items-start space-x-4 font-heading p-2 relative rounded-lg
+            hover:bg-zinc-50 dark:hover:bg-zinc-800 transition ease-in-out
             duration-200
           ]
         end

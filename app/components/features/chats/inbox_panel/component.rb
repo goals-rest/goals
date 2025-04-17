@@ -4,8 +4,8 @@ module Chats
       style do
         base do
           %w[
-            lg:w-[360px] w-full lg:h-[calc(100vh-74px)] p-4 lg:border-r 
-            lg:border-zinc-300/80 overflow-y-auto overflow-x-hidden 
+            lg:w-[360px] w-full lg:h-[calc(100vh-74px)] p-4 lg:border-r
+            lg:border-zinc-300/80 overflow-y-auto overflow-x-hidden
             md:block hidden lg:pb-0 pb-16 dark:lg:border-zinc-700
           ]
         end
