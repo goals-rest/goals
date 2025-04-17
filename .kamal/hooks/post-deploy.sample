@@ -12,3 +12,14 @@
 # KAMAL_RUNTIME
 
 echo "$KAMAL_PERFORMER deployed $KAMAL_VERSION to $KAMAL_DESTINATION in $KAMAL_RUNTIME seconds"
+
+# Containers named "goals-web-*" ordered by creation date descending
+containers=$(docker ps -a --filter "name=^/goals-web-" --format "{{.ID}}\t{{.Names}}\t{{.CreatedAt}}" | sort -k3,3 -k4,4 -k5,5 -r)
+
+# Remove matching containers, but ignore the first one
+if [ $(echo "$containers" | wc -l) -gt 1 ]; then
+  echo "$containers" | tail -n +2 | awk '{print $1}' | xargs docker rm -f
+fi
+
+# Removed unused images
+docker image prune -a
