@@ -1,0 +1,6 @@
+<%= tag.div(**attrs) do %>
+  <%= custom_form_with url: "#", class: "flex items-center justify-between flex-1" do |form| %>
+    <%= form.text_field :search, placeholder: "Search inbox", class: "w-full" %>
+  <% end %>
+<% end %>
+

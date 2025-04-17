@@ -1,0 +1,20 @@
+<%= tag.li(**attrs) do %>
+  <%= link_to "#", class: style(:link, active:) do %>
+    <%= render UI::Avatar::Component.new(
+      src: "https://randomuser.me/api/portraits/men/#{rand(1..100)}.jpg", 
+      size: :lg,
+      alt: "Jared Sanders"
+    ) %>
+    <div class="flex-1">
+      <p class="font-normal text-[15px] text-zinc-700 dark:text-zinc-50">Jared Sanders</p>
+      <p class="text-zinc-500 dark:text-zinc-300/90 my-1 text-sm font-light line-clamp-1">Hi, We're in town a little early and w...</p>
+      <p class="text-zinc-500/80 dark:text-zinc-400/80 my-1 text-[12px] font-light line-clamp-1">
+        Sep 1-4—Cozy Mountain A-Frame
+      </p>
+    </div>
+
+    <% if new %>
+      <span class="bg-primary-500 text-white font-normal text-[10px] px-1 py-px flex items-center rounded-sm absolute top-2 right-2">New</span>
+    <% end %>
+  <% end %>
+<% end %>
