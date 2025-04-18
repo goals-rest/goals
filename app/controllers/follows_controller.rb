@@ -7,6 +7,7 @@ class FollowsController < ApplicationController
     @follow = Current.user.follows.build(follow_params)
 
     if @follow.save
+      @follow.notify
       redirect_back_to_profile @followee
     else
       redirect_back_to_profile @followee, alert: t(".error")
