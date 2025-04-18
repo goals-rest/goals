@@ -8,4 +8,9 @@ class NotificationFactory
     notifiable = Notification::Comment.build(entry:)
     Notification.build(notifiable:)
   end
+
+  def create_follow_notification(follow:)
+    notifiable = Notification::Follow.build(follow:)
+    Notification.build(notifiable:)
+  end
 end

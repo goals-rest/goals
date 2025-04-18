@@ -5,7 +5,7 @@ class NotificationNotifierTest < ActiveSupport::TestCase
 
   test "enqueues a notification for a like event" do
     entry_like = create(:entry_like)
-    notification = NotificationFactory.new.create_like_notification(entry_like:)
+    _notification = NotificationFactory.new.create_like_notification(entry_like:)
     notifier = NotificationNotifier.new(notification_factory: NotificationFactory.new)
 
     assert_enqueued_with(job: ::Notifications::SendNotificationsJob) do
@@ -27,7 +27,7 @@ class NotificationNotifierTest < ActiveSupport::TestCase
 
   test "enqueues a notification for a comment event" do
     entry = create(:entry, :post)
-    notification = NotificationFactory.new.create_comment_notification(entry:)
+    _notification = NotificationFactory.new.create_comment_notification(entry:)
     notifier = NotificationNotifier.new(notification_factory: NotificationFactory.new)
 
     assert_enqueued_with(job: ::Notifications::SendNotificationsJob) do
@@ -45,5 +45,26 @@ class NotificationNotifierTest < ActiveSupport::TestCase
     end
 
     assert_equal "Notification::Comment", notification.notifiable_type
+  end
+  test "enqueues a notification for a follow event" do
+    follow = create(:follow)
+    _notification = NotificationFactory.new.create_follow_notification(follow:)
+    notifier = NotificationNotifier.new(notification_factory: NotificationFactory.new)
+
+    assert_enqueued_with(job: ::Notifications::SendNotificationsJob) do
+      notifier.notify_follow(follow:)
+    end
+  end
+
+  test "creates a notification for a follow event" do
+    follow = create(:follow)
+    notification = NotificationFactory.new.create_follow_notification(follow:)
+    notifier = NotificationNotifier.new(notification_factory: NotificationFactory.new)
+
+    assert_difference("Notification.count", 1) do
+      notifier.notify_follow(follow:)
+    end
+
+    assert_equal "Notification::Follow", notification.notifiable_type
   end
 end

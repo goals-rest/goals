@@ -9,3 +9,9 @@ ActiveSupport::Notifications.subscribe "comment.entry" do |event|
 
   NotificationNotifier.with_default.notify_comment(entry: event.payload)
 end
+
+ActiveSupport::Notifications.subscribe "follow" do |event|
+  Rails.logger.info "Received Follow with id: #{event.payload.id}"
+
+  NotificationNotifier.with_default.notify_follow(follow: event.payload)
+end
