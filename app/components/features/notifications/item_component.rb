@@ -13,18 +13,15 @@ module Notifications
     attr_reader :notification
 
     def component_type
-      "Notifications::Types::#{notifiable_type.classify}Component".constantize
+      "Notifications::Types::#{notification.notifiable_name.classify}Component".constantize
     end
 
     def record
       case notification.notifiable
-      in Notification::Like => notification then notification.entry_like
-      in Notification::Comment => notification then notification.entry.comment
+      in Notification::Like => notifiable then notifiable.entry_like
+      in Notification::Comment => notifiable then notifiable.entry.comment
+      in Notification::Follow => notifiable then notifiable.follow
       end
-    end
-
-    def notifiable_type
-      notification.notifiable_name
     end
   end
 end
