@@ -4,6 +4,6 @@ class Notification::Comment < ApplicationRecord
   belongs_to :entry
 
   def recipients
-    User.where(id: entry.owner_id)
+    User.where(id: entry.comment.parent.owner_id)
   end
 end
