@@ -22,6 +22,9 @@ pt-BR:
         notification_comment_component:
           ago: " atrás"
           message: "%{user_name} comentou sobre "
+        notification_follow_component:
+          ago: " atrás"
+          message: "%{user_name} começou a seguir você"
         notification_like_component:
           ago: " atrás"
           entry_post: em sua publicação

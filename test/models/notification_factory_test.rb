@@ -14,4 +14,11 @@ class NotificationFactoryTest < ActiveSupport::TestCase
 
     assert_equal "Notification::Comment", notification.notifiable_type
   end
+
+  test "builds a notification for a follow event" do
+    follow = create(:follow)
+    notification = NotificationFactory.new.create_follow_notification(follow:)
+
+    assert_equal "Notification::Follow", notification.notifiable_type
+  end
 end

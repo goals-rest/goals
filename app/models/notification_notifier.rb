@@ -11,6 +11,10 @@ class NotificationNotifier
     deliver @notification_factory.create_comment_notification(entry:)
   end
 
+  def notify_follow(follow:)
+    deliver @notification_factory.create_follow_notification(follow:)
+  end
+
   def self.with_default
     new(notification_factory: NotificationFactory.new)
   end
