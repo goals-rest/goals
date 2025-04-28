@@ -24,12 +24,10 @@
 
   <% if Current.user.present? %>
     <% header.with_item do %>
-      <% cache [:user_notifications, Current.user] do %>
-        <%= render Notifications::ListComponent.new(
-          user_notifications: Current.user.user_notifications.notification_center.limit(5), 
-          href: notifications_path
-        ) %>
-      <% end %>
+      <%= render Notifications::ListComponent.new(
+        user_notifications: Current.user.user_notifications.notification_center.limit(5), 
+        href: notifications_path
+      ) %>
     <% end %>
 
     <% header.with_item do %>
