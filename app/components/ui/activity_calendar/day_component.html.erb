@@ -4,7 +4,11 @@
   data-tooltip-placement-value="top"
 >
   <div class="cursor-pointer flex w-full h-full" data-tooltip-target="trigger">
-    <%= tag.div(class: classes, **attrs) %>
+    <% if href %>
+      <%= link_to "", href, class: classes, **attrs %>
+    <% else %>
+      <%= tag.div(class: classes, **attrs) %>
+    <% end %>
   </div>
   <div
     class="

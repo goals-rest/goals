@@ -55,6 +55,7 @@ Rails.application.routes.draw do
       resource :follow_request, only: %i[create destroy]
       resources :goals, only: %i[show index]
       resources :feed_entries, only: %i[destroy]
+      resources :goal_progress_changes, only: %i[index], path: :progress_changes
     end
   end
 
