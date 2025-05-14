@@ -11,9 +11,10 @@ module Goals
           )
         ]
 
+        user = create(:user)
         progress_calendar = ::ProgressCalendar.new(days)
 
-        render_inline(Goals::ProgressCalendar::Component.new(progress_calendar:))
+        render_inline(Goals::ProgressCalendar::Component.new(progress_calendar:, user:))
 
         assert_text I18n.t("date.abbr_month_names")[1].capitalize
         assert_text(
