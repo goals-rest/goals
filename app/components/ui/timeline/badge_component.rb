@@ -5,7 +5,7 @@ module UI
         base do
           %w[
             absolute flex items-center justify-center w-6 h-6 rounded-full
-            -start-3 ring-8 ring-white dark:ring-gray-900
+            -start-3 ring-8 ring-white dark:ring-zinc-900
           ]
         end
       end

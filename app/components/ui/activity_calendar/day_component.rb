@@ -37,12 +37,13 @@ module UI
         end
       end
 
-      attr_reader :grade
+      attr_reader :grade, :href
 
-      def initialize(grade: :none, **attrs)
+      def initialize(grade: :none, href: nil, **attrs)
         raise ArgumentError, "Invalid grade: #{grade}" if GRADES.exclude?(grade)
 
         @grade = grade
+        @href = href
 
         super(**attrs)
       end

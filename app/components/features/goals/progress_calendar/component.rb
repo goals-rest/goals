@@ -1,10 +1,11 @@
 module Goals
   module ProgressCalendar
     class Component < ApplicationComponent
-      attr_reader :progress_calendar
+      attr_reader :progress_calendar, :user
 
-      def initialize(progress_calendar:, **attrs)
+      def initialize(progress_calendar:, user: nil, **attrs)
         @progress_calendar = progress_calendar
+        @user = user
 
         super(**attrs)
       end
