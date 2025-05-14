@@ -8,6 +8,8 @@ class Goal::ProgressChange < ApplicationRecord
   validates :target, presence: true, numericality: true
   validate :old_value_is_different_than_new_value
 
+  scope :with_created_at, ->(date) { where("DATE(goal_progress_changes.created_at) = ?", date) }
+
   def diff
     new_value - old_value
   end

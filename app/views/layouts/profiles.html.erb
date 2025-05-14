@@ -68,7 +68,7 @@
 
         <div class="hidden self-end lg:block">
           <div class="flex justify-end">
-            <%= render Goals::ProgressCalendar::Component.new(progress_calendar: @user.goals_progress_calendar) %>
+            <%= render Goals::ProgressCalendar::Component.new(progress_calendar: @user.goals_progress_calendar, user: @user) %>
           </div>
         </div>
       </div>

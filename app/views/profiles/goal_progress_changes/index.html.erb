@@ -1,0 +1,13 @@
+<% if @progress_changes.any? %>
+  <div class="pb-8">
+    <%= render UI::Typography::Component.new(as: :h2, variant: :h5).with_content(t(".title")) %>
+  </div>
+
+  <%= render Goals::UpdatesTimeline::Component.new(progress_changes: @progress_changes) %>
+<% else %>
+  <%= render UI::EmptyState::Component.new do |empty_state| %>
+    <% empty_state.with_icon("light-bulb", class: "size-8 font-semibold font-heading text-zinc-900 dark:text-zinc-100") %>
+    <% empty_state.with_title.with_content(t(".empty_state_title")) %>
+    <% empty_state.with_description.with_content(t(".empty_state_description")) %>
+  <% end %>
+<% end %>
