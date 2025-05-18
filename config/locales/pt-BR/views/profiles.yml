@@ -42,3 +42,8 @@ pt-BR:
     feed_entries:
       destroy:
         success: Publicação removida
+    goal_progress_changes:
+      index:
+        title: Atualizações de Progresso
+        empty_state_title: "Nenhuma atualização de progresso"
+        empty_state_description: "Não houve atualizações de progresso durante este período."
